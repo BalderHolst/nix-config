@@ -90,7 +90,7 @@
   users.users.balder = {
     isNormalUser = true;
     description = "Balder";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [ ];
   };
 
@@ -118,7 +118,11 @@
     brightnessctl # control backlight
     dunst # notifications
     home-manager # nix home manager
-    gnome.gnome-boxes # vms
+
+    # ====== VMs ======
+    virt-manager
+    libvirt
+    qemu
 
     # ====== CLI ======
     htop # process viewer
@@ -161,6 +165,10 @@
     obsidian # note taking
 
   ];
+
+  # Enable virtual machines, see: https://nixos.wiki/wiki/Virt-manager
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
 
   fonts.fontDir.enable = true;
   fonts.fonts = with pkgs; [
