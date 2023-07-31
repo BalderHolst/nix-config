@@ -87,7 +87,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.balder = {
+  users.users."balder" = {
     isNormalUser = true;
     description = "Balder";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
