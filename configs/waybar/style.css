@@ -162,6 +162,7 @@ label:focus {
 }
 
 #pulseaudio.muted {
+    color: @disabled
     /* background-color: #90b1b1; */
     /* color: #2a5c45; */
 }
