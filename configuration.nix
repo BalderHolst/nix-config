@@ -118,6 +118,7 @@
     brightnessctl # control backlight
     dunst # notifications
     home-manager # nix home manager
+    gnome.gnome-boxes # vms
 
     # ====== CLI ======
     htop # process viewer

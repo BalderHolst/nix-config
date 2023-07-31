@@ -133,8 +133,8 @@
             t = "kitty --detach";
 
             # Nixos
-            uhome = "home-manager switch && ~/.config/home-manager/impure.sh";
-            uos = "sudo nixos-rebuild switch && home-manager switch && ~/.config/home-manager/impure.sh";
+            uhome = "home-manager switch";
+            uos = "sudo nixos-rebuild switch && home-manager switch";
             cos = "sudo nvim -c 110 /etc/nixos/configuration.nix";
 
             # Git
