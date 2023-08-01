@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 
-{
+rec {
     home.username = "balder";
     home.homeDirectory = "/home/balder";
 
@@ -40,8 +40,8 @@
     ".config/waybar".source = ./configs/waybar;
 
     ".config/hypr/hyprpaper.conf".text = ''
-    preload = /home/balder/Pictures/wallpaper.png
-    wallpaper = eDP-1, /home/balder/Pictures/wallpaper.png
+    preload = ${home.homeDirectory}/Pictures/wallpaper.png
+    wallpaper = eDP-1, ${home.homeDirectory}/Pictures/wallpaper.png
     '';
 
     ".config/zathura/zathurarc".text = ''
