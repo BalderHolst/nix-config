@@ -16,7 +16,10 @@ fi
 # ============= Install System Config =============
 echo -e "\nScript need sudo permissions to perform system installation.\nWARNING: PLEASE VERIFY THAT THE SCRIPT IS NOT MALICIOUS."
 sudo rm "/etc/nixos/configuration.nix"
-sudo ln "./configuration.nix" "/etc/nixos/configuration.nix" 
+sudo mkdir -p "/etc/nixos/pkgs"
+sudo find nixos -type f -exec ln "{}" "/etc/{}" \;
+sudo mkdir "/etc/nixos/pkgs"
+
 sudo nixos-rebuild switch
 
 # ============= Run home-manager =============
