@@ -163,6 +163,14 @@ rec {
             ];
         };
         initExtra = ''
+
+        # Extra navigation aliases
+        alias ..='cd ..'
+        alias ...='cd ../..'
+
+        # Source bookmarks file if it exists
+        [ -f ~/.local/share/bmark/aliases.sh ] && source ~/.local/share/bmark/aliases.sh
+
         source ~/.p10k.zsh # Initialize powerlevel10k prompt
 
         # Archive Extraction

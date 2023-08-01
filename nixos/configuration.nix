@@ -3,7 +3,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, rustPlatform, ... }:
 
 {
   imports =
@@ -113,12 +113,12 @@
     hyprland # compositor and window manager
     hyprpaper # wallpaper
     waybar # bar
-    wofi # app launcher
+    rofi-wayland # app launcher
     pavucontrol # audio control GUI
     brightnessctl # control backlight
     dunst # notifications
     home-manager # nix home manager
-    themechanger
+    (callPackage ./pkgs/bmark.nix { }) # bmark, my terminal bookmark manager
 
     # ====== VMs ======
     virt-manager
@@ -131,6 +131,8 @@
     tree # overview of file structures
     bat # better cat
     exa # pretty ls
+    file # show file info
+    tldr # shot and sweet command examples
 
     # ====== General ======
     brave # main browser
@@ -145,6 +147,7 @@
     ranger # terminal file explorer
     audacity # audio editor
     gnome.eog # svg viewer
+    texlive.combined.scheme-full # Latex with everything
 
     # ====== Development ======
     git # you know why
@@ -153,6 +156,9 @@
     ripgrep # awesome grepping tool
     neovim # best text editor
     kitty # terminal emulator
+
+    gnumake # make
+    cmakeMinimal # cmake
     gnat13 # GNU compilers 
     python311 # Python interpreter
 
