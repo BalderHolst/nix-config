@@ -39,6 +39,11 @@
 
     ".config/waybar".source = ./configs/waybar;
 
+    ".config/hypr/hyprpaper.conf".text = ''
+    preload = /home/balder/Pictures/wallpaper.png
+    wallpaper = eDP-1, /home/balder/Pictures/wallpaper.png
+    '';
+
     ".config/zathura/zathurarc".text = ''
         set statusbar-h-padding 0
         set statusbar-v-padding 0
@@ -193,12 +198,20 @@
         name = "Papirus";
     };
 
+    home.pointerCursor = {
+        gtk.enable = true;
+        x11.enable = true;
+        name = "Bibata-Original-Classic";
+        size = 18;
+        package = pkgs.bibata-cursors;
+    };
+
     gtk = {
         enable = true;
         font.name = "FiraCode Nerd Font";
         theme = {
-            name = "Adapta";
-            package = pkgs.adapta-kde-theme;
+            name = "Sierra-compact-dark";
+            package = pkgs.sierra-gtk-theme;
         };
     };
 

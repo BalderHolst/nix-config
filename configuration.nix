@@ -111,13 +111,14 @@
 
     # ====== Desktop ======
     hyprland # compositor and window manager
-    swww # wallpaper
+    hyprpaper # wallpaper
     waybar # bar
     wofi # app launcher
     pavucontrol # audio control GUI
     brightnessctl # control backlight
     dunst # notifications
     home-manager # nix home manager
+    themechanger
 
     # ====== VMs ======
     virt-manager
