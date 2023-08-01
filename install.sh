@@ -14,11 +14,12 @@ then
 fi
 
 # ============= Install System Config =============
+home_manager_dir="$HOME/.config/home-manager"
 echo -e "\nScript need sudo permissions to perform system installation.\nWARNING: PLEASE VERIFY THAT THE SCRIPT IS NOT MALICIOUS."
+sudo chown -R root nixos
 sudo rm "/etc/nixos/configuration.nix"
-sudo mkdir -p "/etc/nixos/pkgs"
-sudo find nixos -type f -exec ln "{}" "/etc/{}" \;
-sudo mkdir "/etc/nixos/pkgs"
+sudo ln "$home_manager_dir/nixos/configuration.nix" "/etc/nixos/configuration.nix"
+sudo ln -s "$home_manager_dir/nixos/pkgs" "/etc/nixos/pkgs"
 
 sudo nixos-rebuild switch
 
