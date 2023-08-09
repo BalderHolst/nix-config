@@ -1,8 +1,13 @@
 { config, pkgs, ... }:
 
+let
+    username = "balder";
+    home_dir = "/home/${username}";
+    wallpaper = "${home_dir}/Pictures/wallpaper.png";
+in
 rec {
-    home.username = "balder";
-    home.homeDirectory = "/home/balder";
+    home.username = username;
+    home.homeDirectory = home_dir;
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
@@ -40,11 +45,15 @@ rec {
     # Rofi config
     ".config/rofi/config.rasi".source = ./configs/rofi.rasi;
 
+    # Waybar config
     ".config/waybar".source = ./configs/waybar;
 
+    # Hyprland config
+    ".config/hypr/hyprland.conf".source = ./configs/hyprland.conf;
+
     ".config/hypr/hyprpaper.conf".text = ''
-    preload = ${home.homeDirectory}/Pictures/wallpaper.png
-    wallpaper = eDP-1, ${home.homeDirectory}/Pictures/wallpaper.png
+    preload = ${wallpaper}
+    wallpaper = eDP-1, ${wallpaper}
     '';
 
     ".config/zathura/zathurarc".text = ''
@@ -60,9 +69,6 @@ rec {
         map p print
         set selection-clipboard clipboard
     '';
-
-    # Hyprland config
-    ".config/hypr/hyprland.conf".text = builtins.readFile ./configs/hyprland.conf;
 
     # Kitty config
     ".config/kitty/kitty.conf".text = ''
