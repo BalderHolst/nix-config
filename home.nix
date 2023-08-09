@@ -35,7 +35,10 @@ rec {
     home.file = {
 
     # Powerlevel10k zsh prompt
-    ".p10k.zsh".text = builtins.readFile ./configs/p10k.zsh;
+    ".p10k.zsh".source = ./configs/p10k.zsh;
+
+    # Rofi config
+    ".config/rofi/config.rasi".source = ./configs/rofi.rasi;
 
     ".config/waybar".source = ./configs/waybar;
 
