@@ -28,6 +28,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+  services.blueman.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Copenhagen";
 
@@ -147,7 +151,16 @@
     ranger # terminal file explorer
     audacity # audio editor
     gnome.eog # svg viewer
-    texlive.combined.scheme-full # Latex with everything
+    texlive.combined.scheme-full # latex with everything
+    python311Packages.pygments # syntax hightligher for minted latex package
+    python311Packages.dbus-python # used for initializing eduroam
+    gimp # image manipulation
+    drawio # create diagrams
+    zip # zip your files
+    unzip # unzip your files
+    tidal-hifi # music streaming
+    steam # games
+    pass-wayland # password manager
 
     # ====== Development ======
     git # you know why
@@ -156,6 +169,7 @@
     ripgrep # awesome grepping tool
     neovim # best text editor
     kitty # terminal emulator
+    cutecom # serial terminal
 
     gnumake # make
     cmakeMinimal # cmake
@@ -167,6 +181,10 @@
     rustfmt # rust formatter
     rust-analyzer # lsp for rust
     clippy # rust linter
+
+    avrdude # burn programs to avr platforms
+    avrdudess # GUI for avr-dude
+    pkgsCross.avr.buildPackages.gcc # gnu avr compilers
 
     # ====== Study ======
     obsidian # note taking
