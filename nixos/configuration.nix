@@ -161,6 +161,7 @@
     tidal-hifi # music streaming
     steam # games
     pass-wayland # password manager
+    pinentry-curses
 
     # ====== Development ======
     git # you know why
@@ -200,6 +201,13 @@
     nerdfonts
     font-awesome
   ];
+
+  services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    pinentryFlavor = "curses";
+    enableSSHSupport = true;
+  };
 
   # services.locate = {
   #   enable = true;
