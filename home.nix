@@ -165,6 +165,8 @@ rec {
             size = 10000;
             path = "${config.xdg.dataHome}/zsh/history";
         };
+
+        # zsh plugins
         zplug = {
             enable = true;
             plugins = [
@@ -172,6 +174,12 @@ rec {
                     { name = "zsh-users/zsh-syntax-highlighting"; }
             ];
         };
+        oh-my-zsh = {
+          enable = true;
+          plugins = [ "git" "pass" ];
+          theme = "robbyrussell";
+        };
+
         initExtra = ''
 
         # Extra navigation aliases
