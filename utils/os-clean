@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+echo -e "===== Deleting old system builds ====="
+sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 14d -v
+
+echo -e "\n===== Cleaning up nix store ====="
+nix store gc -v
