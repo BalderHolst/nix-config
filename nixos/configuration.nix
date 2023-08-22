@@ -51,17 +51,17 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.desktopManager.gnome.enable = false;
-
-  # Configure keymap in X11
   services.xserver = {
+    enable = true;
+    displayManager.sddm.enable = true;
     layout = "dk";
     xkbVariant = "";
   };
+
+  # Kill X11 server after 5 seconds on shutdown
+  systemd.extraConfig = ''
+    DefaultTimeoutStopSec=5s
+  '';
 
   # Configure console keymap
   console.keyMap = "dk-latin1";
@@ -87,9 +87,6 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users."balder" = {
     isNormalUser = true;
@@ -97,10 +94,6 @@
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [ ];
   };
-
-  # Enable automatic login for the user.
-  # services.xserver.displayManager.autoLogin.enable = true;
-  services.xserver.displayManager.autoLogin.user = "balder";
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
