@@ -13,11 +13,6 @@ then
     git clone https://github.com/BalderHolst/neovim-config "$HOME/.config/nvim"
 fi
 
-# Fix path to rust-analyzer
-mason_rust_analyzer_path="$HOME/.local/share/nvim/mason/bin/rust-analyzer"
-rm "$mason_rust_analyzer_path"
-ln -s "/run/current-system/sw/bin/rust-analyzer" "$mason_rust_analyzer_path"
-
 # ============= Install System Config =============
 home_manager_dir="$HOME/.config/home-manager"
 echo -e "\nScript need sudo permissions to perform system installation.\nWARNING: PLEASE VERIFY THAT THE SCRIPT IS NOT MALICIOUS."
