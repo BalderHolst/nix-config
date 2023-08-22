@@ -183,6 +183,8 @@
     rust-analyzer # lsp for rust
     clippy # rust linter
 
+    lua-language-server # lsp for lua
+
     avrdude # burn programs to avr platforms
     avrdudess # GUI for avr-dude
     pkgsCross.avr.buildPackages.gcc # gnu avr compilers
