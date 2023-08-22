@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Syncronize all config repos
+## Syncronize all config repos
 
 sync_repo () {
     path=$1

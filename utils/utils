@@ -1,0 +1,20 @@
+#!/usr/bin/env python
+import os
+
+
+def main():
+    path = os.path.expanduser("~/.config/home-manager/utils")
+    for file in os.listdir(path):
+        if file == __file__.split("/")[-1]:
+            continue
+        script_path = path + "/" + file
+        with open(script_path, 'r') as f:
+            lines = f.readlines()
+        for line in lines:
+            desc_start = line.find("## ");
+            if desc_start != -1:
+                print(f"{file} : {line[desc_start+3:-1]}")
+    
+
+if __name__ == "__main__":
+    main()
