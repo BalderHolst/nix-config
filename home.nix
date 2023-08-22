@@ -104,11 +104,6 @@ rec {
             r = "ranger";
             t = "kitty --detach";
 
-            # Nixos
-            uhome = "home-manager switch";
-            uos = "sudo nixos-rebuild switch && home-manager switch";
-            cos = "sudo nvim -c 110 /etc/nixos/configuration.nix";
-
             # Git
             gs = "git status";
             gc = "git commit";

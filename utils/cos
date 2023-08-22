@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Edit the nixos configuration file
+
+sudo nvim -c 110 /etc/nixos/configuration.nix

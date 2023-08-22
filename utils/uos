@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Rebuild OS and switch to new configuration
+
+sudo nixos-rebuild switch && home-manager switch

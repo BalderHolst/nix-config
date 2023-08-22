@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+# Update user config with home-manager
+
+home-manager switch
