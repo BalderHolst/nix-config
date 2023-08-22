@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Syncronize all config repos
+
+sync_repo () {
+    path=$1
+    echo "Syncing repo: '$path'..."
+
+    m=$(git -C "$path" pull --rebase 2> /dev/stdout) || {
+        echo -e "\n===== '$path' ====="
+        echo -e "$m\n"
+        return 1
+    }
+
+    m=$(git -C "$path" push 2> /dev/stdout) || {
+        echo -e "\n===== '$path' ====="
+        echo -e "$m\n"
+        return 1
+    }
+
+    echo "Success: '$path' syncronized."
+}
+
+sync_repo "$HOME/.config/nvim" &
+sync_repo "$HOME/.config/home-manager" &
+sync_repo "$HOME/.password-store"
+
+sleep 0.1 
+echo -e "\ndone."
