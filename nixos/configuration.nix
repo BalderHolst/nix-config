@@ -53,7 +53,10 @@
   # Enable the X11 windowing system.
   services.xserver = {
     enable = true;
-    displayManager.sddm.enable = true;
+    displayManager.sddm = {
+      enable = true;
+      theme = "sugar-dark";
+    };
     layout = "dk";
     xkbVariant = "";
   };
@@ -116,6 +119,8 @@
     dunst # notifications
     home-manager # nix home manager
     (callPackage ./pkgs/bmark.nix { }) # bmark, my terminal bookmark manager
+    pkgs.libsForQt5.qt5.qtgraphicaleffects # library used by a lot of sddm themes
+    (callPackage ./pkgs/sddm/themes.nix { }).sugar-dark # sddm theme
 
     # ====== VMs ======
     virt-manager
