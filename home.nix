@@ -43,6 +43,14 @@ rec {
 
     # Rofi config
     ".config/rofi/config.rasi".source = ./configs/rofi.rasi;
+    ".config/rofi/theme.rasi".text = ''
+        * {
+            bg: ${theme.background}80;
+            bg-alt: ${theme.background};
+            fg: ${theme.foreground};
+            fg-alt: ${theme.primary};
+        }
+    '';
 
     # Waybar config
     ".config/waybar/config".source = ./configs/waybar/config;

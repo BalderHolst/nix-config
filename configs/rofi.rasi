@@ -8,17 +8,10 @@ configuration {
   icon-theme: "Papirus";
 }
 
-@theme "/dev/null"
+@theme "theme.rasi"
 
 * {
-  bg: #070A1C80;
-  bg-alt: #070A1C;
-
-  fg: #FFFFFF;
-  fg-alt: #C3BFB9;
-
   background-color: @bg;
-  
   border: 0;
   margin: 0;
   padding: 0;
