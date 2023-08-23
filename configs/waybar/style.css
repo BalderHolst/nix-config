@@ -1,11 +1,4 @@
-@define-color background #070A1C;
-@define-color background-alt #30313C;
-@define-color foreground #E3DFD6;
-@define-color primary #80A0AA;
-@define-color secondary #10303A;
-@define-color alert #A54242;
-@define-color disabled #707880;
-
+/* Colors definitions are added by home.nix */
 
 * {
     /* `otf-font-awesome` is required to be installed for icons */

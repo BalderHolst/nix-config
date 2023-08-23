@@ -2,4 +2,4 @@
 
 ## Update user config with home-manager
 
-home-manager switch
+home-manager switch $@

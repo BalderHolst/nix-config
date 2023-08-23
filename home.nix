@@ -2,12 +2,11 @@
 
 let
     username = "balder";
-    home_dir = "/home/${username}";
-    wallpaper = "${home_dir}/Pictures/wallpaper.png";
+    theme = (import ./themes.nix { builtins = builtins; } ).lake;
 in
 rec {
+    home.homeDirectory = "/home/${username}";
     home.username = username;
-    home.homeDirectory = home_dir;
 
     # This value determines the Home Manager release that your configuration is
     # compatible with. This helps avoid breakage when a new Home Manager release
@@ -46,14 +45,23 @@ rec {
     ".config/rofi/config.rasi".source = ./configs/rofi.rasi;
 
     # Waybar config
-    ".config/waybar".source = ./configs/waybar;
+    ".config/waybar/config".source = ./configs/waybar/config;
+    ".config/waybar/style.css".text = ''
+        @define-color background ${theme.background};
+        @define-color background-alt ${theme.background-alt};
+        @define-color foreground ${theme.foreground};
+        @define-color primary ${theme.primary};
+        @define-color secondary ${theme.secondary};
+        @define-color alert ${theme.alert};
+        @define-color disabled ${theme.disabled};
+        '' + builtins.readFile ./configs/waybar/style.css;
 
     # Hyprland config
     ".config/hypr/hyprland.conf".source = ./configs/hyprland.conf;
 
     ".config/hypr/hyprpaper.conf".text = ''
-    preload = ${wallpaper}
-    wallpaper = eDP-1, ${wallpaper}
+    preload = ${theme.wallpaper}
+    wallpaper = eDP-1, ${theme.wallpaper}
     '';
 
     ".config/zathura/zathurarc".text = ''
@@ -144,7 +152,7 @@ rec {
         source ~/.p10k.zsh # Initialize powerlevel10k prompt
 
         # Add utils to PATH
-        PATH="$PATH"":${home_dir}/.myutils"
+        PATH="$PATH"":${home.homeDirectory}/.myutils"
         '';
     };
 
