@@ -56,7 +56,6 @@ rec {
     ".config/waybar/config".source = ./configs/waybar/config;
     ".config/waybar/style.css".text = ''
         @define-color background ${theme.background};
-        @define-color background-alt ${theme.background-alt};
         @define-color foreground ${theme.foreground};
         @define-color primary ${theme.primary};
         @define-color secondary ${theme.secondary};

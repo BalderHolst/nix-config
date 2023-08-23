@@ -2,7 +2,6 @@
 {
   lake = {
     background = "#070A1C";
-    background-alt = "#30313C";
     foreground = "#E3DFD6";
     primary = "#80A0AA";
     secondary = "#10303A";
