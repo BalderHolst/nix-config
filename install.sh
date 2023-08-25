@@ -1,7 +1,6 @@
 #!/usr/bin/env nix-shell
 #!nix-shell -i bash -p git
 
-default_theme="lake"
 
 echo "Installing..."
 
@@ -16,23 +15,28 @@ then
 fi
 
 # ============= Setup User =============
-echo -e "\nI need a few informations to continue, press enter for default/blank:"
+echo -e "\nI need a few informations to continue, press enter for default:"
 
 # Theme
-echo "Theme (default: '$default_theme'):"
+default="lake"
+echo "Theme (default: '$default'):"
 echo -n "> "
 read theme
-[ "$theme" = "" ] && theme="$default_theme"
+[ "$theme" = "" ] && theme="$default"
 
 # Git username
-echo "Git username:"
+default="BalderHolst"
+echo "Git username (default: '$default'):"
 echo -n "> "
 read username
+[ "$username" = "" ] && username="$default"
 
 # Git email
-echo "Git email:"
+default="balderwh@gmail.com"
+echo "Git email (default: '$default'):"
 echo -n "> "
 read email
+[ "$email" = "" ] && email="$default"
 
 echo -e "{
     username = \"$USER\";
