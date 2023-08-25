@@ -5,6 +5,9 @@
 
 { config, pkgs, rustPlatform, ... }:
 
+let
+  admin_user = import ./admin-user.nix;
+in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -91,9 +94,9 @@
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."balder" = {
+  users.users."${admin_user}" = {
     isNormalUser = true;
-    description = "Balder";
+    description = "Administrator of this computer.";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
     packages = with pkgs; [ ];
   };

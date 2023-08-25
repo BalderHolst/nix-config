@@ -1,8 +1,9 @@
 { config, pkgs, ... }:
 
 let
-    username = "balder";
-    theme = (import ./themes.nix { builtins = builtins; } ).lake;
+    user = import ./user.nix;
+    username = user.username;
+    theme = (import ./themes.nix { builtins = builtins; } )."${user.theme}";
 in
 rec {
     home.homeDirectory = "/home/${username}";
@@ -95,8 +96,8 @@ rec {
 
     programs.git = {
         enable = true;
-        userName = "BalderHolst";
-        userEmail = "balderwh@gmail.com";
+        userName = user.git_username;
+        userEmail = user.git_email;
         aliases = {
             l = "log --oneline --graph";
         };
