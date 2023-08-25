@@ -162,7 +162,7 @@ in
     tidal-hifi # music streaming
     steam # games
     pass-wayland # password manager
-    pinentry-curses
+    pinentry-curses # pinentry frontend for pass
 
     # ====== Development ======
     git # you know why

@@ -3,7 +3,7 @@
 let
     user = import ./user.nix;
     username = user.username;
-    theme = (import ./themes.nix { builtins = builtins; } )."${user.theme}";
+    theme = (import ./themes.nix )."${user.theme}";
 in
 rec {
     home.homeDirectory = "/home/${username}";
@@ -46,26 +46,35 @@ rec {
     ".config/rofi/config.rasi".source = ./configs/rofi.rasi;
     ".config/rofi/theme.rasi".text = ''
         * {
-            bg: ${theme.background}80;
-            bg-alt: ${theme.background};
-            fg: ${theme.foreground};
-            fg-alt: ${theme.primary};
+            bg: #${theme.background}80;
+            bg-alt: #${theme.background};
+            fg: #${theme.foreground};
+            fg-alt: #${theme.primary};
         }
     '';
 
     # Waybar config
     ".config/waybar/config".source = ./configs/waybar/config;
     ".config/waybar/style.css".text = ''
-        @define-color background ${theme.background};
-        @define-color foreground ${theme.foreground};
-        @define-color primary ${theme.primary};
-        @define-color secondary ${theme.secondary};
-        @define-color alert ${theme.alert};
-        @define-color disabled ${theme.disabled};
+        @define-color background #${theme.background};
+        @define-color foreground #${theme.foreground};
+        @define-color primary #${theme.primary};
+        @define-color secondary #${theme.secondary};
+        @define-color alert #${theme.alert};
+        @define-color disabled #${theme.disabled};
         '' + builtins.readFile ./configs/waybar/style.css;
 
     # Hyprland config
-    ".config/hypr/hyprland.conf".source = ./configs/hyprland.conf;
+    ".config/hypr/hyprland.conf".text = ''
+        general {
+            gaps_in = 5
+            gaps_out = 10
+            border_size = 2
+            col.active_border = rgb(${theme.focus})
+            col.inactive_border = rgba(595959aa)
+            layout = dwindle
+        }
+    '' + builtins.readFile ./configs/hyprland.conf;
 
     ".config/hypr/hyprpaper.conf".text = ''
     preload = ${theme.wallpaper}
