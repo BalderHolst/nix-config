@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Remove old unused programs and os builds
+
 echo -e "===== Deleting old system builds ====="
 sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 14d -v
 

@@ -4,17 +4,35 @@ import os
 
 def main():
     path = os.path.expanduser("~/.config/home-manager/utils")
+    utils = []
+    longest_name = 0
     for file in os.listdir(path):
         if file == __file__.split("/")[-1]:
             continue
+        if len(file) > longest_name:
+            longest_name = len(file)
         script_path = path + "/" + file
         with open(script_path, 'r') as f:
             lines = f.readlines()
+        found = False
         for line in lines:
             desc_start = line.find("## ");
             if desc_start != -1:
-                print(f"{file} : {line[desc_start+3:-1]}")
+                utils.append((file, line[desc_start+3:-1]))
+                found = True
+                break
+        if not found:
+            utils.append((file, "DO DESCRIPTION"))
+
+    for util in utils:
+        print_util(util, longest_name)
     
+
+def print_util(util, pad_to):
+    (name, desc) = util
+    while len(name) < pad_to:
+        name = name + " "
+    print(f"{name} : {desc}")
 
 if __name__ == "__main__":
     main()
