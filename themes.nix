@@ -23,8 +23,8 @@
     disabled = "68595D";
     focus = foreground;
     wallpaper = builtins.fetchurl {
-      url = "https://images.hdqwalls.com/download/firewatch-game-2560x1440.jpg";
-      sha256 = "sha256:03xx867vf4mhcnbqzv8dalj9x19y4l3pzy585vbkwxn5vq4rw55b";
+      url = "https://images.hdqwalls.com/wallpapers/firewatch-game.jpg";
+      sha256 = "sha256:03vrlhjs6xlpb8h7y1dxk0r7wr8rwbljbrvjaac30hwqrpjc6nm9";
     };
   };
 }

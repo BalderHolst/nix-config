@@ -193,6 +193,9 @@ in
     # ====== Study ======
     obsidian # note taking
 
+    # ====== Other ======
+    wl-clipboard # cli clipboard manipulation. Also needed for neovim.
+
   ];
 
   # Enable virtual machines, see: https://nixos.wiki/wiki/Virt-manager
