@@ -53,6 +53,16 @@ rec {
         }
     '';
 
+    # Bmark config
+    ".config/bmark/config.toml".text = ''
+        data_dir = "/home/balder/.local/share/bmark"
+        dmenu_cmd = "rofi -matching fuzzy -dmenu"
+        editor_cmd = "nvim"
+        terminal_cmd = "kitty --detach -d"
+        alias_prefix = "_"
+        display_sep = " : "
+    '';
+
     # Waybar config
     ".config/waybar/config".source = ./configs/waybar/config;
     ".config/waybar/style.css".text = ''
