@@ -160,7 +160,6 @@ in
     zip # zip your files
     unzip # unzip your files
     tidal-hifi # music streaming
-    steam # games
 
     # password manager
     (pass-wayland.withExtensions (exts: [
@@ -202,6 +201,13 @@ in
     wl-clipboard # cli clipboard manipulation. Also needed for neovim.
 
   ];
+
+  # Games
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+    dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+  };
 
   # Enable virtual machines, see: https://nixos.wiki/wiki/Virt-manager
   virtualisation.libvirtd.enable = true;
