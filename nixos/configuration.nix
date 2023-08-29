@@ -161,8 +161,13 @@ in
     unzip # unzip your files
     tidal-hifi # music streaming
     steam # games
-    pass-wayland # password manager
-    pinentry-curses # pinentry frontend for pass
+
+    # password manager
+    (pass-wayland.withExtensions (exts: [
+      exts.pass-update
+      exts.pass-checkup
+      exts.pass-genphrase
+    ]))
 
     # ====== Development ======
     git # you know why
@@ -211,7 +216,7 @@ in
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
-    pinentryFlavor = "curses";
+    pinentryFlavor = "qt";
     enableSSHSupport = true;
   };
 
