@@ -140,8 +140,8 @@ in
     tldr # shot and sweet command examples
 
     # ====== General ======
-    brave # main browser
-    firefox # alternative browser
+    firefox-wayland # main browser
+    brave # backup browser
     syncthing # syncronize files with my other computers
     libreoffice # office suite to open those awful microsoft files
     zathura # pdf-viewer
@@ -249,6 +249,7 @@ in
 
   environment.sessionVariables = {
     # WLR_NO_HARDWARE_CURSORS = "1";
+    MOZ_ENABLE_WAYLAND = "1"; # Hint firefox to use wayland
     NIXOS_OZONE_WL = "1"; # Hint electron apps to use wayland
   };
 
