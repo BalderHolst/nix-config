@@ -1,40 +1,81 @@
 #!/usr/bin/env nix-shell
 #!nix-shell -i bash -p git
 
+stcolor="\u001b[34;1m"
+scolor="\u001b[32;1m"
+ecolor="\u001b[31;1m"
+wcolor="\u001b[33;1m"
+rcolor="\u001b[0m"
 
-echo "Installing..."
+status () {
+    echo -e "$stcolor""$@""$rcolor"
+}
+
+warning () {
+    echo -e "$wcolor[WARNING]: ""$@""$rcolor"
+}
+
+error () {
+    echo -e "$ecolor[ERROR]: ""$@""$rcolor"
+}
+
+prompt () {
+    echo -n "> "
+}
+
+# Privide [AUTHOR] [REPO]
+repo () {
+    author=$1
+    repo=$2
+    if [ git_ssh = 0 ]
+    then
+        echo -e "https://github.com/$author/$repo"
+    else
+        echo -e "git@github.com:$author/$repo"
+    fi
+}
+
+status "Installing..."
+
+echo "Do you want to use ssh for git repos? (y/N)"
+prompt
+read ans
+git_ssh=0
+[ "$ans" = "y" ] && git_ssh=1
 
 # ============= Neovim =============
 nvim_dir="$HOME/.config/nvim"
 
 if [ ! -d "$nvim_dir" ]
 then
-    echo "Getting Neovim configuration."
-    [ -d $nvim_dir ] &&  rm -rfv "$nvim_dir"
-    git clone https://github.com/BalderHolst/neovim-config "$HOME/.config/nvim"
+    status "Getting Neovim configuration."
+    git clone "$(repo 'BalderHolst' 'neovim-config')" "$nvim_dir"
+else
+    warning "Could not install NeoVim config, as one already exists."
 fi
 
 # ============= Setup User =============
+
 echo -e "\nI need a few informations to continue, press enter for default:"
 
 # Theme
 default="lake"
 echo "Theme (default: '$default'):"
-echo -n "> "
+prompt
 read theme
 [ "$theme" = "" ] && theme="$default"
 
 # Git username
 default="BalderHolst"
 echo "Git username (default: '$default'):"
-echo -n "> "
+prompt
 read username
 [ "$username" = "" ] && username="$default"
 
 # Git email
 default="balderwh@gmail.com"
 echo "Git email (default: '$default'):"
-echo -n "> "
+prompt
 read email
 [ "$email" = "" ] && email="$default"
 
@@ -45,15 +86,15 @@ echo -e "{
     git_email = \"$email\";
 }" > user.nix
 
-echo -e "\nInstalling user configuration files."
+status "\nInstalling user configuration files."
 home-manager switch || {
-    echo -e "\nSomething whent wrong while setting up user settings. Have you selected a valid theme? (check the README for valid themes)"
+    error "\nSomething whent wrong while setting up user settings. Have you selected a valid theme? (check the README for valid themes)"
     exit 1
 }
 
 # ============= Install System Config =============
 home_manager_dir="$HOME/.config/home-manager"
-echo -e "\nScript need sudo permissions to perform system installation.\nWARNING: PLEASE VERIFY THAT THE SCRIPT IS NOT MALICIOUS."
+echo -e "\nScript needs sudo permissions to perform system installation.\nWARNING: PLEASE VERIFY THAT THE SCRIPT IS NOT MALICIOUS."
 
 # Give `root`-user ownership of the system configuration file.
 sudo chown -R root nixos
@@ -73,4 +114,4 @@ sudo mv admin-user.nix /etc/nixos/admin-user.nix
 # Rebuild system
 sudo nixos-rebuild switch
 
-echo -e "DONE!"
+status "DONE!"

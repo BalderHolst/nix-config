@@ -2,9 +2,21 @@
 
 ## Syncronize all config repos
 
+wcolor="\u001b[33;1m"
+rcolor="\u001b[0m"
+
+warning () {
+    echo -e "$wcolor[WARNING]: ""$@""$rcolor"
+}
+
 sync_repo () {
     path=$1
     echo "Syncing repo: '$path'..."
+
+    [[ ! -d "$path/.git" ]] && {
+        echo "WARNING: Could not find repo at '$path'. Skipping."
+        return
+    }
 
     m=$(git -C "$path" pull --rebase 2> /dev/stdout) || {
         echo -e "\n===== '$path' ====="
