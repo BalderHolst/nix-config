@@ -104,9 +104,19 @@ in
   users.users."${admin_user}" = {
     isNormalUser = true;
     description = "Administrator of this computer.";
-    extraGroups = [ "networkmanager" "wheel" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
     packages = with pkgs; [ ];
   };
+
+  # Enable docker
+  # virtualisation.docker = {
+    # enable = true;
+    # storageDriver = "btrfd";
+    # rootless = {
+      # enable = true;
+      # setSocketVariable = true;
+    # };
+  # };
 
   # Workaround for GNOME autologin: https://github.com/NixOS/nixpkgs/issues/103746#issuecomment-945091229
   systemd.services."getty@tty1".enable = false;
