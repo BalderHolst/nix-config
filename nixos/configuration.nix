@@ -264,7 +264,10 @@ in
   };
 
   # Enable experimental waybar features, to capture use the `wlr` module.
-  nixpkgs.overlays = [
+  nixpkgs.overlays = let
+    nix-matlab = import (builtins.fetchTarball "https://gitlab.com/doronbehar/nix-matlab/-/archive/master/nix-matlab-master.tar.gz");
+  in [
+    nix-matlab.overlay
     (self: super: {
       waybar = super.waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];

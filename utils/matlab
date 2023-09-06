@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+matlab_dir="$HOME/.config/home-manager/impure/matlab"
+matlab="$matlab_dir/result/bin/matlab"
+
+[ -d "$matlab_dir" ] || {
+    echo "Missing submodule at: '$matlab_dir'"
+    exit 1
+}
+
+[ -d "$matlab_dir/result" ] || {
+    echo "Building nix-matlab..."
+    nix-build "$matlab_dir" -o "$matlab_dir/result"
+    eval "$matlab"
+    exit 0
+}
+
+eval "$matlab"
