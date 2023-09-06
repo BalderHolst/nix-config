@@ -39,6 +39,9 @@ rec {
     # Config files
     home.file = {
 
+    # Nixpkgs config
+    ".config/nixpkgs/config.nix".source = ./configs/nixpkgs.nix;
+
     # Powerlevel10k zsh prompt
     ".p10k.zsh".source = ./configs/p10k.zsh;
 
