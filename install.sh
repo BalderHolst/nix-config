@@ -96,9 +96,6 @@ home-manager switch || {
 home_manager_dir="$HOME/.config/home-manager"
 echo -e "\nScript needs sudo permissions to perform system installation.\nWARNING: PLEASE VERIFY THAT THE SCRIPT IS NOT MALICIOUS."
 
-# Give `root`-user ownership of the system configuration file.
-sudo chown -R root nixos
-
 # Remove the old `configuration.nix` file
 sudo rm "/etc/nixos/configuration.nix"
 
