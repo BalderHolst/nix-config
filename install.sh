@@ -43,6 +43,10 @@ read ans
 git_ssh=0
 [ "$ans" = "y" ] && git_ssh=1
 
+# ============= Submodules =============
+status "Checking out submodules."
+git submodule update --init
+
 # ============= Neovim =============
 nvim_dir="$HOME/.config/nvim"
 
