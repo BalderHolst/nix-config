@@ -20,19 +20,19 @@ rec {
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
-    home.packages = with pkgs; [
-        # # It is sometimes useful to fine-tune packages, for example, by applying
-        # # overrides. You can do that directly here, just don't forget the
-        # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-        # # fonts?
-        # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-        # # You can also create simple shell scripts directly inside your
-        # # configuration. For example, this adds a command 'my-hello' to your
-        # # environment:
-        # (pkgs.writeShellScriptBin "my-hello" ''
-        #     echo "Hello, ${config.home.username}!"
-        # '')
+    home.packages = with pkgs; let
+        matlabIcon = makeDesktopItem {
+            name = "matlab";
+            desktopName = "Matlab";
+            exec = "${home.homeDirectory}/.config/home-manager/utils/matlab -desktop";
+            icon = builtins.fetchurl {
+                url = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Matlab_Logo.png/667px-Matlab_Logo.png";
+                sha256 = "sha256:1379d2pdm49hcq9gib47jd7jrp2926h69an5jjgfh60rwnhgrslx";
+            };
+        };
+    in
+    [
+        matlabIcon
         neofetch
     ];
 
