@@ -15,4 +15,4 @@ matlab="$matlab_dir/result/bin/matlab"
     exit 0
 }
 
-eval "$matlab"
+eval "$matlab $@"
