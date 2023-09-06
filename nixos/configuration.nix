@@ -219,6 +219,14 @@ in
 
   ];
 
+  # Locate
+  services.locate = {
+    enable = true;
+    locate = pkgs.mlocate;
+    interval = "hourly";
+    localuser = null;
+  };
+
   # Games
   programs.steam = {
     enable = true;
