@@ -42,6 +42,20 @@ rec {
     # Nixpkgs config
     ".config/nixpkgs/config.nix".source = ./configs/nixpkgs.nix;
 
+    # Swappy screenshot editing tool
+    ".config/swappy/config".text = ''
+    [Default]
+    save_dir=$HOME/Pictures/Screenshots
+    save_filename_format=swappy-%Y%m%d-%H%M%S.png
+    show_panel=false
+    line_size=5
+    text_size=20
+    text_font=sans-serif
+    paint_mode=brush
+    early_exit=true
+    fill_shape=false
+    '';
+
     # Powerlevel10k zsh prompt
     ".p10k.zsh".source = ./configs/p10k.zsh;
 

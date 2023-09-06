@@ -177,6 +177,11 @@ in
     zip # zip your files
     unzip # unzip your files
     tidal-hifi # music streaming
+    grim # screenshot tool
+    slurp # screen area selection tool
+    imagemagick # cli image manipulation
+    swappy # gui screenshot editor
+    wf-recorder # screen recorder
 
     # password manager
     (pass-wayland.withExtensions (exts: [
