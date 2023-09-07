@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+## CLI copy paste
+
+if [ -p /dev/stdin ]
+then
+    cat | wl-copy
+else
+    wl-paste
+fi
