@@ -216,6 +216,8 @@ in
     avrdudess # GUI for avr-dude
     pkgsCross.avr.buildPackages.gcc # gnu avr compilers
 
+    arduino # arduino ide
+
     # ====== Study ======
     obsidian # note taking
 
