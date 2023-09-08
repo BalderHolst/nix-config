@@ -10,6 +10,12 @@ let
     };
 in
 rec {
+    nixpkgs = {
+        config = {
+            allowUnfree = true;
+            allowUnfreePredicate = (_: true);
+        };
+    };
     home.homeDirectory = "/home/${username}";
     home.username = username;
 
@@ -24,78 +30,146 @@ rec {
 
     # The home.packages option allows you to install Nix packages into your
     # environment.
-    home.packages = with pkgs; let
-        matlabIcon = makeDesktopItem {
-            name = "matlab";
-            desktopName = "Matlab";
-            exec = "${home.homeDirectory}/.config/home-manager/utils/matlab -desktop";
-            icon = builtins.fetchurl {
-                url = "https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Matlab_Logo.png/667px-Matlab_Logo.png";
-                sha256 = "sha256:1379d2pdm49hcq9gib47jd7jrp2926h69an5jjgfh60rwnhgrslx";
-            };
-        };
-    in
-    [
-        matlabIcon
+    home.packages = with pkgs; [
+        (callPackage ./pkgs/matlab-icon.nix { home = home; }) # Desktop icon for matlab
+        (callPackage ./pkgs/bmark.nix { }) # bmark, my terminal bookmark manager
+
+        # ====== CLI ======
         neofetch
+        tldr # shot and sweet command examples
+        zip # zip your files
+        unzip # unzip your files
+
+        # ====== General ======
+        firefox-wayland # main browser
+        brave # backup browser
+        syncthing # syncronize files with my other computers
+        libreoffice # office suite to open those awful microsoft files
+        zathura # pdf-viewer
+        sxiv # image viewer
+        mpv # audio player
+        vlc # video player
+        gnome.nautilus # gui file explorer
+        ranger # terminal file explorer
+        audacity # audio editor
+        gnome.eog # svg viewer
+        texlive.combined.scheme-full # latex with everything
+        python311Packages.pygments # syntax hightligher for minted latex package
+        python311Packages.dbus-python # used for initializing eduroam
+        gimp # image manipulation
+        drawio # create diagrams
+        tidal-hifi # music streaming
+        grim # screenshot tool
+        slurp # screen area selection tool
+        imagemagick # cli image manipulation
+        swappy # gui screenshot editor
+        wf-recorder # screen recorder
+
+        # password manager
+        (pass-wayland.withExtensions (exts: [
+          exts.pass-update
+          exts.pass-checkup
+          exts.pass-genphrase
+        ]))
+
+        # ====== Development ======
+        git # you know why
+        neovim # best text editor
+        zsh # better bash
+        fish # shell for the 90s!
+        ripgrep # awesome grepping tool
+        kitty # terminal emulator
+        cutecom # serial terminal
+
+        gnumake # make
+        cmakeMinimal # cmake
+        gnat13 # GNU compilers 
+        python311 # Python interpreter
+
+        rustc # the rust compiler
+        cargo # rust build toolchain
+        rustfmt # rust formatter
+        rust-analyzer # lsp for rust
+        clippy # rust linter
+
+        lua-language-server # lsp for lua
+
+        avrdude # burn programs to avr platforms
+        avrdudess # GUI for avr-dude
+        # pkgsCross.avr.buildPackages.gcc # gnu avr compilers
+
+        arduino # arduino ide
+        arduino-cli # arduino ide
+
+        # ====== Study ======
+        obsidian # note taking
+
+        # ====== Other ======
+        wl-clipboard # cli clipboard manipulation. Also needed for neovim.
+
     ];
 
-    programs.firefox = {
-        enable = true;
-        profiles."${username}" = {
-            bookmarks = [
-                {
-                    name = "Nixos Packages";
-                    tags = [ "nixos" ];
-                    keyword = "nixpkgs";
-                    url = "https://search.nixos.org/packages";
-                }
-            ];
-            search.engines = {
-                "Nix Packages" = {
-                    urls = [{
-                        template = "https://search.nixos.org/packages";
-                        params = [
-                            { name = "type"; value = "packages"; }
-                            { name = "query"; value = "{searchTerms}"; }
-                        ];
-                    }];
-                    icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-                    definedAliases = [ "!np" "!nix" "!nixpkgs" ];
-                };
-                "Crates.io" = {
-                    urls = [{
-                        template= "https://crates.io/search";
-                        params = [
-                            { name = "q"; value = "{searchTerms}"; }
-                        ];
-                    }];
-                    icon = builtins.fetchurl {
-                      url = "https://crates.io/assets/cargo.png";
-                      sha256 = "sha256:1x254p99awa3jf1n617dn997aw44qv41jkfinhfdg9d3qblhkkr6";
+    # Programs config
+    programs = {
+
+        firefox = {
+            enable = true;
+            profiles."${username}" = {
+                bookmarks = [
+                    {
+                        name = "Nixos Packages";
+                        tags = [ "nixos" ];
+                        keyword = "nixpkgs";
+                        url = "https://search.nixos.org/packages";
+                    }
+                ];
+                search.engines = {
+                    "Nix Packages" = {
+                        urls = [{
+                            template = "https://search.nixos.org/packages";
+                            params = [
+                                { name = "type"; value = "packages"; }
+                                { name = "query"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                        definedAliases = [ "!np" "!nix" "!nixpkgs" ];
                     };
-                    definedAliases = [ "!crate" "!crates" ];
-                };
-                "PyPI" = {
-                    urls = [{
-                        template= "https://pypi.org/search";
-                        params = [
-                            { name = "q"; value = "{searchTerms}"; }
-                        ];
-                    }];
-                    icon = builtins.fetchurl {
-                      url = "https://pypi.org/static/images/logo-small.2a411bc6.svg";
-                      sha256 = "sha256:12ydpzmbc1a2h4g1gjk8wi02b3vkfqg84zja2v4c403iqdyi5xzr";
+                    "Crates.io" = {
+                        urls = [{
+                            template= "https://crates.io/search";
+                            params = [
+                                { name = "q"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        icon = builtins.fetchurl {
+                          url = "https://crates.io/assets/cargo.png";
+                          sha256 = "sha256:1x254p99awa3jf1n617dn997aw44qv41jkfinhfdg9d3qblhkkr6";
+                        };
+                        definedAliases = [ "!crate" "!crates" ];
                     };
-                    definedAliases = [ "!py" "!pypi" ];
+                    "PyPI" = {
+                        urls = [{
+                            template= "https://pypi.org/search";
+                            params = [
+                                { name = "q"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        icon = builtins.fetchurl {
+                          url = "https://pypi.org/static/images/logo-small.2a411bc6.svg";
+                          sha256 = "sha256:12ydpzmbc1a2h4g1gjk8wi02b3vkfqg84zja2v4c403iqdyi5xzr";
+                        };
+                        definedAliases = [ "!py" "!pypi" ];
+                    };
                 };
+                search.force = true;
+                extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+                    ublock-origin
+                    vimium
+                ];
             };
-            search.force = true;
-            extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-                ublock-origin
-                vimium
-            ];
         };
+
     };
 
     # Config files

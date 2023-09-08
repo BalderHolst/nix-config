@@ -138,7 +138,6 @@ in
     brightnessctl # control backlight
     dunst # notifications
     home-manager # nix home manager
-    (callPackage ./pkgs/bmark.nix { }) # bmark, my terminal bookmark manager
     pkgs.libsForQt5.qt5.qtgraphicaleffects # library used by a lot of sddm themes
     (callPackage ./pkgs/sddm/themes.nix { }).sugar-dark # sddm theme
 
@@ -154,76 +153,10 @@ in
     bat # better cat
     exa # pretty ls
     file # show file info
-    tldr # shot and sweet command examples
-
-    # ====== General ======
-    firefox-wayland # main browser
-    brave # backup browser
-    syncthing # syncronize files with my other computers
-    libreoffice # office suite to open those awful microsoft files
-    zathura # pdf-viewer
-    sxiv # image viewer
-    mpv # audio player
-    vlc # video player
-    gnome.nautilus # gui file explorer
-    ranger # terminal file explorer
-    audacity # audio editor
-    gnome.eog # svg viewer
-    texlive.combined.scheme-full # latex with everything
-    python311Packages.pygments # syntax hightligher for minted latex package
-    python311Packages.dbus-python # used for initializing eduroam
-    gimp # image manipulation
-    drawio # create diagrams
     zip # zip your files
     unzip # unzip your files
-    tidal-hifi # music streaming
-    grim # screenshot tool
-    slurp # screen area selection tool
-    imagemagick # cli image manipulation
-    swappy # gui screenshot editor
-    wf-recorder # screen recorder
-
-    # password manager
-    (pass-wayland.withExtensions (exts: [
-      exts.pass-update
-      exts.pass-checkup
-      exts.pass-genphrase
-    ]))
-
-    # ====== Development ======
     git # you know why
-    zsh # better bash
-    fish # shell for the 90s!
-    ripgrep # awesome grepping tool
     neovim # best text editor
-    kitty # terminal emulator
-    cutecom # serial terminal
-
-    gnumake # make
-    cmakeMinimal # cmake
-    gnat13 # GNU compilers 
-    python311 # Python interpreter
-
-    rustc # the rust compiler
-    cargo # rust build toolchain
-    rustfmt # rust formatter
-    rust-analyzer # lsp for rust
-    clippy # rust linter
-
-    lua-language-server # lsp for lua
-
-    avrdude # burn programs to avr platforms
-    avrdudess # GUI for avr-dude
-    pkgsCross.avr.buildPackages.gcc # gnu avr compilers
-
-    arduino # arduino ide
-
-    # ====== Study ======
-    obsidian # note taking
-
-    # ====== Other ======
-    wl-clipboard # cli clipboard manipulation. Also needed for neovim.
-
   ];
 
   # Locate
