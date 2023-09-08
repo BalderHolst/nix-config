@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-## CLI copy paste
+## CLI copy and paste
 
 if [ -p /dev/stdin ]
 then

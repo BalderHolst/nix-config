@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+## Launch Matlab if it is installed
+
 matlab_dir="$HOME/.config/home-manager/impure/matlab"
 matlab="$matlab_dir/result/bin/matlab"
 
