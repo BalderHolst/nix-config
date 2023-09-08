@@ -1,9 +1,13 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 let
     user = import ./user.nix;
     username = user.username;
     theme = (import ./themes.nix )."${user.theme}";
+    firefox-addons = {
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
 in
 rec {
     home.homeDirectory = "/home/${username}";
@@ -35,6 +39,64 @@ rec {
         matlabIcon
         neofetch
     ];
+
+    programs.firefox = {
+        enable = true;
+        profiles."${username}" = {
+            bookmarks = [
+                {
+                    name = "Nixos Packages";
+                    tags = [ "nixos" ];
+                    keyword = "nixpkgs";
+                    url = "https://search.nixos.org/packages";
+                }
+            ];
+            search.engines = {
+                "Nix Packages" = {
+                    urls = [{
+                        template = "https://search.nixos.org/packages";
+                        params = [
+                            { name = "type"; value = "packages"; }
+                            { name = "query"; value = "{searchTerms}"; }
+                        ];
+                    }];
+                    icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                    definedAliases = [ "!np" "!nix" "!nixpkgs" ];
+                };
+                "Crates.io" = {
+                    urls = [{
+                        template= "https://crates.io/search";
+                        params = [
+                            { name = "q"; value = "{searchTerms}"; }
+                        ];
+                    }];
+                    icon = builtins.fetchurl {
+                      url = "https://crates.io/assets/cargo.png";
+                      sha256 = "sha256:1x254p99awa3jf1n617dn997aw44qv41jkfinhfdg9d3qblhkkr6";
+                    };
+                    definedAliases = [ "!crate" "!crates" ];
+                };
+                "PyPI" = {
+                    urls = [{
+                        template= "https://pypi.org/search";
+                        params = [
+                            { name = "q"; value = "{searchTerms}"; }
+                        ];
+                    }];
+                    icon = builtins.fetchurl {
+                      url = "https://pypi.org/static/images/logo-small.2a411bc6.svg";
+                      sha256 = "sha256:12ydpzmbc1a2h4g1gjk8wi02b3vkfqg84zja2v4c403iqdyi5xzr";
+                    };
+                    definedAliases = [ "!py" "!pypi" ];
+                };
+            };
+            search.force = true;
+            extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
+                ublock-origin
+                vimium
+            ];
+        };
+    };
 
     # Config files
     home.file = {
