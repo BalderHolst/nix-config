@@ -64,6 +64,8 @@ rec {
         imagemagick # cli image manipulation
         swappy # gui screenshot editor
         wf-recorder # screen recorder
+        filezilla # ftp gui interface
+        kicad # design pcd's and draw circuits
 
         # password manager
         (pass-wayland.withExtensions (exts: [
