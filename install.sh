@@ -80,7 +80,7 @@ echo -e "\nScript needs sudo permissions to perform system installation.\nWARNIN
 sudo rm "/etc/nixos/configuration.nix"
 
 # Link the system configuration files
-sudo ln "$home_manager_dir/nixos/configuration.nix" "/etc/nixos/configuration.nix"
+sudo ln -s "$home_manager_dir/nixos/configuration.nix" "/etc/nixos/configuration.nix"
 [ ! -d "/etc/nixos/pkgs" ] && sudo ln -s "$home_manager_dir/pkgs" "/etc/nixos/pkgs"
 
 # Add file specifying the admin user.
