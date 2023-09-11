@@ -61,7 +61,7 @@ sudo nixos-rebuild switch
 # Use hyprctl to get the main monitor
 monitor=$(hyprctl monitors | head -n 1 | cut -d " " -f2 || echo "")
 
-status "Creating \`user.nix\`."
+status "Creating \`local.nix\`."
 echo -e "{
     username = \"balder\";
     theme = \"lake\";
@@ -69,7 +69,7 @@ echo -e "{
     git_email = \"balderwh@gmail.com\";
     swap_escape = false;
     monitor = \"$monitor\";
-}" > $home_manager_dir/user.nix
+}" > $home_manager_dir/local.nix
 
 status "Installing user configuration files."
 home-manager switch || exit 1

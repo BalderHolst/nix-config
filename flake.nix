@@ -20,7 +20,7 @@
       system = "x86_64-linux";
       pkgs = nixpkgs.legacyPackages.${system};
     in {
-      homeConfigurations."${(import ./user.nix).username}" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."${(import ./local.nix).username}" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
         extraSpecialArgs = { inherit inputs; };
 

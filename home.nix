@@ -1,7 +1,7 @@
 { config, inputs, pkgs, ... }:
 
 let
-    user = import ./user.nix;
+    user = import ./local.nix;
     username = user.username;
     theme = (import ./themes.nix )."${user.theme}";
     firefox-addons = {
