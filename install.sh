@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell --extra-experimental-features nix-command -i bash -p git home-manager 
+#!nix-shell -i bash -p git home-manager 
 
 stcolor="\u001b[34;1m"
 scolor="\u001b[32;1m"
@@ -72,12 +72,6 @@ echo -e "{
     git_email = \"$email\";
 }" > user.nix
 
-status "\nInstalling user configuration files."
-home-manager switch || {
-    error "\nSomething whent wrong while setting up user settings. Have you selected a valid theme? (check the README for valid themes)"
-    exit 1
-}
-
 # ============= Install System Config =============
 home_manager_dir="$HOME/.config/home-manager"
 echo -e "\nScript needs sudo permissions to perform system installation.\nWARNING: PLEASE VERIFY THAT THE SCRIPT IS NOT MALICIOUS."
@@ -96,5 +90,11 @@ sudo mv admin-user.nix /etc/nixos/admin-user.nix
 
 # Rebuild system
 sudo nixos-rebuild switch
+
+status "\nInstalling user configuration files."
+home-manager switch || {
+    error "\nSomething whent wrong while setting up user settings. Have you selected a valid theme? (check the README for valid themes)"
+    exit 1
+}
 
 status "DONE!"
