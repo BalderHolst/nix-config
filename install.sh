@@ -73,6 +73,7 @@ echo -e "{
     theme = \"$theme\";
     git_username = \"$username\";
     git_email = \"$email\";
+    swap_escape = false;
 }" > user.nix
 
 # ============= Install System Config =============

@@ -239,6 +239,12 @@ rec {
             col.inactive_border = rgba(595959aa)
             layout = dwindle
         }
+
+        ${if user.swap_escape then ''
+            input {
+                kb_options = caps:swapescape
+            }
+            '' else ""}
     '' + builtins.readFile ./configs/hyprland.conf;
 
     ".config/hypr/hyprpaper.conf".text = ''
