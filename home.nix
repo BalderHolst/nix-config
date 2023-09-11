@@ -249,7 +249,7 @@ rec {
 
     ".config/hypr/hyprpaper.conf".text = ''
     preload = ${theme.wallpaper}
-    wallpaper = eDP-1, ${theme.wallpaper}
+    wallpaper = ${user.monitor}, ${theme.wallpaper}
     '';
 
     ".config/zathura/zathurarc".text = ''

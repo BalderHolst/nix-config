@@ -74,6 +74,7 @@ echo -e "{
     git_username = \"$username\";
     git_email = \"$email\";
     swap_escape = false;
+    monitor = \"eDP-1\";
 }" > user.nix
 
 # ============= Install System Config =============
