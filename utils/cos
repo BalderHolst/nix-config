@@ -2,4 +2,4 @@
 
 ## Edit the nixos configuration file
 
-sudo nvim -c 110 /etc/nixos/configuration.nix
+nvim -c 110 $HOME/.config/home-manager/nixos/configuration.nix

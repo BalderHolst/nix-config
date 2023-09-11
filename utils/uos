@@ -2,4 +2,5 @@
 
 ## Rebuild OS and switch to new configuration
 
+sudo cp -fv $HOME/.config/home-manager/nixos/configuration.nix /etc/nixos/configuration.nix
 sudo nixos-rebuild switch && home-manager switch
