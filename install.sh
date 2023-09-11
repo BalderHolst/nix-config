@@ -23,6 +23,9 @@ prompt () {
     echo -n "> "
 }
 
+status "Cleaning nix store..."
+nix store gc -v
+
 status "Installing..."
 
 # ============= Submodules =============
