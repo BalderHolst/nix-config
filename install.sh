@@ -23,25 +23,7 @@ prompt () {
     echo -n "> "
 }
 
-# Privide [AUTHOR] [REPO]
-repo () {
-    author=$1
-    repo=$2
-    if [ git_ssh = 0 ]
-    then
-        echo -e "https://github.com/$author/$repo"
-    else
-        echo -e "git@github.com:$author/$repo"
-    fi
-}
-
 status "Installing..."
-
-echo "Do you want to use ssh for git repos? (y/N)"
-prompt
-read ans
-git_ssh=0
-[ "$ans" = "y" ] && git_ssh=1
 
 # ============= Submodules =============
 status "Checking out submodules."
@@ -53,7 +35,7 @@ nvim_dir="$HOME/.config/nvim"
 if [ ! -d "$nvim_dir" ]
 then
     status "Getting Neovim configuration."
-    git clone "$(repo 'BalderHolst' 'neovim-config')" "$nvim_dir"
+    git clone 'git@github.com:BalderHolst/neovim-config' "$nvim_dir"
 else
     warning "Could not install NeoVim config, as one already exists."
 fi
