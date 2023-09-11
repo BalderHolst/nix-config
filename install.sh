@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p git
+#!nix-shell -i bash -p git home-manager
 
 stcolor="\u001b[34;1m"
 scolor="\u001b[32;1m"
