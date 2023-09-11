@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+## Fetch a password from pass
+
+store="$HOME/.password-store/"
+find "$store" -type f  \
+    | sed "s|$store||" \
+    | grep -P '\.gpg$' \
+    | sed 's|.gpg$||'  \
+    | rofi -dmenu      \
+    | xargs pass show -c 
