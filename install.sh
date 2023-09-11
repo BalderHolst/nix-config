@@ -1,11 +1,13 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p git home-manager 
+#!nix-shell -i bash -p git
 
 stcolor="\u001b[34;1m"
 scolor="\u001b[32;1m"
 ecolor="\u001b[31;1m"
 wcolor="\u001b[33;1m"
 rcolor="\u001b[0m"
+
+home_manager_dir="$HOME/.config/home-manager"
 
 status () {
     echo -e "$stcolor""$@""$rcolor"
@@ -18,13 +20,6 @@ warning () {
 error () {
     echo -e "$ecolor[ERROR]: ""$@""$rcolor"
 }
-
-prompt () {
-    echo -n "> "
-}
-
-status "Cleaning nix store..."
-nix store gc -v
 
 status "Installing..."
 
@@ -43,46 +38,11 @@ else
     warning "Could not install NeoVim config, as one already exists."
 fi
 
-# ============= Setup User =============
-
-echo -e "\nI need a few informations to continue, press enter for default:"
-
-# Theme
-default="lake"
-echo "Theme (default: '$default'):"
-prompt
-read theme
-[ "$theme" = "" ] && theme="$default"
-
-# Git username
-default="BalderHolst"
-echo "Git username (default: '$default'):"
-prompt
-read username
-[ "$username" = "" ] && username="$default"
-
-# Git email
-default="balderwh@gmail.com"
-echo "Git email (default: '$default'):"
-prompt
-read email
-[ "$email" = "" ] && email="$default"
-
-echo -e "{
-    username = \"$USER\";
-    theme = \"$theme\";
-    git_username = \"$username\";
-    git_email = \"$email\";
-    swap_escape = false;
-    monitor = \"eDP-1\";
-}" > user.nix
-
 # ============= Install System Config =============
-home_manager_dir="$HOME/.config/home-manager"
 warning "Script needs sudo permissions to perform system installation. PLEASE VERIFY THAT THE SCRIPT IS NOT MALICIOUS."
 
-# Remove the old `configuration.nix` file
-sudo rm "/etc/nixos/configuration.nix"
+# Backup the old `configuration.nix` file
+sudo cp "/etc/nixos/configuration.nix" "/etc/nixos/configuration.nix.bak"
 
 # Link the system configuration files
 sudo cp -v "$home_manager_dir/nixos/configuration.nix" "/etc/nixos/configuration.nix"
@@ -96,10 +56,22 @@ sudo mv admin-user.nix /etc/nixos/admin-user.nix
 # Rebuild system
 sudo nixos-rebuild switch
 
-status "\nInstalling user configuration files."
-home-manager switch || {
-    error "\nSomething whent wrong while setting up user settings. Have you selected a valid theme? (check the README for valid themes)"
-    exit 1
-}
+# ============= Setup User =============
+
+# Use hyprctl to get the main monitor
+monitor=$(hyprctl monitors | head -n 1 | cut -d " " -f2 || echo "")
+
+status "Creating \`user.nix\`."
+echo -e "{
+    username = \"balder\";
+    theme = \"lake\";
+    git_username = \"BalderHolst\";
+    git_email = \"balderwh@gmail.com\";
+    swap_escape = false;
+    monitor = \"$monitor\";
+}" > $home_manager_dir/user.nix
+
+status "Installing user configuration files."
+home-manager switch || exit 1
 
 status "DONE!"
