@@ -125,6 +125,18 @@ rec {
                         keyword = "nixpkgs";
                         url = "https://search.nixos.org/packages";
                     }
+                    {
+                        name = "SDU Email";
+                        tags = [ "school" ];
+                        keyword = "sdu";
+                        url = "https://outlook.office.com/";
+                    }
+                    {
+                        name = "SDU Itslearning";
+                        tags = [ "school" ];
+                        keyword = "itslearning";
+                        url = "https://sdu.itslearning.com/";
+                    }
                 ];
                 search.engines = {
                     "Nix Packages" = {
