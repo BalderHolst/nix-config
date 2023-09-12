@@ -66,6 +66,7 @@ rec {
         wf-recorder # screen recorder
         filezilla # ftp gui interface
         kicad # design pcd's and draw circuits
+        prusa-slicer # slicer for 3d printing
 
         # password manager
         (pass-wayland.withExtensions (exts: [
