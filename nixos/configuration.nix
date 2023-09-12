@@ -28,6 +28,9 @@ in
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Make sure i can mount windows drives
+  boot.supportedFilesystems = [ "ntfs" ];
+
   networking.hostName = "goldfish"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
