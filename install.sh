@@ -70,6 +70,7 @@ monitor=$(hyprctl monitors | head -n 1 | cut -d " " -f2 || echo "")
     git_email = \"balderwh@gmail.com\";
     swap_escape = false;
     monitor = \"$monitor\";
+    ui_scale = 1;
 }" > $home_manager_dir/local.nix
 }
 

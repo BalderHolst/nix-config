@@ -1,10 +1,4 @@
-/* Colors definitions are added by home.nix */
-
-* {
-    /* `otf-font-awesome` is required to be installed for icons */
-    font-family: FiraCode Nerd Font;
-    font-size: 13px;
-}
+/* Colors definitions and font info is added by home.nix */
 
 window#waybar {
     background-color: @background;

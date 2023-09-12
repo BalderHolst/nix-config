@@ -8,6 +8,7 @@ let
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    size = s: builtins.toString (builtins.floor s * user.ui_scale);
 in
 rec {
     nixpkgs = {
@@ -232,7 +233,12 @@ rec {
     '';
 
     # Waybar config
-    ".config/waybar/config".source = ./configs/waybar/config;
+    ".config/waybar/config".text = ''
+        {
+            "height": ${size 24},
+            "spacing": ${size 10},
+    '' + builtins.readFile ./configs/waybar/config;
+
     ".config/waybar/style.css".text = ''
         @define-color background #${theme.background};
         @define-color foreground #${theme.foreground};
@@ -240,6 +246,11 @@ rec {
         @define-color secondary #${theme.secondary};
         @define-color alert #${theme.alert};
         @define-color disabled #${theme.disabled};
+
+        * {
+            font-family: FiraCode Nerd Font;
+            font-size: ${size 13}px;
+        }
         '' + builtins.readFile ./configs/waybar/style.css;
 
     # Hyprland config

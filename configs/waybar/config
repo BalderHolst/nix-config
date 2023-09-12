@@ -1,8 +1,6 @@
-{
-    "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 24, // Waybar height (to be removed for auto height)
-    "spacing": 10, // Gaps between modules (4px)
+    // The begining of this file is filled in by home-manager
+
+    "layer": "top",
 
     "modules-left": ["wlr/workspaces", "hyprland/window"],
     "modules-center": [],
