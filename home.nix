@@ -44,18 +44,18 @@ rec {
         # ====== General ======
         firefox-wayland # main browser
         brave # backup browser
-        syncthing # syncronize files with my other computers
+        syncthing # synchronize files with my other computers
         libreoffice # office suite to open those awful microsoft files
         zathura # pdf-viewer
         sxiv # image viewer
         mpv # audio player
         vlc # video player
         gnome.nautilus # gui file explorer
-        ranger # terminal file explorer
+        vifm # terminal file explorer
         audacity # audio editor
         gnome.eog # svg viewer
         texlive.combined.scheme-full # latex with everything
-        python311Packages.pygments # syntax hightligher for minted latex package
+        python311Packages.pygments # syntax highlighter for minted latex package
         python311Packages.dbus-python # used for initializing eduroam
         gimp # image manipulation
         drawio # create diagrams
@@ -68,6 +68,8 @@ rec {
         filezilla # ftp gui interface
         kicad # design pcd's and draw circuits
         prusa-slicer # slicer for 3d printing
+        tor-browser-bundle-bin # secure and anonymous browsing
+        protonup-qt # play windows games
 
         # password manager
         (pass-wayland.withExtensions (exts: [
@@ -78,7 +80,6 @@ rec {
 
         # ====== Development ======
         git # you know why
-        neovim # best text editor
         zsh # better bash
         fish # shell for the 90s!
         ripgrep # awesome grepping tool
@@ -112,6 +113,12 @@ rec {
         wl-clipboard # cli clipboard manipulation. Also needed for neovim.
 
     ];
+
+    programs.neovim = {
+        enable = true;
+        viAlias = true;
+        vimAlias = true;
+    };
 
     # Programs config
     programs = {
@@ -162,7 +169,7 @@ rec {
                           url = "https://crates.io/assets/cargo.png";
                           sha256 = "sha256:1x254p99awa3jf1n617dn997aw44qv41jkfinhfdg9d3qblhkkr6";
                         };
-                        definedAliases = [ "!crate" "!crates" ];
+                        definedAliases = [ "!rust" "!cargo" "!crate" "!crates" ];
                     };
                     "PyPI" = {
                         urls = [{
@@ -176,6 +183,19 @@ rec {
                           sha256 = "sha256:12ydpzmbc1a2h4g1gjk8wi02b3vkfqg84zja2v4c403iqdyi5xzr";
                         };
                         definedAliases = [ "!py" "!pypi" ];
+                    };
+                    "ProtonDB" = {
+                        urls = [{
+                            template= "https://www.protondb.com/search";
+                            params = [
+                                { name = "q"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        icon = builtins.fetchurl {
+                          url = "https://www.protondb.com/sites/protondb/images/favicon-32x32.png";
+                          sha256 = "sha256:06fa36flrakdrkywvayqzcqid8g3mdq05f61r2mj05lfjmh3cygv";
+                        };
+                        definedAliases = [ "!proton" ];
                     };
                 };
                 search.force = true;
@@ -292,9 +312,20 @@ rec {
 
     # Kitty config
     ".config/kitty/kitty.conf".source = ./configs/kitty.conf;
+    
+    # vifm config
+    ".config/vifm/colors".source = builtins.fetchGit {
+        url = "https://github.com/vifm/vifm-colors";
+        ref = "master";
+        rev = "3a1a04c370e1b6ed94c5b1d2791bc895ee733afb";
+    };
+    ".config/vifm/vifmrc".text = ''
+        colorscheme afterglow
+    '';
 
     # Utility scripts
     ".myutils".source = ./utils;
+
 
     };
 
@@ -322,7 +353,7 @@ rec {
 
             ll = "exa -l";
             ls = "exa";
-            r = "ranger";
+            r = "vifm";
             t = "kitty --detach";
 
             # Git

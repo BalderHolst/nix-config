@@ -160,6 +160,7 @@ in
     unzip # unzip your files
     git # you know why
     neovim # best text editor
+    
   ];
 
   # Locate
@@ -239,6 +240,23 @@ in
       xdg-desktop-portal-hyprland
     ];
   };
+
+  # Be a tor relay: https://nixos.wiki/wiki/Tor
+  # services.tor = {
+  #   enable = true;
+  #   openFirewall = true;
+  #   relay = {
+  #     enable = true;
+  #     role = "relay";
+  #   };
+  #   settings = {
+  #     # ContactInfo = "toradmin@example.org";
+  #     Nickname = "toradmin";
+  #     ORPort = 9001;
+  #     ControlPort = 9051;
+  #     BandWidthRate = "1 MBytes";
+  #   };
+  # };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
