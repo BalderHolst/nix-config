@@ -98,9 +98,10 @@ rec {
         rust-analyzer # lsp for rust
         clippy # rust linter
 
-        lua-language-server # lsp for lua
+        nodejs # local javascript runtime, mainly for pyright lsp
+        nodePackages_latest.pyright # python lsp
 
-        nodejs
+        lua-language-server # lsp for lua
 
         avrdude # burn programs to avr platforms
         avrdudess # GUI for avr-dude
