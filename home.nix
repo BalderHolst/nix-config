@@ -37,10 +37,11 @@ rec {
         (callPackage ./pkgs/matlab-lsp.nix { }) # matlab lsp
 
         # ====== CLI ======
-        neofetch
+        neofetch # fancy system info
         tldr # shot and sweet command examples
         zip # zip your files
         unzip # unzip your files
+        todo # simple todo list
 
         # ====== General ======
         firefox-wayland # main browser
@@ -71,6 +72,7 @@ rec {
         prusa-slicer # slicer for 3d printing
         tor-browser-bundle-bin # secure and anonymous browsing
         protonup-qt # play windows games
+        xournalpp # write on pdfs!
 
         # password manager
         (pass-wayland.withExtensions (exts: [
@@ -401,6 +403,15 @@ rec {
 
         # Add utils to PATH
         PATH="$PATH"":${home.homeDirectory}/.myutils"
+
+        # Display incomplete todos
+        todos="$(todo list)"
+        [ "$todos" = "" ] || {
+            echo "TODO:"
+            while IFS= read -r task; do
+                echo "$task"
+            done <<< $todos
+        }
         '';
     };
 
