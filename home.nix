@@ -34,6 +34,7 @@ rec {
     home.packages = with pkgs; [
         (callPackage ./pkgs/matlab-icon.nix { home = home; }) # Desktop icon for matlab
         (callPackage ./pkgs/bmark.nix { }) # bmark, my terminal bookmark manager
+        (callPackage ./pkgs/matlab-lsp.nix { }) # matlab lsp
 
         # ====== CLI ======
         neofetch
@@ -98,6 +99,8 @@ rec {
         clippy # rust linter
 
         lua-language-server # lsp for lua
+
+        nodejs
 
         avrdude # burn programs to avr platforms
         avrdudess # GUI for avr-dude
