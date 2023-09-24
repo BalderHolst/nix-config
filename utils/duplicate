@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+## Duplicate main display to all other outputs
+
+main="$(hyprctl monitors | grep 'ID 0' | cut -d ' ' -f2)"
+others="$(hyprctl monitors | grep 'Monitor' | grep -v 'ID 0' | cut -d ' ' -f2)"
+
+while IFS= read -r m
+do
+    echo "Mirroring $m"
+    hyprctl keyword monitor $m,preferred,auto,auto,mirror,eDP-1
+done <<< $others
