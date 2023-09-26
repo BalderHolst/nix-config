@@ -203,6 +203,19 @@ rec {
                         };
                         definedAliases = [ "!proton" ];
                     };
+                    "Thangs" = {
+                        urls = [{
+                            template= "https://thangs.com/search/{searchTerms}";
+                            params = [
+                                { name = "scope"; value = "all"; }
+                            ];
+                        }];
+                        icon = builtins.fetchurl {
+                          url = "https://thangs.com/favicon.ico";
+                          sha256 = "sha256:0l9f39ym5ivr5b44mksa2fi22ip4wfy8jy5fgf0dsv23yh4aaydn";
+                        };
+                        definedAliases = [ "!thangs" ];
+                    };
                 };
                 search.force = true;
                 extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
