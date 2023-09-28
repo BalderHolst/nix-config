@@ -53,7 +53,7 @@ rec {
         mpv # audio player
         vlc # video player
         gnome.nautilus # gui file explorer
-        vifm # terminal file explorer
+        joshuto # terminal file explorer
         audacity # audio editor
         gnome.eog # svg viewer
         texlive.combined.scheme-full # latex with everything
@@ -216,6 +216,19 @@ rec {
                         };
                         definedAliases = [ "!thangs" ];
                     };
+                    "YouTube" = {
+                        urls = [{
+                            template= "https://www.youtube.com/results";
+                            params = [
+                                { name = "search_query"; value = "{searchTerms}"; }
+                            ];
+                        }];
+                        icon = builtins.fetchurl {
+                          url = "https://www.youtube.com/favicon.ico";
+                          sha256 = "sha256:07cip1niccc05p124xggbmrl9p3n9kvzcinmkpakcx518gxd1ccb";
+                        };
+                        definedAliases = [ "!y" "!you" "!youtube" ];
+                    };
                 };
                 search.force = true;
                 extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
@@ -331,17 +344,12 @@ rec {
 
     # Kitty config
     ".config/kitty/kitty.conf".source = ./configs/kitty.conf;
-    
-    # vifm config
-    ".config/vifm/colors".source = builtins.fetchGit {
-        url = "https://github.com/vifm/vifm-colors";
-        ref = "master";
-        rev = "3a1a04c370e1b6ed94c5b1d2791bc895ee733afb";
-    };
-    ".config/vifm/vifmrc".text = ''
-        colorscheme afterglow
-    '';
 
+    # joshuto config
+    ".config/joshuto/joshuto.toml".text = ''
+    [preview]
+    preview_script = "${./configs/joshuto_preview_file.sh}"
+    '';
     # Utility scripts
     ".myutils".source = ./utils;
 
@@ -372,8 +380,9 @@ rec {
 
             ll = "exa -l";
             ls = "exa";
-            r = "vifm";
+            r = "joshuto";
             t = "kitty --detach";
+            zathura = "zathura --fork";
 
             # Git
             gs = "git status";
@@ -381,6 +390,7 @@ rec {
             gp = "git push";
             gaa = "git add .";
             gca = "git add . && git commit";
+            mkdirr = "f() { mkdir $@ && cd $@ ;}; f";
 
             hdmi-dublicate = "xrandr --output DisplayPort-0 --auto --same-as eDP";
         };
