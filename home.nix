@@ -42,8 +42,6 @@ rec {
         zip # zip your files
         unzip # unzip your files
         todo # simple todo list
-        arp-scan # scan local network
-        sshpass # save ssh passwords insecurely :)
 
         # ====== General ======
         firefox-wayland # main browser
