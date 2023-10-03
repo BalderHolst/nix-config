@@ -43,6 +43,7 @@ rec {
         unzip # unzip your files
         todo # simple todo list
         arp-scan # scan local network
+        sshpass # save ssh passwords insecurely :)
 
         # ====== General ======
         firefox-wayland # main browser
@@ -188,7 +189,7 @@ rec {
                           url = "https://pypi.org/static/images/logo-small.2a411bc6.svg";
                           sha256 = "sha256:12ydpzmbc1a2h4g1gjk8wi02b3vkfqg84zja2v4c403iqdyi5xzr";
                         };
-                        definedAliases = [ "!py" "!pypi" ];
+                        definedAliases = [ "!py" "!pip" "!pypi" ];
                     };
                     "ProtonDB" = {
                         urls = [{
@@ -373,6 +374,7 @@ rec {
 
     programs.zsh = {
         enable = true;
+        enableCompletion = true;
         localVariables = {
             POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true;
         };
@@ -400,6 +402,18 @@ rec {
         };
 
         # zsh plugins
+        plugins = [
+              {
+                name = "zsh-nix-shell";
+                file = "nix-shell.plugin.zsh";
+                src = pkgs.fetchFromGitHub {
+                  owner = "chisui";
+                  repo = "zsh-nix-shell";
+                  rev = "v0.7.0";
+                  sha256 = "149zh2rm59blr2q458a5irkfh82y3dwdich60s9670kl3cl5h2m1";
+                };
+              }
+            ];
         zplug = {
             enable = true;
             plugins = [
