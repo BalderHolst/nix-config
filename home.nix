@@ -33,6 +33,7 @@ rec {
     # environment.
     home.packages = with pkgs; [
         (callPackage ./pkgs/matlab-icon.nix { home = home; }) # Desktop icon for matlab
+        (callPackage ./pkgs/mathematica-icon.nix { home = home; }) # Desktop icon for matlab
         (callPackage ./pkgs/bmark.nix { }) # bmark, my terminal bookmark manager
         (callPackage ./pkgs/matlab-lsp.nix { }) # matlab lsp
 
