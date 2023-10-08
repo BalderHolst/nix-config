@@ -62,10 +62,7 @@ rec {
         gimp # image manipulation
         drawio # create diagrams
         tidal-hifi # music streaming
-        grim # screenshot tool
-        slurp # screen area selection tool
         imagemagick # cli image manipulation
-        swappy # gui screenshot editor
         wf-recorder # screen recorder
         filezilla # ftp gui interface
         kicad # design pcd's and draw circuits
@@ -117,6 +114,7 @@ rec {
 
         # ====== Other ======
         wl-clipboard # cli clipboard manipulation. Also needed for neovim.
+        wally-cli # cli for uploading configurations to mechanical keyboards
 
     ];
 
@@ -306,22 +304,7 @@ rec {
         '' + builtins.readFile ./configs/waybar/style.css;
 
     # Hyprland config
-    ".config/hypr/hyprland.conf".text = ''
-        general {
-            gaps_in = 5
-            gaps_out = 10
-            border_size = 2
-            col.active_border = rgb(${theme.focus})
-            col.inactive_border = rgba(595959aa)
-            layout = dwindle
-        }
-
-        ${if user.swap_escape then ''
-            input {
-                kb_options = caps:swapescape
-            }
-            '' else ""}
-    '' + builtins.readFile ./configs/hyprland.conf;
+    ".config/hypr/hyprland.conf".text = import ./configs/hyprland.nix {theme=theme; user=user; pkgs=pkgs;};
 
     ".config/hypr/hyprpaper.conf".text = ''
     preload = ${theme.wallpaper}

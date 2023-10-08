@@ -138,7 +138,6 @@ in
     waybar # bar
     rofi-wayland # app launcher
     pavucontrol # audio control GUI
-    brightnessctl # control backlight
     dunst # notifications
     home-manager # nix home manager
     pkgs.libsForQt5.qt5.qtgraphicaleffects # library used by a lot of sddm themes
