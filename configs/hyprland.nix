@@ -13,6 +13,7 @@ let
   wpctl = pkgs.wireplumber + "/bin/wpctl";
   waybar = pkgs.waybar + "/bin/waybar";
   hyprpaper = pkgs.hyprpaper + "/bin/hyprpaper";
+  convert = pkgs.imagemagick + "/bin/convert";
 in 
 ''
     general {
@@ -133,7 +134,7 @@ in
     bind = $mainMod, V, togglefloating, 
     bind = $mainMod, P, exec, ${launcher}
     bind = $mainMod, B, exec, ${browser}
-    bind = $mainMod SHIFT, S, exec, ${grim} -g "$(${slurp})" - | ${swappy} -f -
+    bind = $mainMod SHIFT, S, exec, ${grim} -g "$(${slurp})" - | ${convert} - -shave 1x1 PNG:- | ${swappy} -f -
     bind = $mainMod SHIFT, E, exec, ${paste} | ${swappy} -f -
     bind = $mainMod SHIFT, P, exec, eval "$HOME/.myutils/passmenu"
     bind=SUPER, F, fullscreen
