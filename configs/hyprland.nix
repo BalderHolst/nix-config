@@ -11,7 +11,7 @@ let
   bmark = (pkgs.callPackage ../pkgs/bmark.nix { }) + "/bin/bmark";
   brightnessctl = pkgs.brightnessctl + "/bin/brightnessctl";
   wpctl = pkgs.wireplumber + "/bin/wpctl";
-  waybar = pkgs.waybar + "/bin/waybar";
+  #waybar = pkgs.waybar + "/bin/waybar";
   hyprpaper = pkgs.hyprpaper + "/bin/hyprpaper";
   convert = pkgs.imagemagick + "/bin/convert";
 in 
@@ -40,7 +40,7 @@ in
 
 # Execute your favorite apps at launch
     exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY
-    exec-once = ${waybar}
+    exec-once = waybar
     exec-once = ${hyprpaper}
 
 # Cursor size in qt applications
