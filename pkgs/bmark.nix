@@ -1,4 +1,4 @@
-{ rustPlatform, fetchCrate  }:
+{ rustPlatform, fetchCrate }:
 
 rustPlatform.buildRustPackage rec {
   pname = "bmark";

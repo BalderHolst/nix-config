@@ -37,6 +37,7 @@ rec {
         (callPackage ./pkgs/bmark.nix { }) # my terminal bookmark manager
         (callPackage ./pkgs/blatex.nix { }) # my latex document framework
         (callPackage ./pkgs/matlab-lsp.nix { }) # matlab lsp
+        (callPackage ./pkgs/pyprland.nix { }) # matlab lsp
 
         # ====== CLI ======
         neofetch # fancy system info
@@ -91,6 +92,7 @@ rec {
         cmakeMinimal # cmake
         gnat13 # GNU compilers 
         python311 # Python interpreter
+        python311Packages.bpython
 
         rustc # the rust compiler
         cargo # rust build toolchain
@@ -305,8 +307,8 @@ rec {
         '' + builtins.readFile ./configs/waybar/style.css;
 
     # Hyprland config
-    ".config/hypr/hyprland.conf".text = import ./configs/hyprland.nix {theme=theme; user=user; pkgs=pkgs;};
-
+    ".config/hypr/hyprland.conf".text = import ./configs/hyprland.nix {theme=theme; user=user; pkgs=pkgs; callPackage=pkgs.callPackage;};
+    ".config/hypr/pyprland.json".text = import ./configs/pyprland.nix {pkgs=pkgs;};
     ".config/hypr/hyprpaper.conf".text = ''
     preload = ${theme.wallpaper}
     wallpaper = ${user.monitor}, ${theme.wallpaper}

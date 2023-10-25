@@ -1,4 +1,4 @@
-{ theme, user, pkgs }:
+{ theme, user, pkgs, callPackage }:
 let
   terminal = pkgs.kitty + "/bin/kitty";
   grim = pkgs.grim + "/bin/grim";
@@ -14,6 +14,7 @@ let
   #waybar = pkgs.waybar + "/bin/waybar";
   hyprpaper = pkgs.hyprpaper + "/bin/hyprpaper";
   convert = pkgs.imagemagick + "/bin/convert";
+  pypr = (callPackage ../pkgs/pyprland.nix { }) + "/bin/pypr";
 in 
 ''
     general {
@@ -46,6 +47,7 @@ in
     exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY
     exec-once = waybar
     exec-once = ${hyprpaper}
+    exec-once = ${pypr}
 
 # Cursor size in qt applications
     env = XCURSOR_SIZE, 18
@@ -186,6 +188,25 @@ in
     bind = $mainMod SHIFT, 8, movetoworkspace, 8
     bind = $mainMod SHIFT, 9, movetoworkspace, 9
     bind = $mainMod SHIFT, 0, movetoworkspace, 10
+
+# Scratchpads
+    bind=$mainMod,T,exec,${pypr} toggle term && hyprctl dispatch bringactivetotop
+    bind=$mainMod,C,exec,${pypr} toggle calculator && hyprctl dispatch bringactivetotop
+    bind=$mainMod,A,exec,${pypr} toggle pavucontrol && hyprctl dispatch bringactivetotop
+    $scratchpadsize = size 80% 85%
+
+    $scratchpad = class:^(scratchpad)$
+    windowrulev2 = float,$scratchpad
+    windowrulev2 = $scratchpadsize,$scratchpad
+    windowrulev2 = workspace special silent,$scratchpad
+    windowrulev2 = center,$scratchpad
+
+    $pavucontrol = class:^(pavucontrol)$
+    windowrulev2 = float,$pavucontrol
+    windowrulev2 = size 86% 40%,$pavucontrol
+    windowrulev2 = move 50% 6%,$pavucontrol
+    windowrulev2 = workspace special silent,$pavucontrol
+
 
 # Scroll through existing workspaces with mainMod + scroll
     bind = $mainMod, mouse_down, workspace, e+1
