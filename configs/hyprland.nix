@@ -25,6 +25,10 @@ in
         layout = dwindle
     }
 
+    binds {
+        workspace_back_and_forth = true
+    }
+
     ${
     if user.swap_escape then ''
     input {
