@@ -100,6 +100,7 @@ rec {
         rustfmt # rust formatter
         rust-analyzer # lsp for rust
         clippy # rust linter
+        cargo-expand # Expand macroes
 
         nodejs # local javascript runtime, mainly for pyright lsp
         nodePackages_latest.pyright # python lsp
