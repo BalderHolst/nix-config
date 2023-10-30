@@ -72,6 +72,7 @@ rec {
         tor-browser-bundle-bin # secure and anonymous browsing
         protonup-qt # play windows games
         xournalpp # write on pdfs!
+        discord # communication
 
         # password manager
         (pass-wayland.withExtensions (exts: [
