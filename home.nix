@@ -377,6 +377,7 @@ rec {
             gs = "git status";
             gc = "git commit";
             gp = "git push";
+            gu = "git pull && git push";
             gaa = "git add .";
             gca = "git add . && git commit";
             mkdirr = "f() { mkdir $@ && cd $@ ;}; f";

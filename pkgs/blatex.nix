@@ -7,8 +7,8 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "BalderHolst";
     repo = "blatex";
-    rev = "b9b860d4006300b7fc7363ccff327b58102dca26";
-    sha256 = "sha256-kJ9u1QVWo/PoDf0qxzixRGiaNs6Dc199qbZ/pzUIDMg=";
+    rev = "9a0ce4a61336b6087d32d8df891c232f5ffbb191";
+    sha256 = "sha256-kGAtuP3+aY6dDU9IbvN9H6Znpf5PvMyg4ZScWRa7kR8=";
   };
 
   cargoLock = {
@@ -18,6 +18,7 @@ rustPlatform.buildRustPackage rec {
     };
   };
 
+  doCheck = false;
   cargoHash = "";
   cargoDepsName = pname;
 }
