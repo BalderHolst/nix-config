@@ -350,6 +350,7 @@ rec {
         userEmail = user.git_email;
         aliases = {
             l = "log --oneline --graph";
+            pp = "!git pull && git push";
             ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi";
         };
         diff-so-fancy.enable = true;
