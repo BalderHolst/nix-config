@@ -57,7 +57,6 @@ rec {
         vlc # video player
         gnome.nautilus # gui file explorer
         audacity # audio editor
-        gnome.eog # svg viewer
         texlive.combined.scheme-full # latex with everything
         python311Packages.pygments # syntax highlighter for minted latex package
         python311Packages.dbus-python # used for initializing eduroam
@@ -73,6 +72,7 @@ rec {
         protonup-qt # play windows games
         xournalpp # write on pdfs!
         discord # communication
+        transmission-qt # bittorrent client for file shareing
 
         # password manager
         (pass-wayland.withExtensions (exts: [
@@ -508,6 +508,12 @@ rec {
       set previewer ${previewer}/bin/pv.sh
     '';
   };
+
+    wayland.windowManager.hyprland = {
+       plugins = [
+          inputs.hyprgrass.packages.${pkgs.system}.default
+       ];
+    };
 
     gtk.iconTheme = {
         package = pkgs.papirus-icon-theme;

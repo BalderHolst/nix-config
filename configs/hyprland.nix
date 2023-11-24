@@ -30,6 +30,20 @@ in
         workspace_back_and_forth = true
     }
 
+    plugin {
+      touch_gestures {
+        sensitivity = 4.0
+
+        # must be >= 3
+        workspace_swipe_fingers = 3
+      }
+    }
+
+    gestures {
+      workspace_swipe = true
+      workspace_swipe_cancel_ratio = 0.15
+    }
+
     ${
     if user.swap_escape then ''
     input {
@@ -135,6 +149,7 @@ in
 # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
     bind = $mainMod, RETURN, exec, ${terminal}
     bind = $mainMod, Q, killactive, 
+    bind = , swipe:4:d, killactive
     bind = $mainMod SHIFT, Q, exit, 
     bind = $mainMod, E, exec, ${bmark} open
     bind = $mainMod, V, togglefloating, 
