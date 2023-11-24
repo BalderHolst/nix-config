@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+## Format usb drive
+
+dev="$1"
+
+[[ -b "$dev" ]] || dev="/dev/$1"
+
+[[ -b "$dev" ]] || {
+    echo "Please provide usb device."
+    exit 1
+}
+
+echo "Formatting device: '$dev'. Press [ENTER] to continue."
+read _
+
+sudo dd if=/dev/zero of="$dev" bs=1M status=progress 
