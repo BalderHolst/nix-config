@@ -14,4 +14,8 @@ dev="$1"
 echo "Formatting device: '$dev'. Press [ENTER] to continue."
 read _
 
+echo "Erasing data..."
 sudo dd if=/dev/zero of="$dev" bs=1M status=progress 
+
+echo "Initializing FAT32 file system"
+sudo mkfs.vfat -F 32 "$dev"
