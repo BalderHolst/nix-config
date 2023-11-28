@@ -381,7 +381,6 @@ rec {
             gu = "git pull && git push";
             gaa = "git add .";
             gca = "git add . && git commit";
-            mkdirr = "f() { mkdir $@ && cd $@ ;}; f";
 
             hdmi-dublicate = "xrandr --output DisplayPort-0 --auto --same-as eDP";
         };
