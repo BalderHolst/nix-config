@@ -88,6 +88,7 @@ rec {
         ripgrep # awesome grepping tool
         kitty # terminal emulator
         cutecom # serial terminal
+        gf # gdb fontend
 
         gnumake # make
         cmakeMinimal # cmake
