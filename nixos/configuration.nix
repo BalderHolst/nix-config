@@ -45,6 +45,9 @@ in
   hardware.bluetooth.enable = true;
   services.blueman.enable = true;
 
+  # Audo mount USB
+  services.devmon.enable = true;
+
   # Set your time zone.
   time.timeZone = "Europe/Copenhagen";
 
