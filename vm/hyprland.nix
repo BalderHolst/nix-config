@@ -1,6 +1,5 @@
-{ theme, pkgs, swap_escape, monitor, inputs, builtins, ... }:
+{ theme, pkgs, swap_escape, monitor, inputs, builtins, size, ... }:
 let
-    size = x: builtins.toString x; # TODO: Make do stuff
     terminal = pkgs.kitty + "/bin/kitty";
     grim = pkgs.grim + "/bin/grim";
     slurp = pkgs.slurp + "/bin/slurp";

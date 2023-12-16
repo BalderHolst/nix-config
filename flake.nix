@@ -16,6 +16,7 @@
     email = "balderwh@gmail.com"; # email (used for certain configurations)
     dotfilesDir = "/home/${username}/.nix-config"; # absolute path of the local repo
     theme = "firewatch"; # selcted theme from my themes directory (./themes/)
+    ui_scale = 1.5;
 
 
     # configure pkgs
@@ -44,6 +45,7 @@
             inherit profile;
             inherit email;
             inherit theme;
+            inherit ui_scale;
           };
       };
     };

@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ config, inputs, pkgs, ui_scale, ... }:
 
 let
     username = "balder";
@@ -6,7 +6,7 @@ let
     monitor = "HDMI-A-1";
     ui_scale = 1.5;
     theme = import ../../themes/firewatch.nix;
-    size = s: builtins.toString (builtins.floor s * ui_scale);
+    size = n: builtins.toString (builtins.floor n*ui_scale);
 in
 rec {
     nixpkgs.config.allowUnfree = true;
@@ -23,7 +23,7 @@ rec {
         ../../programs/dev-collection.nix
         ../../programs/desktop-collection.nix
        #../../programs/school-collection.nix
-        ( import ../../vm/hyprland.nix { inherit theme swap_escape monitor pkgs inputs builtins; } )
+        ( import ../../vm/hyprland.nix { inherit theme swap_escape monitor pkgs inputs builtins size; } )
         ( import ../../programs/firefox.nix { inherit username pkgs inputs; } )
     ];
 
