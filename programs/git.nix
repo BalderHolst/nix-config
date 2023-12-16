@@ -2,8 +2,7 @@
 {
     programs.git = {
         enable = true;
-        userName = "balder";
-        userEmail = "balderwh@gmail.com";
+        inherit userName userEmail;
         aliases = {
             l = "log --oneline --graph";
             pp = "!git pull && git push";

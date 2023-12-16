@@ -1,4 +1,4 @@
-{ theme, user, pkgs, inputs, builtins, ... }:
+{ theme, pkgs, swap_escape, monitor, inputs, builtins, ... }:
 let
     size = x: builtins.toString x; # TODO: Make do stuff
     terminal = pkgs.kitty + "/bin/kitty";
@@ -58,7 +58,7 @@ in
         }
 
         ${
-        if user.swap_escape then ''
+        if swap_escape then ''
         input {
             kb_options = caps:swapescape
         }
@@ -281,7 +281,7 @@ in
 
         ".config/hypr/hyprpaper.conf".text = ''
         preload = ${theme.wallpaper}
-        wallpaper = ${user.monitor}, ${theme.wallpaper}
+        wallpaper = ${monitor}, ${theme.wallpaper}
         '';
 
         # Swappy screenshot editing tool

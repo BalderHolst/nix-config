@@ -1,5 +1,68 @@
 {
-  description = "Home Manager configuration";
+  description = "Balder's System Flake";
+
+  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  let
+    # ---- SYSTEM SETTINGS ---- #
+    system = "x86_64-linux";
+    hostname = "dolphin"; # hostname
+    profile = "dolphin"; # select a profile defined from my profiles directory
+    timezone = "Denmark/Copenhagen"; # select timezone
+    locale = "en_DK.UTF-8"; # select locale
+
+    # ----- USER SETTINGS ----- #
+    username = "balder"; # username
+    name = "Balder"; # name/identifier
+    email = "balderwh@gmail.com"; # email (used for certain configurations)
+    dotfilesDir = "~/.config/home-manager"; # absolute path of the local repo
+    theme = "firewatch"; # selcted theme from my themes directory (./themes/)
+
+
+    # configure pkgs
+    pkgs = import nixpkgs {
+        inherit system;
+        config = {
+            allowUnfree = true;
+            allowUnfreePredicate = (_: true);
+        };
+    };
+
+    # configure lib
+    lib = nixpkgs.lib;
+
+  in {
+
+    homeConfigurations = {
+      "${username}" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          modules = [ (./. + "/profiles"+("/"+profile)+"/home.nix") ]; # load home.nix from selected PROFILE
+          extraSpecialArgs = {
+            inherit inputs;
+            inherit username;
+            inherit name;
+            inherit hostname;
+            inherit profile;
+            inherit email;
+            inherit theme;
+          };
+      };
+    };
+    nixosConfigurations = {
+      system = lib.nixosSystem {
+        inherit system;
+        modules = [ (./. + "/profiles"+("/"+profile)+"/configuration.nix") ]; # load configuration.nix from selected PROFILE
+        specialArgs = {
+          # pass config variables from above
+          inherit username;
+          inherit name;
+          inherit hostname;
+          inherit timezone;
+          inherit locale;
+          inherit theme;
+        };
+      };
+    };
+  };
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
@@ -19,22 +82,4 @@
        inputs.hyprland.follows = "hyprland"; # IMPORTANT
     };
   };
-
-  outputs = { nixpkgs, home-manager, ... }@inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in {
-      homeConfigurations."${(import ./local.nix).username}" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs; };
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
-    };
 }

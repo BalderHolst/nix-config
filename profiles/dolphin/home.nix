@@ -1,35 +1,30 @@
 { config, inputs, pkgs, ... }:
 
 let
-    user = import ./local.nix;
-    username = user.username;
-    theme = (import ./themes.nix )."${user.theme}";
-    size = s: builtins.toString (builtins.floor s * user.ui_scale);
+    username = "balder";
+    swap_escape = false;
+    monitor = "HDMI-A-1";
+    ui_scale = 1.5;
+    theme = import ../../themes/firewatch.nix;
+    size = s: builtins.toString (builtins.floor s * ui_scale);
 in
 rec {
-    nixpkgs = {
-        config = {
-            allowUnfree = true;
-            allowUnfreePredicate = (_: true);
-        };
-    };
+    nixpkgs.config.allowUnfree = true;
+    nixpkgs.config.allowUnfreePredicate = (_: true);
+
     home.homeDirectory = "/home/${username}";
     home.username = username;
 
     imports = [
-        ./programs/git.nix
-        ./programs/neovim.nix
-        ./programs/zsh.nix
-        ./programs/cli-collection.nix
-        ./programs/dev-collection.nix
-        ./programs/desktop-collection.nix
-        ./programs/school-collection.nix
-        ( import ./vm/hyprland.nix { inherit theme user pkgs inputs builtins; } )
-        ( import ./programs/firefox.nix { inherit username pkgs inputs; } )
-    ];
-
-    home.packages = with pkgs; [
-        wl-clipboard # cli clipboard manipulation. Also needed for neovim.
+        ( import ../../programs/git.nix { userName = "BalderHolst"; userEmail = "balderwh@gmail.com"; } )
+        ../../programs/neovim.nix
+        ../../programs/zsh.nix
+        ../../programs/cli-collection.nix
+        ../../programs/dev-collection.nix
+        ../../programs/desktop-collection.nix
+       #../../programs/school-collection.nix
+        ( import ../../vm/hyprland.nix { inherit theme swap_escape monitor pkgs inputs builtins; } )
+        ( import ../../programs/firefox.nix { inherit username pkgs inputs; } )
     ];
 
     gtk.iconTheme = {
