@@ -3,11 +3,8 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, rustPlatform, ... }:
+{ config, username, pkgs, rustPlatform, ... }:
 
-let
-  admin_user = import ./admin-user.nix;
-in
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -19,7 +16,10 @@ in
 
   # Enable NUR
   nixpkgs.config.packageOverrides = pkgs: {
-    nur = import (builtins.fetchTarball "https://github.com/nix-community/NUR/archive/master.tar.gz") {
+    nur = import (builtins.fetchTarball {
+        url = "https://github.com/nix-community/NUR/archive/master.tar.gz";
+        sha256 = "";
+        }) {
       inherit pkgs;
     };
   };
@@ -51,9 +51,9 @@ in
   # Syncthing
   services.syncthing = {
     enable = true;
-    user = admin_user;
-    dataDir = "/home/${admin_user}/Documents";
-    configDir = "/home/${admin_user}/Documents/.config/syncthing";
+    user = username;
+    dataDir = "/home/${username}/Documents";
+    configDir = "/home/${username}/Documents/.config/syncthing";
     overrideDevices = true;     # overrides any devices added or deleted through the WebUI
     overrideFolders = true;     # overrides any folders added or deleted through the WebUI
     devices = {
@@ -61,19 +61,19 @@ in
     };
     folders = {
       "uni" = {
-        path = "/home/${admin_user}/Documents/uni";
+        path = "/home/${username}/Documents/uni";
         devices = [ "waterbear" ];
       };
       "job" = {
-        path = "/home/${admin_user}/Documents/job";
+        path = "/home/${username}/Documents/job";
         devices = [ "waterbear" ];
       };
       "pictures" = {
-        path = "/home/${admin_user}/Pictures";
+        path = "/home/${username}/Pictures";
         devices = [ "waterbear" ];
       };
       "isos" = {
-        path = "/home/${admin_user}/isos";
+        path = "/home/${username}/isos";
         devices = [ "waterbear" ];
       };
     };
@@ -138,7 +138,7 @@ in
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users."${admin_user}" = {
+  users.users."${username}" = {
     isNormalUser = true;
     description = "Administrator of this computer.";
     extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
@@ -175,7 +175,7 @@ in
     dunst # notifications
     home-manager # nix home manager
     pkgs.libsForQt5.qt5.qtgraphicaleffects # library used by a lot of sddm themes
-    (callPackage ./pkgs/sddm/themes.nix { }).sugar-dark # sddm theme
+    (callPackage ../../pkgs/sddm/themes.nix { }).sugar-dark # sddm theme
 
     # ====== VMs ======
     virt-manager
@@ -187,7 +187,6 @@ in
     wget # cli file downloader
     tree # overview of file structures
     bat # better cat
-    exa # pretty ls
     file # show file info
     zip # zip your files
     unzip # unzip your files
@@ -241,10 +240,7 @@ in
   };
 
   # Enable experimental waybar features, to capture use the `wlr` module.
-  nixpkgs.overlays = let
-    nix-matlab = import (builtins.fetchTarball "https://gitlab.com/doronbehar/nix-matlab/-/archive/master/nix-matlab-master.tar.gz");
-  in [
-    nix-matlab.overlay
+  nixpkgs.overlays = [
     (self: super: {
       waybar = super.waybar.overrideAttrs (oldAttrs: {
         mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
@@ -270,7 +266,6 @@ in
     extraPortals = with pkgs; [
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk
-      xdg-desktop-portal-hyprland
     ];
   };
 

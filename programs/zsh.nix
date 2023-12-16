@@ -1,4 +1,7 @@
 { pkgs, config, ... }:
+let
+  exa = pkgs.eza + "/bin/eza"
+in 
 {
 
     programs.zsh = {
@@ -9,8 +12,8 @@
         };
         shellAliases = {
 
-            ll = "exa -l";
-            ls = "exa";
+            ll = "${exa} -l";
+            ls = "${exa}";
             r = "${pkgs.lf}/bin/lf";
             t = "kitty --detach";
             zathura = "${pkgs.zathura}/bin/zathura --fork";

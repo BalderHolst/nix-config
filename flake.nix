@@ -48,7 +48,7 @@
       };
     };
     nixosConfigurations = {
-      system = lib.nixosSystem {
+      "${hostname}" = lib.nixosSystem {
         inherit system;
         modules = [ (./. + "/profiles"+("/"+profile)+"/configuration.nix") ]; # load configuration.nix from selected PROFILE
         specialArgs = {
