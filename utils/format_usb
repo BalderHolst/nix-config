@@ -11,11 +11,15 @@ dev="$1"
     exit 1
 }
 
-echo "Formatting device: '$dev'. Press [ENTER] to continue."
-read _
+echo "Formatting device: '$dev'."
 
-echo "Erasing data..."
-sudo dd if=/dev/zero of="$dev" bs=1M status=progress 
+echo -n "Erase data? [y/N]:"
+read choice
+
+if [ "$choice" = "y" ]; then
+    echo "Erasing data..."
+    sudo dd if=/dev/zero of="$dev" bs=1M status=progress 
+fi
 
 echo "Initializing FAT32 file system"
 sudo mkfs.vfat -F 32 "$dev"
