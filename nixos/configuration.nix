@@ -48,6 +48,37 @@ in
   # Audo mount USB
   services.devmon.enable = true;
 
+  # Syncthing
+  services.syncthing = {
+    enable = true;
+    user = admin_user;
+    dataDir = "/home/${admin_user}/Documents";
+    configDir = "/home/${admin_user}/Documents/.config/syncthing";
+    overrideDevices = true;     # overrides any devices added or deleted through the WebUI
+    overrideFolders = true;     # overrides any folders added or deleted through the WebUI
+    devices = {
+      "waterbear"   = { id = "NRP4KUT-OSWI7C6-3JMN7EL-JFWQ2AS-XRGM6OK-6WVSZ3G-3Q2CHBJ-UYCKQAE"; };
+    };
+    folders = {
+      "uni" = {
+        path = "/home/${admin_user}/Documents/uni";
+        devices = [ "waterbear" ];
+      };
+      "job" = {
+        path = "/home/${admin_user}/Documents/job";
+        devices = [ "waterbear" ];
+      };
+      "pictures" = {
+        path = "/home/${admin_user}/Pictures";
+        devices = [ "waterbear" ];
+      };
+      "isos" = {
+        path = "/home/${admin_user}/isos";
+        devices = [ "waterbear" ];
+      };
+    };
+  };
+
   # Set your time zone.
   time.timeZone = "Europe/Copenhagen";
 
