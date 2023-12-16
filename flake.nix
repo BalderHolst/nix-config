@@ -14,7 +14,7 @@
     username = "balder"; # username
     name = "Balder"; # name/identifier
     email = "balderwh@gmail.com"; # email (used for certain configurations)
-    dotfilesDir = "~/.config/home-manager"; # absolute path of the local repo
+    dotfilesDir = "/home/${username}/.nix-config"; # absolute path of the local repo
     theme = "firewatch"; # selcted theme from my themes directory (./themes/)
 
 

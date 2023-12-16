@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  exa = pkgs.eza + "/bin/eza"
+  exa = pkgs.eza + "/bin/eza";
 in 
 {
 
