@@ -7,7 +7,7 @@ let
   paste = pkgs.wl-clipboard + "/bin/wl-paste";
   browser = pkgs.firefox + "/bin/firefox";
   rofi = pkgs.rofi-wayland + "/bin/rofi";
-  launcher = "${rofi} -matching fuzzy -show drun";
+  launcher = "${rofi} -show drun";
   bmark = (pkgs.callPackage ../pkgs/bmark.nix { }) + "/bin/bmark";
   brightnessctl = pkgs.brightnessctl + "/bin/brightnessctl";
   wpctl = pkgs.wireplumber + "/bin/wpctl";
