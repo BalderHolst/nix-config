@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ui_scale, ... }:
+{ config, inputs, pkgs, ui_scale, configDir, ... }:
 
 let
     username = "balder";
@@ -18,7 +18,7 @@ rec {
     imports = [
         ( import ../../programs/git.nix { userName = "BalderHolst"; userEmail = "balderwh@gmail.com"; } )
         ../../programs/neovim.nix
-        ../../programs/zsh.nix
+        (import ../../programs/zsh.nix { inherit pkgs config configDir; } )
         ../../programs/cli-collection.nix
         ../../programs/dev-collection.nix
         ../../programs/desktop-collection.nix

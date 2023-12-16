@@ -14,7 +14,7 @@
     username = "balder"; # username
     name = "Balder"; # name/identifier
     email = "balderwh@gmail.com"; # email (used for certain configurations)
-    dotfilesDir = "/home/${username}/.nix-config"; # absolute path of the local repo
+    configDir = "/home/${username}/.nix-config"; # absolute path of the local repo
     theme = "firewatch"; # selcted theme from my themes directory (./themes/)
     ui_scale = 1.5;
 
@@ -50,7 +50,7 @@
       };
     };
     nixosConfigurations = {
-      "${hostname}" = lib.nixosSystem {
+      "system" = lib.nixosSystem {
         inherit system;
         modules = [ (./. + "/profiles"+("/"+profile)+"/configuration.nix") ]; # load configuration.nix from selected PROFILE
         specialArgs = {

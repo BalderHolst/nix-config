@@ -1,6 +1,7 @@
-{ pkgs, config, ... }:
+{ pkgs, config, configDir, ... }:
 let
   exa = pkgs.eza + "/bin/eza";
+  configDir = "~/.nix-config"; # TODO: make dependent on argument
 in 
 {
 
@@ -25,6 +26,9 @@ in
             gu = "git pull && git push";
             gaa = "git add .";
             gca = "git add . && git commit";
+
+            uhome = "home-manager switch --flake ${configDir}";
+            uos = "sudo nixos-rebuild switch --flake ${configDir}#system && home-manager switch --flake ${configDir}";
 
             hdmi-dublicate = "xrandr --output DisplayPort-0 --auto --same-as eDP";
         };
