@@ -1,0 +1,116 @@
+#!/usr/bin/env python
+
+## Replace danish characters in file names in a directory
+
+import os
+import sys
+
+def is_danish(s: str) -> bool:
+    s = s.lower()
+    if s.find('æ') != -1: return True
+    if s.find('ø') != -1: return True
+    if s.find('å') != -1: return True
+    return False
+
+def undanish(s: str) -> str:
+    s = (
+            s
+            .replace("æ", "ae")
+            .replace("ø", "oe")
+            .replace("å", "aa")
+            .replace("Æ", "AE")
+            .replace("Ø", "OE")
+            .replace("Å", "AA")
+         )
+    return s
+
+def rename(before, after):
+    if os.path.exists(after):
+        print(f"WARNING: Cannot rename `{before}` to `{after}` as destination already exists.")
+        return
+    os.rename(before, after)
+
+
+def get_danish_directories(dir: str) -> list[str]:
+    danish_dirs = []
+
+    for file in os.listdir(dir):
+        file = f"{dir}/{file}"
+
+        if os.path.isdir(file):
+            if is_danish(file):
+                danish_dirs.append(file)
+            else:
+                danish_dirs.extend(get_danish_directories(file))
+
+    return danish_dirs
+
+def get_danish_files(dir: str) -> list[str]:
+    danish_files = []
+
+    for file in os.listdir(dir):
+        file = f"{dir}/{file}"
+
+        if os.path.isfile(file) and is_danish(file):
+            danish_files.append(file)
+        elif os.path.isdir(file):
+            danish_files.extend(get_danish_files(file))
+
+
+    return danish_files
+
+def ask_user_to_move_forward() -> bool:
+    choise = None
+    while True:
+        s = input("Move forward with the listed operations? [y/N]: ").lower()
+        if s == "y": choise = True
+        elif s == "n": choise = False
+        elif s == "": choise = False
+        if choise != None: break
+        print(f'"{s}" is not a valid choise.')
+    print()
+    return choise
+
+def undanish_paths(danish_paths: list[str]):
+    paths = list(map(lambda d: (d, undanish(d)), danish_paths))
+    for (danish_path, undanish_path) in paths:
+        print(f"{danish_path} -> {undanish_path}")
+
+    if not ask_user_to_move_forward(): exit(0)
+
+    for (danish_path, undanish_path) in paths:
+        rename(danish_path, undanish_path)
+
+def main():
+    dir = None
+
+    if len(sys.argv) > 1:
+        dir = sys.argv[1]
+    else:
+        dir = os.getcwd()
+
+    if not os.path.isdir(dir):
+        print(f"ERROR: `{dir}` is not a valid directory.")
+        exit(1)
+
+    if is_danish(dir):
+        print("ERROR: The root directory `{dir}` is danish. Please fix before running.")
+        exit(1)
+
+    while True:
+        danish_dirs = get_danish_directories(dir)
+
+        if len(danish_dirs) > 0:
+            undanish_paths(danish_dirs)
+        else:
+            break
+
+    danish_files = get_danish_files(dir)
+    if len(danish_files) > 0:
+        undanish_paths(danish_files)
+    else:
+        print("Nothing to do.")
+
+
+
+if __name__ == "__main__": main()
