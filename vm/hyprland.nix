@@ -143,6 +143,10 @@ in
             workspace_swipe = on
         }
 
+        misc {
+            disable_hyprland_logo = true
+        }
+
         # Example per-device config
         # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
         device:epic-mouse-v1 {
