@@ -16,16 +16,16 @@ rec {
     home.username = username;
 
     imports = [
-        ( import ../../programs/git.nix { userName = "BalderHolst"; userEmail = "balderwh@gmail.com"; } )
-        ../../programs/neovim.nix
-        ../../programs/pass.nix
-        (import ../../programs/zsh.nix { inherit pkgs config configDir; } )
-        ../../programs/cli-collection.nix
-        ../../programs/dev-collection.nix
-        ../../programs/desktop-collection.nix
-       #../../programs/school-collection.nix
-        ( import ../../vm/hyprland.nix { inherit theme swap_escape monitor pkgs inputs builtins size; } )
-        ( import ../../programs/firefox.nix { inherit username pkgs inputs; } )
+        ( import ../../user/programs/git.nix { userName = "BalderHolst"; userEmail = "balderwh@gmail.com"; } )
+        ../../user/programs/neovim.nix
+        ../../user/programs/pass.nix
+        (import ../../user/programs/zsh.nix { inherit pkgs config configDir; } )
+        ../../user/programs/cli-collection.nix
+        ../../user/programs/dev-collection.nix
+        ../../user/programs/desktop-collection.nix
+       #../../user/programs/school-collection.nix
+        ( import ../../user/vm/hyprland.nix { inherit theme swap_escape monitor pkgs inputs builtins size; } )
+        ( import ../../user/programs/firefox.nix { inherit username pkgs inputs; } )
     ];
 
     gtk.iconTheme = {
