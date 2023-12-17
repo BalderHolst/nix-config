@@ -8,6 +8,7 @@
     email = "balderwh@gmail.com";
     configDir = "/home/${username}/.nix-config";
 
+    profile = import ./profile.nix;
 
     # configure pkgs
     pkgs = import nixpkgs {
