@@ -7,4 +7,8 @@
           exts.pass-genphrase
         ]))
     ];
+
+    home.file.".gnupg/gpg-agent.conf".text = ''
+    pinentry-program ${pkgs.pinentry-qt}/bin/pinentry-qt
+    '';
 }
