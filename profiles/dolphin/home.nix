@@ -11,6 +11,7 @@ in
 rec {
     nixpkgs.config.allowUnfree = true;
     nixpkgs.config.allowUnfreePredicate = (_: true);
+    nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
 
     home.homeDirectory = "/home/${username}";
     home.username = username;
@@ -23,7 +24,7 @@ rec {
         ../../user/programs/cli-collection.nix
         ../../user/programs/dev-collection.nix
         ../../user/programs/desktop-collection.nix
-       #../../user/programs/school-collection.nix
+        ../../user/programs/school-collection.nix
         ../../user/vm/hyprland.nix
         ../../user/programs/firefox.nix
     ];
