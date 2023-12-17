@@ -1,11 +1,11 @@
 { username, email, config, inputs, pkgs, configDir, ... }:
 
 let
-    swap_escape = false;
-    monitor = "HDMI-A-1";
-    theme = import ../../themes/firewatch.nix;
+    swap_escape = true;
+    monitor = "eDP-1";
+    theme = import ../../themes/lake.nix;
+    ui_scale = 1;
     size = n: builtins.toString (builtins.floor n*ui_scale);
-    ui_scale = 1.5;
 in
 rec {
     nixpkgs.config.allowUnfree = true;
