@@ -5,6 +5,9 @@
 
 { config, username, pkgs, rustPlatform, ... }:
 
+let
+  hostname = "dolphin";
+in 
 {
   imports =
     [ # Include the results of the hardware scan.
@@ -31,7 +34,7 @@
   # Make sure i can mount windows drives
   boot.supportedFilesystems = [ "ntfs" ];
 
-  networking.hostName = "goldfish"; # Define your hostname.
+  networking.hostName = hostname; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary

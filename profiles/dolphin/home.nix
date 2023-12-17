@@ -1,12 +1,11 @@
-{ config, inputs, pkgs, ui_scale, configDir, ... }:
+{ username, email, config, inputs, pkgs, configDir, ... }:
 
 let
-    username = "balder";
     swap_escape = false;
     monitor = "HDMI-A-1";
-    ui_scale = 1.5;
     theme = import ../../themes/firewatch.nix;
     size = n: builtins.toString (builtins.floor n*ui_scale);
+    ui_scale = 1.5;
 in
 rec {
     nixpkgs.config.allowUnfree = true;
@@ -30,7 +29,7 @@ rec {
     ];
 
     git.userName = "BalderHolst";
-    git.userEmail = "BalderEmail";
+    git.userEmail = email;
 
     zsh.configDir = "~/.nix-config";
 
