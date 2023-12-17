@@ -9,8 +9,8 @@
         ripgrep # awesome grepping tool
         bat # cat with colors
         wl-clipboard # cli clipboard manipulation. Also needed for neovim.
-        (callPackage ../pkgs/bmark.nix { }) # my terminal bookmark manager
-        (callPackage ../pkgs/blatex.nix { }) # my latex document framework
+        bmark # my terminal bookmark manager
+        blatex # my latex document framework
     ];
 
     home.sessionVariables = {

@@ -26,6 +26,15 @@
             allowUnfree = true;
             allowUnfreePredicate = (_: true);
         };
+        overlays = [
+            (final: prev: {
+                bmark = pkgs.callPackage pkgs/bmark.nix { };
+                blatex = pkgs.callPackage pkgs/blatex.nix { };
+                pyprland = pkgs.callPackage pkgs/pyprland.nix { };
+                matlab-icon = pkgs.callPackage pkgs/matlab-icon.nix { userHome = "/home/${username}"; };
+                mathematica-icon = pkgs.callPackage pkgs/mathematica-icon.nix { userHome = "/home/${username}"; };
+             })
+        ];
     };
 
     # configure lib

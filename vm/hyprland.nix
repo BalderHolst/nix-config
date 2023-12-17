@@ -8,13 +8,13 @@ let
     browser = pkgs.firefox + "/bin/firefox";
     rofi = pkgs.rofi-wayland + "/bin/rofi";
     launcher = "${rofi} -show drun";
-    bmark = (pkgs.callPackage ../pkgs/bmark.nix { }) + "/bin/bmark";
+    bmark = pkgs.bmark + "/bin/bmark";
     brightnessctl = pkgs.brightnessctl + "/bin/brightnessctl";
     wpctl = pkgs.wireplumber + "/bin/wpctl";
     #waybar = pkgs.waybar + "/bin/waybar";
     hyprpaper = pkgs.hyprpaper + "/bin/hyprpaper";
     convert = pkgs.imagemagick + "/bin/convert";
-    pypr = (pkgs.callPackage ../pkgs/pyprland.nix { }) + "/bin/pypr";
+    pypr = pkgs.pyprland + "/bin/pypr";
     pavucontrol = pkgs.pavucontrol + "/bin/pavucontrol";
     kitty = pkgs.kitty + "/bin/kitty";
     bpython = pkgs.python311Packages.bpython + "/bin/bpython";
