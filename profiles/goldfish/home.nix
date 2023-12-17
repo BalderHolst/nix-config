@@ -31,7 +31,7 @@ rec {
     git.userName = "BalderHolst";
     git.userEmail = email;
 
-    zsh.configDir = "~/.nix-config";
+    zsh.configDir = configDir;
 
     hyprland = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
 

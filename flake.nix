@@ -42,6 +42,7 @@
                 inherit username;
                 inherit profile;
                 inherit email;
+                inherit configDir;
             };
         };
     };
