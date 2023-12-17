@@ -11,4 +11,4 @@
       sha256 = "sha256:1lcv6naa0p5p3d3a69yymrhz72r2i0y74y1drl6amyswi16p0sdn";
     };
     # Mirror: https://wallpapers.com/images/high/landscape-white-minimalist-d0h9lllw9ds8g39m.webp
-  };
+ }
