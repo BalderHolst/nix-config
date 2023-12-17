@@ -1,8 +1,11 @@
-{ username, inputs, pkgs, ... }:
+{ inputs, pkgs, config, lib, ... }:
 {
-    programs.firefox = {
+
+    options.firefox.username = lib.mkOption { type = lib.types.string; };
+
+    config.programs.firefox = {
         enable = true;
-        profiles."${username}" = {
+        profiles."${config.firefox.username}" = {
             bookmarks = [
                 {
                     name = "Nixos Packages";

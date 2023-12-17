@@ -1,8 +1,16 @@
-{ userName, userEmail, ... }:
+{ lib, config, ... }:
 {
-    programs.git = {
+    options.git.userName = lib.mkOption {
+        type = lib.types.string;
+    };
+    options.git.userEmail = lib.mkOption {
+        type = lib.types.string;
+    };
+
+    config.programs.git = {
         enable = true;
-        inherit userName userEmail;
+        userName = config.git.userName;
+        userEmail = config.git.userEmail;
         aliases = {
             l = "log --oneline --graph";
             pp = "!git pull && git push";

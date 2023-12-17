@@ -16,17 +16,26 @@ rec {
     home.username = username;
 
     imports = [
-        ( import ../../user/programs/git.nix { userName = "BalderHolst"; userEmail = "balderwh@gmail.com"; } )
+        ../../user/programs/git.nix
         ../../user/programs/neovim.nix
         ../../user/programs/pass.nix
-        (import ../../user/programs/zsh.nix { inherit pkgs config configDir; } )
+        ../../user/programs/zsh.nix
         ../../user/programs/cli-collection.nix
         ../../user/programs/dev-collection.nix
         ../../user/programs/desktop-collection.nix
        #../../user/programs/school-collection.nix
-        ( import ../../user/vm/hyprland.nix { inherit theme swap_escape monitor pkgs inputs builtins size; } )
-        ( import ../../user/programs/firefox.nix { inherit username pkgs inputs; } )
+        ../../user/vm/hyprland.nix
+        ../../user/programs/firefox.nix
     ];
+
+    git.userName = "BalderHolst";
+    git.userEmail = "BalderEmail";
+
+    zsh.configDir = "~/.nix-config";
+
+    hyprland = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
+
+    firefox.username = username;
 
     gtk.iconTheme = {
         package = pkgs.papirus-icon-theme;

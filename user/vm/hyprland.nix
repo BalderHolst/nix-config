@@ -1,4 +1,4 @@
-{ theme, pkgs, swap_escape, monitor, inputs, builtins, size, ... }:
+{ pkgs, config, inputs, lib, ... }:
 let
     terminal = pkgs.kitty + "/bin/kitty";
     grim = pkgs.grim + "/bin/grim";
@@ -21,19 +21,24 @@ let
 in 
 {
 
-    wayland.windowManager.hyprland = {
+    options.hyprland.theme       = lib.mkOption { type = lib.types.attrs; };
+    options.hyprland.monitor     = lib.mkOption { type = lib.types.string; };
+    options.hyprland.size        = lib.mkOption { type = lib.types.functionTo lib.types.string; };
+    options.hyprland.swap_escape = lib.mkOption { type = lib.types.bool; };
+
+    config.wayland.windowManager.hyprland = {
        plugins = [
           inputs.hyprgrass.packages.${pkgs.system}.default
        ];
     };
 
-    home.file = {
+    config.home.file = {
         ".config/hypr/hyprland.conf".text = ''
         general {
             gaps_in = 5
             gaps_out = 10
             border_size = 2
-            col.active_border = rgb(${theme.focus})
+            col.active_border = rgb(${config.hyprland.theme.focus})
             col.inactive_border = rgba(595959aa)
             layout = dwindle
         }
@@ -57,7 +62,7 @@ in
         }
 
         ${
-        if swap_escape then ''
+        if config.hyprland.swap_escape then ''
         input {
             kb_options = caps:swapescape
         }
@@ -285,8 +290,8 @@ in
         '';
 
         ".config/hypr/hyprpaper.conf".text = ''
-        preload = ${theme.wallpaper}
-        wallpaper = ${monitor}, ${theme.wallpaper}
+        preload = ${config.hyprland.theme.wallpaper}
+        wallpaper = ${config.hyprland.monitor}, ${config.hyprland.theme.wallpaper}
         '';
 
         # Swappy screenshot editing tool
@@ -307,36 +312,35 @@ in
         ".config/rofi/config.rasi".source = ../configs/rofi.rasi;
         ".config/rofi/theme.rasi".text = ''
             * {
-                bg: #${theme.background}80;
-                bg-alt: #${theme.background};
-                fg: #${theme.foreground};
-                fg-alt: #${theme.primary};
+                bg: #${config.hyprland.theme.background}80;
+                bg-alt: #${config.hyprland.theme.background};
+                fg: #${config.hyprland.theme.foreground};
+                fg-alt: #${config.hyprland.theme.primary};
             }
         '';
 
     # Waybar config
     ".config/waybar/config".text = ''
         {
-            "height": ${size 24},
-            "spacing": ${size 10},
-    '' + builtins.readFile ../configs/waybar/config;
+            "height": ${config.hyprland.size 24},
+            "spacing": ${config.hyprland.size 10},
+    '' + builtins.readFile ../configs/waybar/config; # }
 
     ".config/waybar/style.css".text = ''
-        @define-color background #${theme.background};
-        @define-color foreground #${theme.foreground};
-        @define-color primary #${theme.primary};
-        @define-color secondary #${theme.secondary};
-        @define-color alert #${theme.alert};
-        @define-color disabled #${theme.disabled};
+        @define-color background #${config.hyprland.theme.background};
+        @define-color foreground #${config.hyprland.theme.foreground};
+        @define-color primary #${config.hyprland.theme.primary};
+        @define-color secondary #${config.hyprland.theme.secondary};
+        @define-color alert #${config.hyprland.theme.alert};
+        @define-color disabled #${config.hyprland.theme.disabled};
 
         * {
             font-family: FiraCode Nerd Font;
-            font-size: ${size 13}px;
+            font-size: ${config.hyprland.size 13}px;
         }
         '' + builtins.readFile ../configs/waybar/style.css;
 
 
 
     };
-
 }
