@@ -1,5 +1,5 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p git
+#!nix-shell -i bash -p git home-manager
 
 stcolor="\u001b[34;1m"
 scolor="\u001b[32;1m"
@@ -29,24 +29,12 @@ then
     git clone git@github.com:BalderHolst/nix-config "$CONFIG_DIR"
 fi
 
-status "Installing system configuration..."
-
 # ============= Submodules =============
 status "Checking out submodules."
 git -C "$CONFIG_DIR" submodule update --init
 
-# ============= Neovim =============
-nvim_dir="$HOME/.config/nvim"
-
-if [ ! -d "$nvim_dir" ]
-then
-    status "Getting Neovim configuration."
-    git clone 'git@github.com:BalderHolst/neovim-config' "$nvim_dir"
-else
-    warning "Could not install NeoVim config, as one already exists."
-fi
-
 # ============= Install System Config =============
+status "Installing system configuration..."
 warning "Script needs sudo permissions to perform system installation. PLEASE VERIFY THAT THIS SCRIPT IS NOT MALICIOUS."
 
 # Rebuild system
@@ -56,5 +44,17 @@ sudo nixos-rebuild switch --flake "$CONFIG_DIR"#system || exit 1
 
 status "Installing user configuration..."
 home-manager switch --flake "$CONFIG_DIR" || exit 1
+
+# ============= Neovim =============
+status "Installing Neovim configuration..."
+nvim_dir="$HOME/.config/nvim"
+
+if [ ! -d "$nvim_dir" ]
+then
+    status "Getting Neovim configuration."
+    git clone 'git@github.com:BalderHolst/neovim-config' "$nvim_dir"
+else
+    warning "Could not install NeoVim config, as one already exists."
+fi
 
 status "DONE!"
