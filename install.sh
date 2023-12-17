@@ -7,7 +7,8 @@ ecolor="\u001b[31;1m"
 wcolor="\u001b[33;1m"
 rcolor="\u001b[0m"
 
-home_manager_dir="$HOME/.config/home-manager"
+# Set the config directory
+CONFIG_DIR="$HOME/.nix-config"
 
 status () {
     echo -e "$stcolor""$@""$rcolor"
@@ -21,11 +22,18 @@ error () {
     echo -e "$ecolor[ERROR]: ""$@""$rcolor"
 }
 
-status "Installing..."
+# Clone config if it does not exist.
+if [ ! -d "$CONFIG_DIR" ]
+then
+    status "Cloning configuration."
+    git clone git@github.com:BalderHolst/nix-config "$CONFIG_DIR"
+fi
+
+status "Installing system configuration..."
 
 # ============= Submodules =============
 status "Checking out submodules."
-git submodule update --init
+git -C "$CONFIG_DIR" submodule update --init
 
 # ============= Neovim =============
 nvim_dir="$HOME/.config/nvim"
@@ -39,42 +47,14 @@ else
 fi
 
 # ============= Install System Config =============
-warning "Script needs sudo permissions to perform system installation. PLEASE VERIFY THAT THE SCRIPT IS NOT MALICIOUS."
-
-# Backup the old `configuration.nix` file
-sudo cp "/etc/nixos/configuration.nix" "/etc/nixos/configuration.nix.bak"
-
-# Link the system configuration files
-sudo cp -v "$home_manager_dir/nixos/configuration.nix" "/etc/nixos/configuration.nix"
-[ ! -d "/etc/nixos/pkgs" ] && sudo ln -s "$home_manager_dir/pkgs" "/etc/nixos/pkgs"
-
-# Add file specifying the admin user.
-echo -e "\"$USER\"" > admin-user.nix
-sudo chown root admin-user.nix
-sudo mv admin-user.nix /etc/nixos/admin-user.nix
+warning "Script needs sudo permissions to perform system installation. PLEASE VERIFY THAT THIS SCRIPT IS NOT MALICIOUS."
 
 # Rebuild system
-sudo nixos-rebuild switch
+sudo nixos-rebuild switch --flake "$CONFIG_DIR"#system || exit 1
 
 # ============= Setup User =============
 
-# Use hyprctl to get the main monitor
-monitor=$(hyprctl monitors | head -n 1 | cut -d " " -f2 || echo "")
-
-[ -f "$home_manager_dir/local.nix" ] || {
-    status "Creating \`local.nix\`."
-    echo -e "{
-    username = \"balder\";
-    theme = \"lake\";
-    git_username = \"BalderHolst\";
-    git_email = \"balderwh@gmail.com\";
-    swap_escape = false;
-    monitor = \"$monitor\";
-    ui_scale = 1;
-}" > $home_manager_dir/local.nix
-}
-
-status "Installing user configuration files."
-home-manager switch || exit 1
+status "Installing user configuration..."
+home-manager switch --flake "$CONFIG_DIR" || exit 1
 
 status "DONE!"
