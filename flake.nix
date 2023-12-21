@@ -24,13 +24,6 @@
                 pyprland = pkgs.callPackage pkgs/pyprland.nix { };
                 matlab-icon = pkgs.callPackage pkgs/matlab-icon.nix { userHome = "/home/${username}"; };
                 mathematica-icon = pkgs.callPackage pkgs/mathematica-icon.nix { mathematicaPath = "${configDir}/impure/mathematica/result/bin/mathematica"; };
-                steam = prev.steam.override {
-                    extraPkgs = pkgs: with pkgs; [
-                        pango
-                        libthai
-                        harfbuzz
-                    ];
-                };
             })
         ];
     };
@@ -62,14 +55,15 @@
         };
     };
 
-    inputs = {
-        # Specify the source of Home Manager and Nixpkgs.
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    inputs = rec {
+
+        nixpkgs.url = "github:NixOS/nixpkgs/23.11";
 
         home-manager = {
-            url = "github:nix-community/home-manager";
+            url = "github:nix-community/home-manager/release-23.11";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+
         firefox-addons = {
             url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
             inputs.nixpkgs.follows = "nixpkgs";

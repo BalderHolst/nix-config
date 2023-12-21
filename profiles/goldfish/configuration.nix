@@ -59,10 +59,10 @@ in
     configDir = "/home/${username}/Documents/.config/syncthing";
     overrideDevices = true;     # overrides any devices added or deleted through the WebUI
     overrideFolders = true;     # overrides any folders added or deleted through the WebUI
-    settings.devices = {
+    devices = {
       "waterbear"   = { id = "NRP4KUT-OSWI7C6-3JMN7EL-JFWQ2AS-XRGM6OK-6WVSZ3G-3Q2CHBJ-UYCKQAE"; };
     };
-    settings.folders = {
+    folders = {
       "uni" = {
         path = "/home/${username}/Documents/uni";
         devices = [ "waterbear" ];
@@ -204,7 +204,7 @@ in
   # Locate
   services.locate = {
     enable = true;
-    package = pkgs.mlocate;
+    locate = pkgs.mlocate;
     interval = "hourly";
     localuser = null;
   };
@@ -221,7 +221,7 @@ in
   programs.dconf.enable = true;
 
   fonts.fontDir.enable = true;
-  fonts.packages = with pkgs; [
+  fonts.fonts = with pkgs; [
     nerdfonts
     font-awesome
   ];
@@ -242,7 +242,7 @@ in
   # Enable hyprland
   programs.hyprland = {
     enable = true;
-    enableNvidiaPatches = true;
+    nvidiaPatches = true;
     xwayland.enable = true;
   };
 
