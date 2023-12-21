@@ -1,7 +1,6 @@
-{pkgs ? import <nixpkgs> { }}:
-
-# Simply run `nix-build` in this directory
-
+let
+    pkgs = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/refs/tags/23.05.tar.gz") { };
+in
 pkgs.mathematica.override {
   source = pkgs.requireFile {
     name = "Mathematica_13.1.0_BNDL_LINUX.sh";

@@ -23,8 +23,15 @@
                 blatex = pkgs.callPackage pkgs/blatex.nix { };
                 pyprland = pkgs.callPackage pkgs/pyprland.nix { };
                 matlab-icon = pkgs.callPackage pkgs/matlab-icon.nix { userHome = "/home/${username}"; };
-                mathematica-icon = pkgs.callPackage pkgs/mathematica-icon.nix { userHome = "/home/${username}"; };
-             })
+                mathematica-icon = pkgs.callPackage pkgs/mathematica-icon.nix { mathematicaPath = "${configDir}/impure/mathematica/result/bin/mathematica"; };
+                steam = prev.steam.override {
+                    extraPkgs = pkgs: with pkgs; [
+                        pango
+                        libthai
+                        harfbuzz
+                    ];
+                };
+            })
         ];
     };
 

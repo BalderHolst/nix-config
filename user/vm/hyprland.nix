@@ -22,9 +22,10 @@ in
 {
 
     options.hyprland.theme       = lib.mkOption { type = lib.types.attrs; };
-    options.hyprland.monitor     = lib.mkOption { type = lib.types.string; };
-    options.hyprland.size        = lib.mkOption { type = lib.types.functionTo lib.types.string; };
+    options.hyprland.monitor     = lib.mkOption { type = lib.types.str; };
+    options.hyprland.size        = lib.mkOption { type = lib.types.functionTo lib.types.str; };
     options.hyprland.swap_escape = lib.mkOption { type = lib.types.bool; };
+    options.hyprland.utilsDir    = lib.mkOption { type = lib.types.str; };
 
     config.wayland.windowManager.hyprland = {
        plugins = [
@@ -179,7 +180,7 @@ in
         bind = $mainMod, B, exec, ${browser}
         bind = $mainMod SHIFT, S, exec, ${grim} -g "$(${slurp})" - | ${convert} - -shave 1x1 PNG:- | ${swappy} -f -
         bind = $mainMod SHIFT, E, exec, ${paste} | ${swappy} -f -
-        bind = $mainMod SHIFT, P, exec, eval "$HOME/.myutils/passmenu"
+        bind = $mainMod SHIFT, P, exec, eval "~/.nix-config/user/utils/passmenu" # TODO nixify
         bind=SUPER, F, fullscreen
         # bind = $mainMod, P, pseudo, # dwindle
         bind = $mainMod, S, togglesplit, # dwindle

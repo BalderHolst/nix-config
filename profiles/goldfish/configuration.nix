@@ -59,10 +59,10 @@ in
     configDir = "/home/${username}/Documents/.config/syncthing";
     overrideDevices = true;     # overrides any devices added or deleted through the WebUI
     overrideFolders = true;     # overrides any folders added or deleted through the WebUI
-    devices = {
+    settings.devices = {
       "waterbear"   = { id = "NRP4KUT-OSWI7C6-3JMN7EL-JFWQ2AS-XRGM6OK-6WVSZ3G-3Q2CHBJ-UYCKQAE"; };
     };
-    folders = {
+    settings.folders = {
       "uni" = {
         path = "/home/${username}/Documents/uni";
         devices = [ "waterbear" ];
@@ -195,13 +195,16 @@ in
     unzip # unzip your files
     git # you know why
     neovim # best text editor
+
+    pinentry-qt
     
   ];
+
 
   # Locate
   services.locate = {
     enable = true;
-    locate = pkgs.mlocate;
+    package = pkgs.mlocate;
     interval = "hourly";
     localuser = null;
   };
@@ -218,11 +221,12 @@ in
   programs.dconf.enable = true;
 
   fonts.fontDir.enable = true;
-  fonts.fonts = with pkgs; [
+  fonts.packages = with pkgs; [
     nerdfonts
     font-awesome
   ];
 
+  services.dbus.packages = [ pkgs.gcr ];
   services.pcscd.enable = true;
   programs.gnupg.agent = {
     enable = true;
@@ -238,7 +242,7 @@ in
   # Enable hyprland
   programs.hyprland = {
     enable = true;
-    nvidiaPatches = true;
+    enableNvidiaPatches = true;
     xwayland.enable = true;
   };
 

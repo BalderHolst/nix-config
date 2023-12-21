@@ -33,9 +33,16 @@ rec {
 
     zsh.configDir = configDir;
 
-    hyprland = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
+    hyprland = {
+        utilsDir = "${configDir}/utils";
+        inherit theme;
+        inherit monitor;
+        inherit size;
+        inherit swap_escape;
+    };
 
     firefox.username = username;
+
 
     gtk.iconTheme = {
         package = pkgs.papirus-icon-theme;

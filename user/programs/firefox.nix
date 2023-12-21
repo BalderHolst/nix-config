@@ -1,7 +1,7 @@
 { inputs, pkgs, config, lib, ... }:
 {
 
-    options.firefox.username = lib.mkOption { type = lib.types.string; };
+    options.firefox.username = lib.mkOption { type = lib.types.str; };
 
     config.programs.firefox = {
         enable = true;

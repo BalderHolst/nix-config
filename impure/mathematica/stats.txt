@@ -1,0 +1,412 @@
+  Started as:             /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/Executables/.mathematica-wrapped
+  Executables Directory:  /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/Executables
+  Top Directory:          /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica
+  VersionID:              13.1.0.0
+  CreationID:             7882279
+  Display:                :1
+  LD_LIBRARY_PATH:        /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64:/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib:/nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib:/nix/store/hr3m53r0nhyqx80sg0bz9xjgk6jg009k-zlib-1.2.13/lib
+  QT_PLUGIN_PATH:         /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/plugins/
+  QT_IM_MODULE:           
+  PATH:                   /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/Executables:/nix/store/7wkshj58fcsl1f3zyi67qsxgl1p8nki1-gcc-wrapper-12.2.0/bin:/nix/store/6hgd7s3ykypafkzd1i783s6xvzc05n4j-zplug-2.4.2/share/zplug/bin:/nix/store/skxsvpikra00khvj8lq9w6w594rixrdj-kitty-0.31.0/bin:/nix/store/9v6mh81k620slvkc2akrqxa34z33kgm0-imagemagick-7.1.1-21/bin:/nix/store/ifx5q9x3vcck3b01wb9h47x7va00snkd-ncurses-6.4-dev/bin:/run/wrappers/bin:/home/balder/.nix-profile/bin:/nix/profile/bin:/home/balder/.local/state/nix/profile/bin:/etc/profiles/per-user/balder/bin:/nix/var/nix/profiles/default/bin:/run/current-system/sw/bin:/nix/store/lwqnazddv8037sin49482dnzc9iwgg8l-binutils-wrapper-2.40/bin:/nix/store/s4py1x222394achh9n8dvk01wknmg2hn-pciutils-3.10.0/bin:/home/balder/.zsh/plugins/zsh-nix-shell:/nix/store/nyznzv5z29yn7dz00ysdiwdrqi8m037h-utils
+  ulimit -c:               unlimited
+  Layout Hash:             17c3bcfe04890befe43e90c1e48e8f1b
+  Libraries:
+	linux-vdso.so.1 (0x00007ffc30156000)
+	libfreetype.so.6 => /nix/store/4zp9k9pcysbs2hkp5hgzmxdrp0wi95sv-freetype-2.13.0/lib/libfreetype.so.6 (0x00007f6f0eb15000)
+	libML64i4.so => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/libML64i4.so (0x00007f6f0e800000)
+	libOSMesa32.so.8 => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/libOSMesa32.so.8 (0x00007f6f08e00000)
+	libGL.so.1 => /nix/store/6bwwzhz37p4kqzm1dzg2lb96i2iha2sn-libGL-1.6.0/lib/libGL.so.1 (0x00007f6f0ea85000)
+	libportaudio.so.2 => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/libportaudio.so.2 (0x00007f6f08a00000)
+	libz.so.1 => /nix/store/hr3m53r0nhyqx80sg0bz9xjgk6jg009k-zlib-1.2.13/lib/libz.so.1 (0x00007f6f0ea66000)
+	libpthread.so.0 => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0 (0x00007f6f0ea61000)
+	librt.so.1 => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/librt.so.1 (0x00007f6f0ea5c000)
+	libdl.so.2 => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libdl.so.2 (0x00007f6f0ea55000)
+	libfontconfig.so.1 => /nix/store/2agnf83j2xp1sljysvdkz3qqyrffhwqw-fontconfig-2.14.0-lib/lib/libfontconfig.so.1 (0x00007f6f0e7b4000)
+	libQt5DBus.so.5 => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5DBus.so.5 (0x00007f6f0e727000)
+	libQt5Xml.so.5 => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Xml.so.5 (0x00007f6f08db7000)
+	libQt5Network.so.5 => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Network.so.5 (0x00007f6f0886b000)
+	libQt5PrintSupport.so.5 => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5PrintSupport.so.5 (0x00007f6f08d3f000)
+	libQt5Widgets.so.5 => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Widgets.so.5 (0x00007f6f08000000)
+	libQt5Gui.so.5 => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Gui.so.5 (0x00007f6f07800000)
+	libQt5Core.so.5 => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5 (0x00007f6f07000000)
+	libstdc++.so.6 => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6 (0x00007f6f06c00000)
+	libm.so.6 => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6 (0x00007f6f08c5f000)
+	libc.so.6 => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6 (0x00007f6f06a18000)
+	/nix/store/yaz7pyf0ah88g2v505l38n0f3wg2vzdj-glibc-2.37-8/lib/ld-linux-x86-64.so.2 => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib64/ld-linux-x86-64.so.2 (0x00007f6f0ebe5000)
+	libgcc_s.so.1 => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1 (0x00007f6f0e706000)
+	libbz2.so.1 => /nix/store/wqpb61g795dxhbiqkrni5lnpwpdglq2j-bzip2-1.0.8/lib/libbz2.so.1 (0x00007f6f0ea3e000)
+	libpng16.so.16 => /nix/store/yszpxj5q3j8lfxw3df0q0k2c4zmfgyg1-libpng-apng-1.6.39/lib/libpng16.so.16 (0x00007f6f08832000)
+	libbrotlidec.so.1 => /nix/store/81mmv1ap9pf655c8zxi4dxl0xv3jv5rj-brotli-1.0.9-lib/lib/libbrotlidec.so.1 (0x00007f6f08c51000)
+	libuuid.so.1 => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Links/Databases/Python/executables/Linux-x86-64/distribution/libuuid.so.1 (0x00007f6f06800000)
+	libGLX.so.0 => /nix/store/h20rb25nyc4jgcjnrs00mql7bx6glhlc-libglvnd-1.6.0/lib/libGLX.so.0 (0x00007f6f087fe000)
+	libX11.so.6 => /nix/store/gaw40jg1m4q62dsmfvwdahvbs7grl40g-libX11-1.8.4/lib/libX11.so.6 (0x00007f6f06ebc000)
+	libXext.so.6 => /nix/store/izx2582d313nw8fzsb2wxqdbj432fxhj-libXext-1.3.4/lib/libXext.so.6 (0x00007f6f08c3c000)
+	libGLdispatch.so.0 => /nix/store/h20rb25nyc4jgcjnrs00mql7bx6glhlc-libglvnd-1.6.0/lib/libGLdispatch.so.0 (0x00007f6f08745000)
+	libasound.so.2 => /nix/store/dnkngi0x5aj8dr53j9jndwv36fiz8jdj-alsa-lib-1.2.8/lib/libasound.so.2 (0x00007f6f066f5000)
+	libexpat.so.1 => /nix/store/r8dlmcy5a93qxdgsvsywbg3s51fwyvwi-expat-2.5.0/lib/libexpat.so.1 (0x00007f6f0871a000)
+	libbrotlicommon.so.1 => /nix/store/81mmv1ap9pf655c8zxi4dxl0xv3jv5rj-brotli-1.0.9-lib/lib/libbrotlicommon.so.1 (0x00007f6f086f7000)
+	libxcb.so.1 => /nix/store/my33lcccyvr4hskbzq4ci44j7y8aydy7-libxcb-1.14/lib/libxcb.so.1 (0x00007f6f07fd5000)
+	libXau.so.6 => /nix/store/gdrgb1zd8y46a95ly31brsg0xk6yx5b5-libXau-1.0.9/lib/libXau.so.6 (0x00007f6f08c35000)
+	libXdmcp.so.6 => /nix/store/0d4xl0xk1g0w41yqyd64jvzbip5lhfig-libXdmcp-1.1.3/lib/libXdmcp.so.6 (0x00007f6f086ef000)
+
+	Version information:
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/FrontEnd/Binaries/Linux-x86-64/Mathematica:
+		ld-linux-x86-64.so.2 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib64/ld-linux-x86-64.so.2
+		libQt5Network.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Network.so.5
+		libgcc_s.so.1 (GCC_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libgcc_s.so.1 (GCC_3.0) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libgcc_s.so.1 (GCC_4.0.0) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libQt5DBus.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5DBus.so.5
+		libm.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		libdl.so.2 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libdl.so.2
+		libQt5Core.so.5 (Qt_5.15) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5PrintSupport.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5PrintSupport.so.5
+		libstdc++.so.6 (GLIBCXX_3.4.14) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.19) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3.1) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.17) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.18) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3.5) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.11) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.15) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.9) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libQt5Widgets.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Widgets.so.5
+		libQt5Gui.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Gui.so.5
+		libc.so.6 (GLIBC_2.6) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.8) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.11) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.7) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libpthread.so.0 (GLIBC_2.12) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libpthread.so.0 (GLIBC_2.3.2) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libpthread.so.0 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+	/nix/store/4zp9k9pcysbs2hkp5hgzmxdrp0wi95sv-freetype-2.13.0/lib/libfreetype.so.6:
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.33) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.11) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libpng16.so.16 (PNG16_0) => /nix/store/yszpxj5q3j8lfxw3df0q0k2c4zmfgyg1-libpng-apng-1.6.39/lib/libpng16.so.16
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/libML64i4.so:
+		libgcc_s.so.1 (GCC_3.0) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libm.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		libuuid.so.1 (UUID_1.0) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Links/Databases/Python/executables/Linux-x86-64/distribution/libuuid.so.1
+		libdl.so.2 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libdl.so.2
+		librt.so.1 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/librt.so.1
+		libpthread.so.0 (GLIBC_2.3.2) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libpthread.so.0 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libstdc++.so.6 (CXXABI_1.3.1) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3.2) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.9) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.11) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.15) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/libOSMesa32.so.8:
+		ld-linux-x86-64.so.2 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib64/ld-linux-x86-64.so.2
+		libz.so.1 (ZLIB_1.2.0) => /nix/store/hr3m53r0nhyqx80sg0bz9xjgk6jg009k-zlib-1.2.13/lib/libz.so.1
+		libgcc_s.so.1 (GCC_3.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libgcc_s.so.1 (GCC_3.0) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libgcc_s.so.1 (GCC_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libdl.so.2 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libdl.so.2
+		libpthread.so.0 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libpthread.so.0 (GLIBC_2.12) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libpthread.so.0 (GLIBC_2.3.2) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libpthread.so.0 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libm.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.5) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3.5) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.19) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.14) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.17) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.18) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.15) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.11) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libc.so.6 (GLIBC_2.15) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.16) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.6) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.17) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/6bwwzhz37p4kqzm1dzg2lb96i2iha2sn-libGL-1.6.0/lib/libGL.so.1:
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/libportaudio.so.2:
+		librt.so.1 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/librt.so.1
+		libm.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libpthread.so.0 (GLIBC_2.3.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libpthread.so.0 (GLIBC_2.3.2) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libpthread.so.0 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libasound.so.2 (ALSA_0.9.0rc4) => /nix/store/dnkngi0x5aj8dr53j9jndwv36fiz8jdj-alsa-lib-1.2.8/lib/libasound.so.2
+		libasound.so.2 (ALSA_0.9) => /nix/store/dnkngi0x5aj8dr53j9jndwv36fiz8jdj-alsa-lib-1.2.8/lib/libasound.so.2
+	/nix/store/hr3m53r0nhyqx80sg0bz9xjgk6jg009k-zlib-1.2.13/lib/libz.so.1:
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0:
+		libc.so.6 (GLIBC_ABI_DT_RELR) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/librt.so.1:
+		libc.so.6 (GLIBC_ABI_DT_RELR) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_PRIVATE) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libdl.so.2:
+		libc.so.6 (GLIBC_ABI_DT_RELR) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/2agnf83j2xp1sljysvdkz3qqyrffhwqw-fontconfig-2.14.0-lib/lib/libfontconfig.so.1:
+		libc.so.6 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.33) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.7) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5DBus.so.5:
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libpthread.so.0 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libQt5Core.so.5 (Qt_5_PRIVATE_API) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5.15) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libstdc++.so.6 (CXXABI_1.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Xml.so.5:
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.18) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libQt5Core.so.5 (Qt_5_PRIVATE_API) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5.15) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Network.so.5:
+		libdl.so.2 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libdl.so.2
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.10) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libpthread.so.0 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libstdc++.so.6 (GLIBCXX_3.4.18) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libQt5Core.so.5 (Qt_5.15) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5_PRIVATE_API) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5PrintSupport.so.5:
+		libm.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		libpthread.so.0 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libstdc++.so.6 (CXXABI_1.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libQt5Gui.so.5 (Qt_5_PRIVATE_API) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Gui.so.5
+		libQt5Gui.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Gui.so.5
+		libQt5Core.so.5 (Qt_5_PRIVATE_API) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5.15) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Widgets.so.5 (Qt_5_PRIVATE_API) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Widgets.so.5
+		libQt5Widgets.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Widgets.so.5
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Widgets.so.5:
+		libpthread.so.0 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libgcc_s.so.1 (GCC_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libm.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.14) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.18) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.15) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libQt5Gui.so.5 (Qt_5_PRIVATE_API) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Gui.so.5
+		libQt5Gui.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Gui.so.5
+		libQt5Core.so.5 (Qt_5.15) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5_PRIVATE_API) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Gui.so.5:
+		libgcc_s.so.1 (GCC_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libstdc++.so.6 (GLIBCXX_3.4.14) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.15) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libpthread.so.0 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libm.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		libQt5Core.so.5 (Qt_5.15) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5_PRIVATE_API) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+		libQt5Core.so.5 (Qt_5) => /nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Libraries/Linux-x86-64/Qt/lib/libQt5Core.so.5:
+		ld-linux-x86-64.so.2 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib64/ld-linux-x86-64.so.2
+		libgcc_s.so.1 (GCC_3.0) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libgcc_s.so.1 (GCC_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libdl.so.2 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libdl.so.2
+		libm.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		libc.so.6 (GLIBC_2.6) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.17) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.7) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.16) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.9) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libstdc++.so.6 (CXXABI_1.3.7) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3.2) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.18) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.11) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (CXXABI_1.3.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4.14) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libstdc++.so.6 (GLIBCXX_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6
+		libpthread.so.0 (GLIBC_2.3.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libpthread.so.0 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+		libpthread.so.0 (GLIBC_2.3.2) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libpthread.so.0
+	/nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libstdc++.so.6:
+		libm.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		ld-linux-x86-64.so.2 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib64/ld-linux-x86-64.so.2
+		libgcc_s.so.1 (GCC_4.2.0) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libgcc_s.so.1 (GCC_3.4) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libgcc_s.so.1 (GCC_3.3) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libgcc_s.so.1 (GCC_3.0) => /nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.6) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.33) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.25) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.18) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.16) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.32) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.17) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.36) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.2) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.34) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6:
+		ld-linux-x86-64.so.2 (GLIBC_PRIVATE) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib64/ld-linux-x86-64.so.2
+		libc.so.6 (GLIBC_ABI_DT_RELR) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_PRIVATE) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6:
+		ld-linux-x86-64.so.2 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib64/ld-linux-x86-64.so.2
+		ld-linux-x86-64.so.2 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib64/ld-linux-x86-64.so.2
+		ld-linux-x86-64.so.2 (GLIBC_PRIVATE) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib64/ld-linux-x86-64.so.2
+	/nix/store/yazs3bdl481s2kyffgsa825ihy1adn8f-gcc-12.2.0-lib/lib/libgcc_s.so.1:
+		libc.so.6 (GLIBC_2.35) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.34) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/wqpb61g795dxhbiqkrni5lnpwpdglq2j-bzip2-1.0.8/lib/libbz2.so.1:
+		libc.so.6 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/yszpxj5q3j8lfxw3df0q0k2c4zmfgyg1-libpng-apng-1.6.39/lib/libpng16.so.16:
+		libm.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		libm.so.6 (GLIBC_2.29) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		libz.so.1 (ZLIB_1.2.9) => /nix/store/hr3m53r0nhyqx80sg0bz9xjgk6jg009k-zlib-1.2.13/lib/libz.so.1
+		libz.so.1 (ZLIB_1.2.3.4) => /nix/store/hr3m53r0nhyqx80sg0bz9xjgk6jg009k-zlib-1.2.13/lib/libz.so.1
+		libc.so.6 (GLIBC_2.11) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/81mmv1ap9pf655c8zxi4dxl0xv3jv5rj-brotli-1.0.9-lib/lib/libbrotlidec.so.1:
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/4cspdl0wha0sf2qlpw2hs7r1w0bsr7mq-mathematica-13.2.1/libexec/Mathematica/SystemFiles/Links/Databases/Python/executables/Linux-x86-64/distribution/libuuid.so.1:
+		ld-linux-x86-64.so.2 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib64/ld-linux-x86-64.so.2
+		libc.so.6 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/h20rb25nyc4jgcjnrs00mql7bx6glhlc-libglvnd-1.6.0/lib/libGLX.so.0:
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.34) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.7) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/gaw40jg1m4q62dsmfvwdahvbs7grl40g-libX11-1.8.4/lib/libX11.so.6:
+		libc.so.6 (GLIBC_2.7) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.33) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.34) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.15) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.26) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.2) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/izx2582d313nw8fzsb2wxqdbj432fxhj-libXext-1.3.4/lib/libXext.so.6:
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/h20rb25nyc4jgcjnrs00mql7bx6glhlc-libglvnd-1.6.0/lib/libGLdispatch.so.0:
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.34) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/dnkngi0x5aj8dr53j9jndwv36fiz8jdj-alsa-lib-1.2.8/lib/libasound.so.2:
+		ld-linux-x86-64.so.2 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib64/ld-linux-x86-64.so.2
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.33) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.16) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.7) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.17) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.2) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.34) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libm.so.6 (GLIBC_2.29) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+		libm.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libm.so.6
+	/nix/store/r8dlmcy5a93qxdgsvsywbg3s51fwyvwi-expat-2.5.0/lib/libexpat.so.1:
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.36) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/81mmv1ap9pf655c8zxi4dxl0xv3jv5rj-brotli-1.0.9-lib/lib/libbrotlicommon.so.1:
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/my33lcccyvr4hskbzq4ci44j7y8aydy7-libxcb-1.14/lib/libxcb.so.1:
+		libc.so.6 (GLIBC_2.14) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.2) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/gdrgb1zd8y46a95ly31brsg0xk6yx5b5-libXau-1.0.9/lib/libXau.so.6:
+		libc.so.6 (GLIBC_2.33) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.3.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+	/nix/store/0d4xl0xk1g0w41yqyd64jvzbip5lhfig-libXdmcp-1.1.3/lib/libXdmcp.so.6:
+		libc.so.6 (GLIBC_2.4) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.36) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6
+		libc.so.6 (GLIBC_2.2.5) => /nix/store/9y8pmvk8gdwwznmkzxa6pwyah52xy3nk-glibc-2.38-27/lib/libc.so.6

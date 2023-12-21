@@ -1,10 +1,10 @@
 { lib, config, ... }:
 {
     options.git.userName = lib.mkOption {
-        type = lib.types.string;
+        type = lib.types.str;
     };
     options.git.userEmail = lib.mkOption {
-        type = lib.types.string;
+        type = lib.types.str;
     };
 
     config.programs.git = {
