@@ -18,6 +18,7 @@ rec {
     imports = [
         ../../user/programs/git.nix
         ../../user/programs/neovim.nix
+        ../../user/programs/steam.nix
         ../../user/programs/pass.nix
         ../../user/programs/zsh.nix
         ../../user/programs/cli-collection.nix

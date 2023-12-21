@@ -22,8 +22,6 @@
         kicad # design pcd's and draw circuits
         prusa-slicer # slicer for 3d printing
         tor-browser-bundle-bin # secure and anonymous browsing
-        protonup-qt # play windows games
-        mangohud # game overlay
         xournalpp # write on pdfs!
         discord # communication
         transmission-qt # bittorrent client for file shareing
