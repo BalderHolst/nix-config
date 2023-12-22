@@ -2,12 +2,12 @@
 
     "layer": "top",
 
-    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-left": ["wlr/workspaces", "hyprland/window"],
     "modules-center": [],
     "modules-right": ["cpu", "memory", "pulseaudio", "network", "battery", "clock", "tray"],
 
     // Modules configuration
-    "hyprland/workspaces": {
+    "wlr/workspaces": {
       "format": "{name}",
       "tooltip": false,
       "all-outputs": true,
