@@ -34,6 +34,13 @@
             allowUnfree = true;
             allowUnfreePredicate = (_: true);
         };
+        overlays = [
+            (final: prev: {
+                waybar = prev.waybar.overrideAttrs (oldAttrs: {
+                    mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+                });
+            })
+        ];
     };
 
     # configure lib
