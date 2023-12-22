@@ -3,7 +3,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, username, pkgs, rustPlatform, ... }:
+{ config, username, pkgs, pkgs-unstable, rustPlatform, ... }:
 
 let
   hostname = "dolphin";
@@ -170,7 +170,6 @@ in
   environment.systemPackages = with pkgs; [
 
     # ====== Desktop ======
-    hyprland # compositor and window manager
     hyprpaper # wallpaper
     waybar # bar
     rofi-wayland # app launcher

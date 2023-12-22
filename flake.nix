@@ -1,7 +1,7 @@
 {
   description = "Balder's System Flake";
 
-  outputs = inputs@{ self, nixpkgs-stable, nixpkgs, home-manager, ... }:
+  outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }:
   let
     system = "x86_64-linux";
     username = "balder";
@@ -11,7 +11,7 @@
     profile = import ./profile.nix;
 
     # configure pkgs
-    home-pkgs = import nixpkgs {
+    pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config = {
             allowUnfree = true;
@@ -28,7 +28,7 @@
         ];
     };
 
-    system-pkgs = import nixpkgs-stable {
+    pkgs-stable = import nixpkgs-stable {
         inherit system;
         config = {
             allowUnfree = true;
@@ -50,7 +50,7 @@
 
     homeConfigurations = {
         "${username}" = home-manager.lib.homeManagerConfiguration {
-            pkgs = home-pkgs;
+            pkgs = pkgs-unstable;
             modules = [ (./. + "/profiles"+("/"+profile)+"/home.nix") ]; # load home.nix from selected PROFILE
             extraSpecialArgs = {
                 inherit inputs;
@@ -64,9 +64,12 @@
     nixosConfigurations = {
         "system" = lib.nixosSystem {
             inherit system;
-            pkgs = system-pkgs;
+            pkgs = pkgs-stable;
             modules = [ (./. + "/profiles"+("/"+profile)+"/configuration.nix") ]; # load configuration.nix from selected PROFILE
-            specialArgs = { inherit username; };
+            specialArgs = {
+                inherit username;
+                inherit pkgs-unstable;
+            };
         };
         };
     };
@@ -74,18 +77,20 @@
     inputs = rec {
 
         nixpkgs-stable.url = "github:NixOS/nixpkgs/23.05";
-        nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+        nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
         home-manager = {
             url = "github:nix-community/home-manager";
-            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
 
         firefox-addons = {
             url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
-            inputs.nixpkgs.follows = "nixpkgs";
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
+
         hyprland.url = "github:hyprwm/Hyprland";
+
         hyprgrass = {
             url = "github:horriblename/hyprgrass";
             inputs.hyprland.follows = "hyprland"; # IMPORTANT
