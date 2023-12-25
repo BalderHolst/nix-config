@@ -22,7 +22,7 @@
                 bmark = prev.callPackage pkgs/bmark.nix { };
                 blatex = prev.callPackage pkgs/blatex.nix { };
                 pyprland = prev.callPackage pkgs/pyprland.nix { };
-                matlab-icon = prev.callPackage pkgs/matlab-icon.nix { userHome = "/home/${username}"; };
+                matlab-icon = prev.callPackage pkgs/matlab-icon.nix { inherit configDir; };
                 mathematica-icon = prev.callPackage pkgs/mathematica-icon.nix { mathematicaPath = "${configDir}/impure/mathematica/result/bin/mathematica"; };
             })
         ];

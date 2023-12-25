@@ -2,7 +2,7 @@
 
 ## Launch Matlab if it is installed
 
-matlab_dir="$HOME/.config/home-manager/impure/matlab"
+matlab_dir="$HOME/.nix-config/impure/matlab"
 matlab="$matlab_dir/result/bin/matlab"
 
 [ -d "$matlab_dir" ] || {
