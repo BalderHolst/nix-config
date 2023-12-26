@@ -23,7 +23,6 @@ rec {
         ../../user/programs/cli-collection.nix
         ../../user/programs/dev-collection.nix
         ../../user/programs/desktop-collection.nix
-        ../../user/programs/school-collection.nix
         ../../user/vm/hyprland.nix
         ../../user/programs/firefox.nix
     ];
@@ -33,13 +32,7 @@ rec {
 
     zsh.configDir = configDir;
 
-    hyprland = {
-        utilsDir = "${configDir}/utils";
-        inherit theme;
-        inherit monitor;
-        inherit size;
-        inherit swap_escape;
-    };
+    hyprland = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
 
     firefox.username = username;
 

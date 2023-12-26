@@ -25,6 +25,7 @@
         xournalpp # write on pdfs!
         discord # communication
         transmission-qt # bittorrent client for file shareing
+        obsidian # note taking
     ];
 
     home.file = {

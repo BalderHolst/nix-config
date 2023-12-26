@@ -196,6 +196,7 @@ in
     git # you know why
     neovim # best text editor
     
+    pinentry-qt
   ];
 
   # Locate
