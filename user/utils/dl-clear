@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+## Clear the ~/Downloads directory
+
+dir="$HOME/Downloads"
+
+[[ -d "$dir" ]] && rm -rf "$dir"
+mkdir "$dir"
+echo "All clean!" > /dev/stderr
