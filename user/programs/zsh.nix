@@ -97,6 +97,7 @@ in
 
         home.sessionVariables = {
             POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD = "true";
+            ZSH_DISABLE_COMPFIX = "true";
         };
     };
 }
