@@ -1,0 +1,6 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash
+#!nix-shell -p adoptopenjdk-icedtea-web
+
+URL="https://login.exammonitor.dk/exam.jnlp"
+javaws "$URL"
