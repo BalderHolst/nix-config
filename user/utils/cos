@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-## Edit the nixos configuration file
-
-nvim -c 110 $HOME/.config/home-manager/nixos/configuration.nix

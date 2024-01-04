@@ -3,7 +3,7 @@ import os
 
 
 def main():
-    path = os.path.expanduser("~/.config/home-manager/utils")
+    path = os.path.expanduser("~/.nix-config/user/utils")
     utils = []
     longest_name = 0
     for file in os.listdir(path):

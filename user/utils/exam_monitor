@@ -2,5 +2,7 @@
 #!nix-shell -i bash
 #!nix-shell -p adoptopenjdk-icedtea-web
 
+## Launch the exam monitor program required for exams as SDU
+
 URL="https://login.exammonitor.dk/exam.jnlp"
 javaws "$URL"
