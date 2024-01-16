@@ -34,7 +34,7 @@ sync_repo () {
 }
 
 sync_repo "$HOME/.config/nvim" &
-sync_repo "$HOME/.config/home-manager" &
+sync_repo "$HOME/.nix-config" &
 sync_repo "$HOME/.password-store"
 
 sleep 0.2 
