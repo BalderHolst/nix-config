@@ -6,6 +6,7 @@
         kitty # terminal emulator
         cutecom # serial terminal
         gf # gdb fontend
+        lazygit # git tui
 
         gnumake # make
         cmakeMinimal # cmake
