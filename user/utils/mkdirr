@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-## Make a directory and move into it
-
-mkdir $@ && cd $@

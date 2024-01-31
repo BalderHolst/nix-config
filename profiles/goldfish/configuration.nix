@@ -51,6 +51,43 @@ in
   # Audo mount USB
   services.devmon.enable = true;
 
+  # Cloud drives
+  fileSystems = (
+    let
+    opts = [ "x-systemd.automount" "noauto" "x-systemd.after=network-online" ];
+    in
+  {
+    "/media/uni-remote" = {
+      device = "192.168.0.200:/uni";
+      fsType = "nfs";
+      options = opts;
+      };
+
+    "/media/3d-print" = {
+      device = "192.168.0.200:/3d-print";
+      fsType = "nfs";
+      options = opts;
+    };
+
+    "/media/music" = {
+      device = "192.168.0.200:/music";
+      fsType = "nfs";
+      options = opts;
+    };
+
+    "/media/private" = {
+      device = "192.168.0.200:/private";
+      fsType = "nfs";
+      options = opts;
+    };
+
+    "/media/general" = {
+      device = "192.168.0.200:/general";
+      fsType = "nfs";
+      options = opts;
+    };
+  });
+
   # Syncthing
   services.syncthing = {
     enable = true;

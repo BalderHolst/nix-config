@@ -11,6 +11,12 @@
         gnumake # make
         cmakeMinimal # cmake
         gnat13 # GNU compilers 
+
+        gf # gdb fontend
+        gdb # debugger
+        lldb_9 # another debugger
+        vscode-extensions.vadimcn.vscode-lldb # lldb vscode extension used in neovim
+
         python311 # Python interpreter
         python311Packages.bpython
 
