@@ -15,22 +15,6 @@ in
             ../../system/nas_sync.nix
         ];
 
-    nas.network-ssid = "TP-Link_96CC";
-    nas.rclone-device = "NAS";
-    nas.interval = 60*5;
-    nas.sync-locations = 
-    let
-        home = "/home/${username}";
-    in
-    [
-        { local = "${home}/3d-print";               remote = "3d-print";            }
-        { local = "${home}/Pictures/wallpapers";    remote = "general/wallpapers";  }
-        { local = "${home}/Documents/opskrifter";   remote = "general/opskrifter";  }
-        { local = "${home}/Documents/papirer";      remote = "private/papirer";     }
-        { local = "${home}/Documents/job";          remote = "private/job";         }
-        { local = "${home}/Documents/uni/lectures"; remote = "uni";                 }
-    ];
-
     # Enable flakes
     nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -68,38 +52,56 @@ in
     # Audo mount USB
     services.devmon.enable = true;
 
+    # Sync with NAS
+    nas.network-ssid = "TP-Link_96CC";
+    nas.rclone-device = "NAS";
+    nas.interval = 60*5;
+    nas.sync-locations = 
+    let
+        home = "/home/${username}";
+    in
+    [
+        { local = "${home}/3d-print";               remote = "3d-print";            }
+        { local = "${home}/Pictures/wallpapers";    remote = "general/wallpapers";  }
+        { local = "${home}/Documents/opskrifter";   remote = "general/opskrifter";  }
+        { local = "${home}/Documents/papirer";      remote = "private/papirer";     }
+        { local = "${home}/Documents/job";          remote = "private/job";         }
+        { local = "${home}/Documents/uni/lectures"; remote = "uni";                 }
+    ];
+
     # Cloud drives
     fileSystems = (
         let
         opts = [ "x-systemd.automount" "noauto" "x-systemd.after=network-online" ];
+        nas = "192.168.0.200";
         in
     {
         "/media/uni-remote" = {
-            device = "192.168.0.200:/uni";
+            device = "${nas}:/uni";
             fsType = "nfs";
             options = opts;
             };
 
         "/media/3d-print" = {
-            device = "192.168.0.200:/3d-print";
+            device = "${nas}:/3d-print";
             fsType = "nfs";
             options = opts;
         };
 
         "/media/music" = {
-            device = "192.168.0.200:/music";
+            device = "${nas}:/music";
             fsType = "nfs";
             options = opts;
         };
 
         "/media/private" = {
-            device = "192.168.0.200:/private";
+            device = "${nas}:/private";
             fsType = "nfs";
             options = opts;
         };
 
         "/media/general" = {
-            device = "192.168.0.200:/general";
+            device = "${nas}:/general";
             fsType = "nfs";
             options = opts;
         };

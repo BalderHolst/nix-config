@@ -51,34 +51,41 @@ in
     # Audo mount USB
     services.devmon.enable = true;
 
-    # Syncthing
-    services.syncthing = {
-        enable = true;
-        user = username;
-        dataDir = "/home/${username}/Documents";
-        configDir = "/home/${username}/Documents/.config/syncthing";
-        overrideDevices = true;         # overrides any devices added or deleted through the WebUI
-        overrideFolders = true;         # overrides any folders added or deleted through the WebUI
-        devices = {
-            "waterbear"     = { id = "NRP4KUT-OSWI7C6-3JMN7EL-JFWQ2AS-XRGM6OK-6WVSZ3G-3Q2CHBJ-UYCKQAE"; };
+    # Cloud drives
+    fileSystems = 
+    let
+        opts = [ "x-systemd.automount" "noauto" "x-systemd.after=network-online" ];
+        nas = "192.168.0.200";
+    in
+    {
+        "/media/uni-remote" = {
+            device = "${nas}:/uni";
+            fsType = "nfs";
+            options = opts;
+            };
+
+        "/media/3d-print" = {
+            device = "${nas}:/3d-print";
+            fsType = "nfs";
+            options = opts;
         };
-        folders = {
-            "uni" = {
-                path = "/home/${username}/Documents/uni";
-                devices = [ "waterbear" ];
-            };
-            "job" = {
-                path = "/home/${username}/Documents/job";
-                devices = [ "waterbear" ];
-            };
-            "pictures" = {
-                path = "/home/${username}/Pictures";
-                devices = [ "waterbear" ];
-            };
-            "isos" = {
-                path = "/home/${username}/isos";
-                devices = [ "waterbear" ];
-            };
+
+        "/media/music" = {
+            device = "${nas}:/music";
+            fsType = "nfs";
+            options = opts;
+        };
+
+        "/media/private" = {
+            device = "${nas}:/private";
+            fsType = "nfs";
+            options = opts;
+        };
+
+        "/media/general" = {
+            device = "${nas}:/general";
+            fsType = "nfs";
+            options = opts;
         };
     };
 
