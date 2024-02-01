@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+
+## Burn an ISO file to a storage device
+
+ISO="$1"
+DEV="$2"
+
+[[ "$ISO" = "" ]] && {
+    echo "No ISO specified."
+    exit 1
+}
+
+[[ "$DEV" = "" ]] && {
+    echo "No device specified."
+    exit 1
+}
+
+[[ ! -f "$ISO" ]] && {
+    echo "Not a valid iso path."
+    exit 1
+}
+
+[[ ! -b "$DEV" ]] && {
+    echo "Not a valid device."
+    exit 1
+}
+
+echo "ISO: $ISO"
+echo "Device: $DEV"
+
+echo -e "\nPress [ENTER] to proceed."
+read input
+
+if [ "$input" = "" ]; then
+    echo "Begining format"
+    sudo dd bs=4M if="$ISO" of="$DEV" status=progress oflag=sync
+    echo "Done!"
+else
+    echo "Aborted."
+fi
