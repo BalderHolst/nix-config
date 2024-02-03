@@ -176,6 +176,7 @@ in
         rofi-wayland # app launcher
         pavucontrol # audio control GUI
         dunst # notifications
+        libnotify # send notifications
         home-manager # nix home manager
         pkgs.libsForQt5.qt5.qtgraphicaleffects # library used by a lot of sddm themes
         (callPackage ../../pkgs/sddm/themes.nix { }).sugar-dark # sddm theme

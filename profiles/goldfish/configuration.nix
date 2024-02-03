@@ -6,13 +6,29 @@
 { config, username, pkgs, pkgs-unstable, rustPlatform, ... }:
 
 let
-    hostname = "dolphin";
+    hostname = "goldfish";
 in 
 {
     imports =
         [ # Include the results of the hardware scan.
             ./hardware-configuration.nix
+            ../../system/nas_sync.nix
         ];
+
+    nas.network-ssid = "TP-Link_96CC";
+    nas.rclone-device = "NAS";
+    nas.sync-locations = 
+    let
+        home = "/home/${username}";
+    in
+    [
+        { local = "${home}/Documents/uni/lectures"; remote = "uni";                 }
+        { local = "${home}/3d-print";               remote = "3d-print";            }
+        { local = "${home}/Pictures/wallpapers";    remote = "general/wallpapers";  }
+        { local = "${home}/Documents/opskrifter";   remote = "general/opskrifter";  }
+        { local = "${home}/Documents/papirer";      remote = "private/papirer";     }
+        { local = "${home}/Documents/job";          remote = "private/job";         }
+    ];
 
     # Enable flakes
     nix.settings.experimental-features = ["nix-command" "flakes"];
@@ -212,6 +228,7 @@ in
         rofi-wayland # app launcher
         pavucontrol # audio control GUI
         dunst # notifications
+        libnotify # send notifications
         home-manager # nix home manager
         pkgs.libsForQt5.qt5.qtgraphicaleffects # library used by a lot of sddm themes
         (callPackage ../../pkgs/sddm/themes.nix { }).sugar-dark # sddm theme
