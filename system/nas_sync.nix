@@ -40,14 +40,13 @@
                     (x: 
                     let 
                         remote = "${config.nas.rclone-device}:${x.remote}";
-                        rclone = "${pkgs.rclone}/bin/rclone";
+                        rclone = "${pkgs.callPackage ../pkgs/rclone.nix {}}/bin/rclone";
                     in
                     ''
                     [[ -d "${x.local}" ]] || mkdir -p ${x.local}
-                    echo "Syncing ${x.local} with ${remote}..."
-                    ${rclone} bisync --links ${x.local} ${config.nas.rclone-device}:${x.remote} || {
+                    ${rclone} bisync --resilient --create-empty-src-dirs --links -v ${x.local} ${config.nas.rclone-device}:${x.remote} || {
                         echo "Resync needed..."
-                        ${rclone} bisync --links --resync ${x.local} ${remote} -v
+                        ${rclone} bisync --create-empty-src-dirs --links --resync ${x.local} ${remote} -v
                     }
                     echo "Done syncing ${x.local}."
                     '')
@@ -71,6 +70,8 @@
 
         stop = pkgs.writeShellScript "stop.sh" ''
             kill "$PID"
+            # Remove locks
+            ls /home/balder/.cache/rclone/bisync/*lck | xargs rm -v
         '';
 
         reload = pkgs.writeShellScript "reload.sh" ''

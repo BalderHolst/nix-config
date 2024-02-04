@@ -17,17 +17,18 @@ in
 
     nas.network-ssid = "TP-Link_96CC";
     nas.rclone-device = "NAS";
+    nas.interval = 60*5;
     nas.sync-locations = 
     let
         home = "/home/${username}";
     in
     [
-        { local = "${home}/Documents/uni/lectures"; remote = "uni";                 }
         { local = "${home}/3d-print";               remote = "3d-print";            }
         { local = "${home}/Pictures/wallpapers";    remote = "general/wallpapers";  }
         { local = "${home}/Documents/opskrifter";   remote = "general/opskrifter";  }
         { local = "${home}/Documents/papirer";      remote = "private/papirer";     }
         { local = "${home}/Documents/job";          remote = "private/job";         }
+        { local = "${home}/Documents/uni/lectures"; remote = "uni";                 }
     ];
 
     # Enable flakes

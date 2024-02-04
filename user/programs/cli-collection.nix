@@ -7,6 +7,7 @@
         unzip # unzip your files
         todo # simple todo list
         ripgrep # awesome grepping tool
+        jq # json parsing cli
         bat # cat with colors
         wl-clipboard # cli clipboard manipulation. Also needed for neovim.
         bmark # my terminal bookmark manager
