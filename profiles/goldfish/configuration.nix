@@ -62,7 +62,7 @@ in
     in
     [
         { local = "${home}/3d-print";               remote = "3d-print";            }
-        { local = "${home}/Pictures/wallpapers";    remote = "general/wallpapers";  }
+        { local = "${home}/Pictures";               remote = "general/pictures";    }
         { local = "${home}/Documents/opskrifter";   remote = "general/opskrifter";  }
         { local = "${home}/Documents/papirer";      remote = "private/papirer";     }
         { local = "${home}/Documents/job";          remote = "private/job";         }
@@ -106,37 +106,6 @@ in
             options = opts;
         };
     });
-
-    # Syncthing
-    services.syncthing = {
-        enable = true;
-        user = username;
-        dataDir = "/home/${username}/Documents";
-        configDir = "/home/${username}/Documents/.config/syncthing";
-        overrideDevices = true;         # overrides any devices added or deleted through the WebUI
-        overrideFolders = true;         # overrides any folders added or deleted through the WebUI
-        devices = {
-            "waterbear"     = { id = "NRP4KUT-OSWI7C6-3JMN7EL-JFWQ2AS-XRGM6OK-6WVSZ3G-3Q2CHBJ-UYCKQAE"; };
-        };
-        folders = {
-            "uni" = {
-                path = "/home/${username}/Documents/uni";
-                devices = [ "waterbear" ];
-            };
-            "job" = {
-                path = "/home/${username}/Documents/job";
-                devices = [ "waterbear" ];
-            };
-            "pictures" = {
-                path = "/home/${username}/Pictures";
-                devices = [ "waterbear" ];
-            };
-            "isos" = {
-                path = "/home/${username}/isos";
-                devices = [ "waterbear" ];
-            };
-        };
-    };
 
     # Set your time zone.
     time.timeZone = "Europe/Copenhagen";
