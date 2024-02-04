@@ -19,6 +19,11 @@
         default = 120;
     };
 
+    options.nas.always-sync = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+    };
+
     options.nas.sync-locations = lib.mkOption
     {
         type = lib.types.listOf lib.types.attrs;
@@ -51,17 +56,21 @@
                     echo "Done syncing ${x.local}."
                     '')
             );
+
         daemon = pkgs.writeShellScript "daemon.sh" ''
             while true; do
             SSID="$(${pkgs.wirelesstools}/bin/iwgetid -r)"
-            if [ "$SSID" = "${config.nas.network-ssid}" ]; then
-                ${sync_commands}
-                echo "--------------------------------------- EVERYTHING UP TO DATE ----------------------------------------"
-            fi
+            ${if config.nas.always-sync then "" else ''
+                if [ "$SSID" = "${config.nas.network-ssid}" ]; then
+            ''}
+            ${sync_commands}
+            echo "--------- EVERYTHING UP TO DATE ----------"
+            ${if config.nas.always-sync then "" else "fi"}
             echo "Waiting ${builtins.toString config.nas.interval} seconds."
             sleep ${builtins.toString config.nas.interval}
             done
         '';
+
         start = pkgs.writeShellScript "start.sh" ''
             ${daemon} & PID=$!
             echo "Started with pid: $PID"
