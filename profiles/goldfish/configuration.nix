@@ -169,7 +169,13 @@ in
     users.users."${username}" = {
         isNormalUser = true;
         description = "Administrator of this computer.";
-        extraGroups = [ "networkmanager" "wheel" "libvirtd" "docker" ];
+        extraGroups = [
+            "networkmanager"
+            "wheel"
+            "libvirtd"
+            "docker"
+            "dialout"
+        ];
         packages = with pkgs; [ ];
     };
 

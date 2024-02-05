@@ -27,6 +27,7 @@ rec {
         ../../user/programs/school-collection.nix
         ../../user/vm/hyprland.nix
         ../../user/programs/firefox.nix
+        ../../user/programs/embedded-collection.nix
     ];
 
     git.userName = "BalderHolst";

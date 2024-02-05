@@ -12,6 +12,7 @@
         wl-clipboard # cli clipboard manipulation. Also needed for neovim.
         bmark # my terminal bookmark manager
         blatex # my latex document framework
+        fzf # fuzzy finder
     ];
 
     home.sessionVariables = {
