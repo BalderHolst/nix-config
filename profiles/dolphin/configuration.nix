@@ -12,7 +12,7 @@ in
     imports =
         [ # Include the results of the hardware scan.
             ./hardware-configuration.nix
-            ../../system/nas_sync.nix
+            ../../system/nas-sync.nix
         ];
 
     # Enable flakes
