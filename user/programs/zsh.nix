@@ -17,6 +17,7 @@ in
             shellAliases = {
 
                 ll = "${exa} -l";
+                lo = "${exa}";
                 ls = "${exa}";
                 r = "${pkgs.lf}/bin/lf";
                 t = "kitty --detach";
