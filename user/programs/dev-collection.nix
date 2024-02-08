@@ -4,7 +4,6 @@
         zsh # better bash
         fish # shell for the 90s!
         kitty # terminal emulator
-        cutecom # serial terminal
         gf # gdb fontend
         lazygit # git tui
 
@@ -31,13 +30,6 @@
         nodePackages_latest.pyright # python lsp
 
         lua-language-server # lsp for lua
-
-        avrdude # burn programs to avr platforms
-        avrdudess # GUI for avr-dude
-        # pkgsCross.avr.buildPackages.gcc # gnu avr compilers
-
-        arduino # arduino ide
-        arduino-cli # arduino ide
     ];
 
     home.file = {
