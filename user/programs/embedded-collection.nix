@@ -19,6 +19,7 @@ in
         avrdude # burn programs to avr platforms
         avrdudess # GUI for avr-dude
         avr-toolchain # defined above
+        avra # AVR assembler
 
         # Arduino
         arduino # arduino ide
