@@ -16,5 +16,6 @@
         nodejs # local javascript runtime, mainly for pyright lsp
         nodePackages_latest.pyright # python lsp
         lua-language-server # lsp for lua
+        rocmPackages.llvm.clang-tools-extra # contains clangd
     ];
 }
