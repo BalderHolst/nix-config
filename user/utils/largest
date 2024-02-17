@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+## List the largest files in current directory and subdirectories
+
+du -ah . | sort -rh | head -n 20  
