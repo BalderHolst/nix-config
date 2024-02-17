@@ -15,11 +15,14 @@
             l = "log --oneline --graph";
             pp = "!git pull && git push";
             ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi";
+            b = "blame -w -C -C -C";
         };
         diff-so-fancy.enable = true;
         extraConfig = {
             init.defaultBranch = "main";
             pull.rebase = true;
+            rerere.enabled = true;
+            column.ui = "auto";
         };
     };
 }

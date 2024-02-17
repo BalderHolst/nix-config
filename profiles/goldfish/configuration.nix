@@ -25,7 +25,7 @@ in
     # Sync with NAS
     nas.network-ssid = "TP-Link_96CC";
     nas.rclone-device = "NAS";
-    nas.interval = 60*5;
+    nas.interval = 60*2;
     nas.sync-locations = 
     let
         home = "/home/${username}";
@@ -37,6 +37,18 @@ in
         { local = "${home}/Documents/papirer";      remote = "private/papirer";     }
         { local = "${home}/Documents/job";          remote = "private/job";         }
         { local = "${home}/Documents/uni/lectures"; remote = "uni";                 }
+    ];
+    nas.remote-backup-dir = "backups/manual";
+    nas.backup-exclude = [
+        "software"
+        "isos"
+        "build"
+        ".cache"
+        ".arduino15"
+        ".matlab"
+        ".cargo"
+        "target"
+        "Steam"
     ];
 
     # Cloud drives
