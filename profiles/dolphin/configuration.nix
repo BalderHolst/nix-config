@@ -23,6 +23,8 @@ in
     nixpkgs.config.allowUnfree = true;
     system.stateVersion = "23.05"; # Did you read the comment?
 
+    services.xserver.enable = true;
+
     # Sync with NAS
     nas.always-sync = true;
     nas.rclone-device = "NAS";
