@@ -28,6 +28,7 @@ in
         # Tivaware
         gcc-arm-embedded-9 # toolchain
         (pkgs.callPackage ../../pkgs/lm4flash.nix { }) # flashing tool
+        glibc
 
     ];
 }

@@ -13,6 +13,7 @@
         bmark # my terminal bookmark manager
         blatex # my latex document framework
         fzf # fuzzy finder
+        graphviz # create graphs!
     ];
 
     home.sessionVariables = {
