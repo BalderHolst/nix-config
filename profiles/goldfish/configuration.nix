@@ -17,6 +17,7 @@ in
             ../../system/hyprland.nix
             ../../system/sddm.nix
             ../../system/steam.nix
+            ../../system/act.nix
         ];
 
     networking.hostName = hostname;
