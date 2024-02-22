@@ -7,6 +7,8 @@
         gf # gdb fontend
         lazygit # git tui
 
+        vscodium
+
         gnumake # make
         cmakeMinimal # cmake
         gnat13 # GNU compilers 

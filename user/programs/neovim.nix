@@ -6,8 +6,19 @@
         vimAlias = true;
     };
 
-    home.sessionVariables = {
+    home.sessionVariables =
+    let
+    vhdl_ls_config = pkgs.writeText "vhdl_ls.toml" ''
+        # File names are either absolute or relative to the parent folder of the vhdl_ls.toml file
+        [libraries]
+        lib1.files = [
+          'pkg1.vhd',
+        ]
+        '';
+    in
+    {
         EDITOR = "nvim";
+        VHDL_LS_CONFIG = "${vhdl_ls_config}";
     };
 
     home.packages = with pkgs; [
@@ -17,5 +28,6 @@
         nodePackages_latest.pyright # python lsp
         lua-language-server # lsp for lua
         rocmPackages.llvm.clang-tools-extra # contains clangd
+        (callPackage ../../pkgs/vhdl_ls.nix { })
     ];
 }
