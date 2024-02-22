@@ -11,13 +11,14 @@ let
     bmark = pkgs.bmark + "/bin/bmark";
     brightnessctl = pkgs.brightnessctl + "/bin/brightnessctl";
     wpctl = pkgs.wireplumber + "/bin/wpctl";
-    #waybar = pkgs.waybar + "/bin/waybar";
+    waybar = pkgs.waybar + "/bin/waybar";
     hyprpaper = pkgs.hyprpaper + "/bin/hyprpaper";
     convert = pkgs.imagemagick + "/bin/convert";
     pypr = pkgs.pyprland + "/bin/pypr";
     pavucontrol = pkgs.pavucontrol + "/bin/pavucontrol";
     kitty = pkgs.kitty + "/bin/kitty";
     bpython = pkgs.python311Packages.bpython + "/bin/bpython";
+    nm-connection-editor = pkgs.networkmanagerapplet + "/bin/nm-connection-editor";
 in 
 {
 
@@ -76,7 +77,7 @@ in
 
         # Execute your favorite apps at launch
         exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY
-        exec-once = waybar
+        exec-once = ${waybar}
         exec-once = ${hyprpaper}
         exec-once = ${pypr}
 
@@ -320,10 +321,100 @@ in
 
     # Waybar config
     ".config/waybar/config".text = ''
-        {
-            "height": ${config.hyprland.size 24},
-            "spacing": ${config.hyprland.size 10},
-    '' + builtins.readFile ../configs/waybar/config; # }
+    {
+        "height": ${config.hyprland.size 24},
+        "spacing": ${config.hyprland.size 10},
+        // The begining of this file is filled in by home-manager
+
+        "layer": "top",
+
+        "modules-left": ["wlr/workspaces", "hyprland/window"],
+        "modules-center": [],
+        "modules-right": ["cpu", "memory", "pulseaudio", "network", "battery", "clock", "tray"],
+
+        // Modules configuration
+        "wlr/workspaces": {
+          "format": "{name}",
+          "tooltip": false,
+          "all-outputs": true,
+        },
+        "tray": {
+            // "icon-size": 21,
+            "spacing": 10
+        },
+        "clock": {
+            "timezone": "Europe/Berlin",
+            "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+            "format-alt": "{:%d/%m-%Y}"
+        },
+        "cpu": {
+            "format": "{usage}% ",
+            "tooltip": false
+        },
+        "memory": {
+            "format": "{}% "
+        },
+        "backlight": {
+            // "device": "acpi_video1",
+            "format": "{percent}% {icon}",
+            "format-icons": ["", "", "", "", "", "", "", "", ""]
+        },
+        "battery": {
+            "states": {
+                // "good": 95,
+                "warning": 30,
+                "critical": 10
+            },
+            "interval": 10,
+            "format": "{capacity}% {icon}",
+            "format-charging": "{capacity}%  ",
+            "format-plugged": "{capacity}%  ",
+            "format-alt": "{time} {icon}",
+            // "format-good": "", // An empty format will hide the module
+            // "format-full": "full battery",
+            "format-icons": [" ", " ", " ", " ", " "]
+        },
+        "network": {
+            "format-wifi": "{essid} ({signalStrength}%)  ",
+            "format-ethernet": "{ipaddr}/{cidr}  ",
+            "tooltip-format": "{ifname} via {gwaddr}  ",
+            "format-linked": "{ifname} (No IP)  ",
+            "format-disconnected": "disconnected",
+            "on-click": "${nm-connection-editor}"
+        },
+        "pulseaudio": {
+            "scroll-step": 1, // %, can be a float
+            "format": "{volume}% {icon}",
+            "format-bluetooth": "{volume}% {icon}",
+            "format-bluetooth-muted": " {icon}",
+            "format-muted": "muted",
+            // "format-source": "{volume}% ",
+            // "format-source-muted": "",
+            "format-icons": {
+                "headphone": "",
+                "hands-free": "",
+                "headset": "",
+                "phone": "",
+                "portable": "",
+                "car": "",
+                "default": ["", "", ""]
+            },
+            "on-click": "pavucontrol"
+        },
+        "custom/media": {
+            "format": "{icon} {}",
+            "return-type": "json",
+            "max-length": 40,
+            "format-icons": {
+                "spotify": "",
+                "default": "🎜"
+            },
+            "escape": true,
+            "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources folder
+            // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        }
+    }
+    '';
 
     ".config/waybar/style.css".text = ''
         @define-color background #${config.hyprland.theme.background};
@@ -337,9 +428,262 @@ in
             font-family: FiraCode Nerd Font;
             font-size: ${config.hyprland.size 13}px;
         }
-        '' + builtins.readFile ../configs/waybar/style.css;
 
+        window#waybar {
+            background-color: @background;
+            color: @primary;
+            transition-property: background-color;
+            transition-duration: .5s;
+        }
 
+        window#waybar.hidden {
+            opacity: 0.2;
+        }
 
+        button {
+            /* Use box-shadow instead of border so the text isn't offset */
+            box-shadow: inset 0 -3px transparent;
+            /* Avoid rounded borders under each button name */
+            border: none;
+            border-radius: 0;
+        }
+
+        /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+        button:hover {
+            background: inherit;
+            box-shadow: inset 0 -3px @foreground;
+        }
+
+        #workspaces button {
+            padding: 0 5px;
+            background-color: transparent;
+            color: @foreground;
+        }
+
+        #workspaces button:hover {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        #workspaces button.active {
+            background-color: @secondary;
+            box-shadow: inset 0 -3px @foreground;
+        }
+
+        #workspaces button.urgent {
+            background-color: @alert;
+        }
+
+        #mode {
+            background-color: #64727D;
+            border-bottom: 3px solid @foreground;
+        }
+
+        #clock,
+        #battery,
+        #cpu,
+        #memory,
+        #disk,
+        #temperature,
+        #backlight,
+        #network,
+        #pulseaudio,
+        #wireplumber,
+        #custom-media,
+        #tray,
+        #mode,
+        #idle_inhibitor,
+        #scratchpad,
+
+        #mpd {
+            padding: 0 10px;
+            color: @foreground;
+        }
+
+        #window,
+        #workspaces {
+            margin: 1px 4px;
+        }
+
+        /* If workspaces is the leftmost module, omit left margin */
+        .modules-left > widget:first-child > #workspaces {
+            margin-left: 0;
+        }
+
+        /* If workspaces is the rightmost module, omit right margin */
+        .modules-right > widget:last-child > #workspaces {
+            margin-right: 0;
+        }
+
+        #clock {
+            color: @primary;
+        }
+
+        #battery {
+            color: @foreground;
+        }
+
+        /* #battery.charging, #battery.plugged { */
+        /*     background-color: #26A65B; */
+        /* } */
+
+        @keyframes blink {
+            to {
+                background-color: @foreground;
+                color: #000000;
+            }
+        }
+
+        #battery.critical:not(.charging) {
+            background-color: #f53c3c;
+            color: @foreground;
+            animation-name: blink;
+            animation-duration: 0.5s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        label:focus {
+            background-color: #000000;
+        }
+
+        #cpu {
+            /* background-color: #2ecc71; */
+            /* color: #foreground; */
+        }
+
+        #memory {
+            /* background-color: #9b59b6; */
+        }
+
+        #disk {
+            /* background-color: #964B00; */
+        }
+
+        #backlight {
+            /* background-color: #90b1b1; */
+        }
+
+        #network {
+            background-color: @secondary;
+        }
+
+        #network.disconnected {
+            background-color: @disabled;
+        }
+
+        #pulseaudio {
+            /* background-color: #f1c40f; */
+            /* color: #000000; */
+        }
+
+        #pulseaudio.muted {
+            color: @disabled
+            /* background-color: #90b1b1; */
+            /* color: #2a5c45; */
+        }
+
+        #wireplumber {
+            /* background-color: #fff0f5; */
+            /* color: #000000; */
+        }
+
+        #wireplumber.muted {
+            /* background-color: #f53c3c; */
+        }
+
+        #custom-media {
+            background-color: #66cc99;
+            color: #2a5c45;
+            min-width: 100px;
+        }
+
+        #custom-media.custom-spotify {
+            background-color: #66cc99;
+        }
+
+        #custom-media.custom-vlc {
+            background-color: #ffa000;
+        }
+
+        #temperature {
+            background-color: #f0932b;
+        }
+
+        #temperature.critical {
+            background-color: #eb4d4b;
+        }
+
+        #tray {
+            background-color: #2980b9;
+        }
+
+        #tray > .passive {
+            -gtk-icon-effect: dim;
+        }
+
+        #tray > .needs-attention {
+            -gtk-icon-effect: highlight;
+            background-color: #eb4d4b;
+        }
+
+        #idle_inhibitor {
+            background-color: #2d3436;
+        }
+
+        #idle_inhibitor.activated {
+            background-color: #ecf0f1;
+            color: #2d3436;
+        }
+
+        #mpd {
+            background-color: #66cc99;
+            color: #2a5c45;
+        }
+
+        #mpd.disconnected {
+            background-color: #f53c3c;
+        }
+
+        #mpd.stopped {
+            background-color: #90b1b1;
+        }
+
+        #mpd.paused {
+            background-color: #51a37a;
+        }
+
+        #language {
+            background: #00b093;
+            color: #740864;
+            padding: 0 5px;
+            margin: 0 5px;
+            min-width: 16px;
+        }
+
+        #keyboard-state {
+            background: #97e1ad;
+            color: #000000;
+            padding: 0 0px;
+            margin: 0 5px;
+            min-width: 16px;
+        }
+
+        #keyboard-state > label {
+            padding: 0 5px;
+        }
+
+        #keyboard-state > label.locked {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        #scratchpad {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        #scratchpad.empty {
+            background-color: transparent;
+        }
+        '';
     };
 }
