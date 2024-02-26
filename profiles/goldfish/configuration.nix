@@ -7,7 +7,7 @@
 
 {
     imports =
-        [ # Include the results of the hardware scan.
+        [
             ./hardware-configuration.nix
             ../../system/nas-sync.nix
             ../../system/general.nix
