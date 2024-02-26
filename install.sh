@@ -52,10 +52,19 @@ status "Chose profile: $PROFILE";
 status "Installing system configuration..."
 warning "Script needs sudo permissions to perform system installation. PLEASE VERIFY THAT THIS SCRIPT IS NOT MALICIOUS."
 
-sudo cp -v /etc/nixos/hardware-configuration.nix "./profiles/$PROFILE/hardware-configuration.nix"
+sudoo () {
+    if [ "$(whoami)" = "root" ]
+    then
+        eval "$@"
+    else
+        eval "sudo $@"
+    fi
+}
+
+sudoo cp -v /etc/nixos/hardware-configuration.nix "./profiles/$PROFILE/hardware-configuration.nix"
 
 # Rebuild system
-sudo nixos-rebuild switch --flake "$CONFIG_DIR"#$PROFILE || {
+sudoo nixos-rebuild switch --flake "$CONFIG_DIR"#$PROFILE || {
     error "\nErrored while building system configuration."
     exit 1
 }
