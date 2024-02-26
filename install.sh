@@ -15,24 +15,16 @@ error () {
     echo -e "\u001b[31;1m[ERROR]: ""$@""\u001b[0m"
 }
 
-SSH=0
-
-if [ "$1" = "--ssh" ]
-then
-    status "Enabled SSH cloning."
-    SSH=1
-fi
-
 clone_github () {
     user="$1"
     repo="$2"
     dir="$3"
-    if [ $SSH = 1 ]
-    then
-        nix-shell -p git --command "git clone git@github.com:$user/$repo '$dir'"
-    else
-        nix-shell -p git --command "git clone https://github.com/$user/$repo '$dir'"
-    fi
+
+    # Clone repo
+    nix-shell -p git --command "git clone https://github.com/$user/$repo '$dir'"
+
+    # Change url to use ssh from now on
+    nix-shell -p git --command "git -C '$dir' remote set-url origin git@github.com:$user/$repo"
 }
 
 # ============= Clone Configuration =============
