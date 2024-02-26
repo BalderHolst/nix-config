@@ -113,11 +113,6 @@
         home-manager # nix home manager
         pkgs.libsForQt5.qt5.qtgraphicaleffects # library used by a lot of sddm themes
 
-        # ====== VMs ======
-        virt-manager
-        libvirt
-        qemu
-
         # ====== CLI ======
         htop # process viewer
         wget # cli file downloader

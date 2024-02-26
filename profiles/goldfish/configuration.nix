@@ -15,6 +15,7 @@
             ../../system/sddm.nix
             ../../system/steam.nix
             ../../system/act.nix
+            ../../system/virtual-machines.nix
         ];
 
     networking.hostName = hostname;
