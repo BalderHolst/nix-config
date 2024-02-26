@@ -1,5 +1,4 @@
-#!/usr/bin/env nix-shell
-#!nix-shell -i bash -p git home-manager fzf
+#!/bin/sh
 
 # Set the config directory
 CONFIG_DIR="$HOME/.nix-config"
@@ -20,22 +19,22 @@ error () {
 if [ ! -d "$CONFIG_DIR" ]
 then
     status "Cloning configuration."
-    git clone git@github.com:BalderHolst/nix-config "$CONFIG_DIR"
+    nix-shell -p git --command 'git clone git@github.com:BalderHolst/nix-config "$CONFIG_DIR"'
 fi
 
 # ============= Submodules =============
 status "Checking out submodules."
-git -C "$CONFIG_DIR" submodule update --init
+nix-shell -p git --command "git -C '$CONFIG_DIR' submodule update --init"
 
 # ============= Select Profile =============
-PROFILE="$(ls ./profiles | fzf --prompt='Profile: ')"
+PROFILE="$( nix-shell -p fzf --command "ls ./profiles | fzf --prompt='Profile: '" )"
 
 [[ $PROFILE = "" ]] && {
     error "No profile chosen."
     exit 1
 }
 
-status "Chose profile: $PROFILE"; sleep 0.5
+status "Chose profile: $PROFILE";
 
 # ============= Install System Config =============
 status "Installing system configuration..."
@@ -64,7 +63,7 @@ nvim_dir="$HOME/.config/nvim"
 if [ ! -d "$nvim_dir" ]
 then
     status "Getting Neovim configuration."
-    git clone 'git@github.com:BalderHolst/neovim-config' "$nvim_dir"
+    nix-shell -p git --command "git clone 'git@github.com:BalderHolst/neovim-config' '$nvim_dir'"
 else
     warning "Could not install NeoVim config, as one already exists."
 fi
