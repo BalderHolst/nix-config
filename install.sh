@@ -27,7 +27,7 @@ status "Checking out submodules."
 nix-shell -p git --command "git -C '$CONFIG_DIR' submodule update --init"
 
 # ============= Select Profile =============
-PROFILE="$( nix-shell -p fzf --command "ls ./profiles | fzf --prompt='Profile: '" )"
+PROFILE="$( nix-shell -p fzf --command "ls $CONFIG_DIR/profiles | fzf --prompt='Profile: '" )"
 
 [[ $PROFILE = "" ]] && {
     error "No profile chosen."
