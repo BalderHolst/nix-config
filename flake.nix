@@ -14,6 +14,14 @@
         "dolphin"
     ];
 
+    overlay = (final: prev: {
+        bmark = prev.callPackage pkgs/bmark.nix { };
+        blatex = prev.callPackage pkgs/blatex.nix { };
+        pyprland = prev.callPackage pkgs/pyprland.nix { };
+        matlab-icon = prev.callPackage pkgs/matlab-icon.nix { inherit configDir; };
+        mathematica-icon = prev.callPackage pkgs/mathematica-icon.nix { mathematicaPath = "${configDir}/impure/mathematica/result/bin/mathematica"; };
+    });
+
     # configure pkgs
     pkgs-unstable = import nixpkgs-unstable {
         inherit system;
@@ -21,15 +29,7 @@
             allowUnfree = true;
             allowUnfreePredicate = (_: true);
         };
-        overlays = [
-            (final: prev: {
-                bmark = prev.callPackage pkgs/bmark.nix { };
-                blatex = prev.callPackage pkgs/blatex.nix { };
-                pyprland = prev.callPackage pkgs/pyprland.nix { };
-                matlab-icon = prev.callPackage pkgs/matlab-icon.nix { inherit configDir; };
-                mathematica-icon = prev.callPackage pkgs/mathematica-icon.nix { mathematicaPath = "${configDir}/impure/mathematica/result/bin/mathematica"; };
-            })
-        ];
+        overlays = [ overlay ];
     };
 
     pkgs-stable = import nixpkgs-stable {
@@ -39,11 +39,7 @@
             allowUnfreePredicate = (_: true);
         };
         overlays = [
-            (final: prev: {
-                waybar = prev.waybar.overrideAttrs (oldAttrs: {
-                    mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-                });
-            })
+            overlay
         ];
     };
 
@@ -52,6 +48,8 @@
 
     in
     {
+
+        overlays.default = overlay;
 
         # Generate system configurations
         nixosConfigurations = builtins.listToAttrs (
@@ -81,7 +79,6 @@
                     hostname = profile;
                     inherit inputs;
                     inherit username;
-                    inherit profile;
                     inherit email;
                     inherit configDir;
                 };

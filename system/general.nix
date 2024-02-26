@@ -104,10 +104,6 @@
     environment.systemPackages = with pkgs; [
 
         # ====== Desktop ======
-        hyprpaper # wallpaper
-        waybar # bar
-        rofi-wayland # app launcher
-        pavucontrol # audio control GUI
         dunst # notifications
         libnotify # send notifications
         home-manager # nix home manager

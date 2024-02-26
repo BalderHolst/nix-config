@@ -16,16 +16,6 @@
         ];
     };
 
-
-    # Enable experimental waybar features, to capture use the `wlr` module.
-    nixpkgs.overlays = [
-        (self: super: {
-            waybar = super.waybar.overrideAttrs (oldAttrs: {
-                mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-            });
-        })
-    ];
-
     environment.sessionVariables = {
         WLR_NO_HARDWARE_CURSORS = "1";
     };

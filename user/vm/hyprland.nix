@@ -34,6 +34,16 @@ in
        ];
     };
 
+    # Enable experimental waybar features, to capture use the `wlr` module.
+    config.nixpkgs.overlays = [
+        (self: super: {
+            waybar = super.waybar.overrideAttrs (oldAttrs: {
+                mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+            });
+        })
+    ];
+
+
     config.home.file = {
         ".config/hypr/hyprland.conf".text = ''
         general {

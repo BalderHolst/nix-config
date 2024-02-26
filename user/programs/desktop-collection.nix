@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
     home.packages = with pkgs; [
+        pavucontrol # audio control GUI
         firefox-wayland # main browser
         brave # backup browser
         libreoffice # office suite to open those awful microsoft files
