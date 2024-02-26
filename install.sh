@@ -52,6 +52,12 @@ status "Chose profile: $PROFILE";
 status "Building system configuration..."
 warning "Script needs sudo permissions to perform system installation. PLEASE VERIFY THAT THIS SCRIPT IS NOT MALICIOUS."
 
+if [ ! -e /etc/nixos/hardware-configuration.nix ]
+then
+    status "Generating hardware-configuration.nix"
+    sudo nixos-generate-config
+fi
+
 sudo cp -v /etc/nixos/hardware-configuration.nix "$CONFIG_DIR/profiles/$PROFILE/hardware-configuration.nix"
 
 # Rebuild system
@@ -63,11 +69,16 @@ nix-shell -p git --command "sudo nixos-rebuild boot --flake '$CONFIG_DIR'#$PROFI
 # ============= Setup User =============
 
 status "Building user configuration..."
-home_manager_cmd="nix run home-manager/master --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake $CONFIG_DIR#$PROFILE;"
-nix-shell -p git --command "$home_manager_cmd" || {
-    error "\nErrored while building USER configuration."
-    exit 1
-}
+nix run home-manager/master \
+    --extra-experimental-features nix-command \
+    --extra-experimental-features flakes \
+    -- switch \
+    --extra-experimental-features nix-command \
+    --extra-experimental-features flakes \
+    --flake $CONFIG_DIR#$PROFILE \
+    || {
+     warning "Errored while building USER configuration. Try booting into the new configuration and run the installer again."
+ }
 
 # ============= Neovim =============
 status "Installing Neovim configuration..."
