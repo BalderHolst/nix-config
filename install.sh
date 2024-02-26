@@ -61,6 +61,12 @@ sudoo () {
     fi
 }
 
+if [ ! -e /etc/nixos/hardware-configuration.nix ]
+then
+    status "Generating hardware configuration."
+    sudo nixos-generate-config
+fi
+
 sudoo cp -v /etc/nixos/hardware-configuration.nix "./profiles/$PROFILE/hardware-configuration.nix"
 
 # Rebuild system
