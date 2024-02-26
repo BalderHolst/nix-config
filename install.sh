@@ -15,11 +15,31 @@ error () {
     echo -e "\u001b[31;1m[ERROR]: ""$@""\u001b[0m"
 }
 
+SSH=0
+
+if [ "$1" = "--ssh" ]
+then
+    status "Enabled SSH cloning."
+    SSH=1
+fi
+
+clone_github () {
+    user="$1"
+    repo="$2"
+    dir="$3"
+    if [ $SSH = 1 ]
+    then
+        nix-shell -p git --command "git clone git@github.com:$user/$repo '$dir'"
+    else
+        nix-shell -p git --command "git clone https://github.com/$user/$repo '$dir'"
+    fi
+}
+
 # ============= Clone Configuration =============
 if [ ! -d "$CONFIG_DIR" ]
 then
     status "Cloning configuration."
-    nix-shell -p git --command "git clone git@github.com:BalderHolst/nix-config '$CONFIG_DIR'"
+    clone_github BalderHolst nix-config "$CONFIG_DIR"
 fi
 
 # ============= Submodules =============
@@ -63,7 +83,7 @@ nvim_dir="$HOME/.config/nvim"
 if [ ! -d "$nvim_dir" ]
 then
     status "Getting Neovim configuration."
-    nix-shell -p git --command "git clone 'git@github.com:BalderHolst/neovim-config' '$nvim_dir'"
+    clone_github BalderHolst neovim-config "$nvim_dir"
 else
     warning "Could not install NeoVim config, as one already exists."
 fi
