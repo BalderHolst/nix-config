@@ -31,8 +31,8 @@ in
                 gaa = "git add .";
                 gca = "git add . && git commit";
 
-                uhome = "home-manager switch --flake ${config.zsh.configDir}";
-                uos = "sudo nixos-rebuild switch --flake ${config.zsh.configDir}#system && home-manager switch --flake ${config.zsh.configDir}";
+                uhome = "home-manager switch --flake ${config.zsh.configDir}#$(hostname)";
+                uos = "sudo nixos-rebuild switch --flake ${config.zsh.configDir}#$(hostname) && home-manager switch --flake ${config.zsh.configDir}#$(hostname)";
 
                 hdmi-dublicate = "xrandr --output DisplayPort-0 --auto --same-as eDP";
             };
