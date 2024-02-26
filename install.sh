@@ -67,7 +67,7 @@ then
     sudo nixos-generate-config
 fi
 
-sudoo cp -v /etc/nixos/hardware-configuration.nix "./profiles/$PROFILE/hardware-configuration.nix"
+sudoo cp -v /etc/nixos/hardware-configuration.nix "$CONFIG_DIR/profiles/$PROFILE/hardware-configuration.nix"
 
 # Rebuild system
 sudoo nixos-rebuild switch --flake "$CONFIG_DIR"#$PROFILE || {
