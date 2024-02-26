@@ -49,24 +49,25 @@ PROFILE="$( nix-shell -p fzf --command "ls $CONFIG_DIR/profiles | fzf --prompt='
 status "Chose profile: $PROFILE";
 
 # ============= Install System Config =============
-status "Installing system configuration..."
+status "Building system configuration..."
 warning "Script needs sudo permissions to perform system installation. PLEASE VERIFY THAT THIS SCRIPT IS NOT MALICIOUS."
 
 sudo cp -v /etc/nixos/hardware-configuration.nix "$CONFIG_DIR/profiles/$PROFILE/hardware-configuration.nix"
 
 # Rebuild system
-nix-shell -p git --command "sudo nixos-rebuild switch --flake '$CONFIG_DIR'#$PROFILE" || {
-    error "\nErrored while building system configuration."
+nix-shell -p git --command "sudo nixos-rebuild boot --flake '$CONFIG_DIR'#$PROFILE" || {
+    error "\nErrored while building SYSTEM configuration."
     exit 1
 }
 
 # ============= Setup User =============
 
-status "Installing user configuration..."
-nix run home-manager/master \
-    --extra-experimental-features nix-command \
-    --extra-experimental-features flakes -- \
-    switch --flake $CONFIG_DIR#$PROFILE;
+status "Building user configuration..."
+home_manager_cmd="nix run home-manager/master --extra-experimental-features nix-command --extra-experimental-features flakes -- switch --flake $CONFIG_DIR#$PROFILE;"
+nix-shell -p git --command "$home_manager_cmd" || {
+    error "\nErrored while building USER configuration."
+    exit 1
+}
 
 # ============= Neovim =============
 status "Installing Neovim configuration..."
@@ -80,4 +81,4 @@ else
     warning "Could not install NeoVim config, as one already exists."
 fi
 
-status "DONE!"
+status "DONE - Reboot to activate new configuration."
