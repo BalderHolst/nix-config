@@ -62,6 +62,7 @@
                     pkgs = pkgs-stable;
                     modules = [ ./profiles/${profile}/configuration.nix ];
                     specialArgs = {
+                        hostname = profile;
                         inherit username;
                         inherit pkgs-unstable;
                     };
@@ -77,6 +78,7 @@
                 pkgs = pkgs-unstable;
                 modules = [ ./profiles/${profile}/home.nix ];
                 extraSpecialArgs = {
+                    hostname = profile;
                     inherit inputs;
                     inherit username;
                     inherit profile;

@@ -3,11 +3,8 @@
 # your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, username, pkgs, pkgs-unstable, rustPlatform, ... }:
+{ hostname, config, username, pkgs, pkgs-unstable, rustPlatform, ... }:
 
-let
-    hostname = "goldfish";
-in 
 {
     imports =
         [ # Include the results of the hardware scan.
