@@ -1,28 +1,22 @@
 #!/usr/bin/env nix-shell
-#!nix-shell -i bash -p git home-manager
-
-stcolor="\u001b[34;1m"
-scolor="\u001b[32;1m"
-ecolor="\u001b[31;1m"
-wcolor="\u001b[33;1m"
-rcolor="\u001b[0m"
+#!nix-shell -i bash -p git home-manager fzf
 
 # Set the config directory
 CONFIG_DIR="$HOME/.nix-config"
 
 status () {
-    echo -e "$stcolor""$@""$rcolor"
+    echo -e "\u001b[34;1m""$@""\u001b[0m"
 }
 
 warning () {
-    echo -e "$wcolor[WARNING]: ""$@""$rcolor"
+    echo -e "\u001b[33;1m[WARNING]: ""$@""\u001b[0m"
 }
 
 error () {
-    echo -e "$ecolor[ERROR]: ""$@""$rcolor"
+    echo -e "\u001b[31;1m[ERROR]: ""$@""\u001b[0m"
 }
 
-# Clone config if it does not exist.
+# ============= Clone Configuration =============
 if [ ! -d "$CONFIG_DIR" ]
 then
     status "Cloning configuration."
@@ -33,17 +27,38 @@ fi
 status "Checking out submodules."
 git -C "$CONFIG_DIR" submodule update --init
 
+# ============= Select Profile =============
+PROFILE="$(ls ./profiles | fzf --prompt='Profile: ')"
+
+[[ $PROFILE = "" ]] && {
+    error "No profile chosen."
+    exit 1
+}
+
+status "Chose profile: $PROFILE"; sleep 0.5
+
 # ============= Install System Config =============
 status "Installing system configuration..."
 warning "Script needs sudo permissions to perform system installation. PLEASE VERIFY THAT THIS SCRIPT IS NOT MALICIOUS."
 
+if [ ! -e "/etc/nixos/hardware-configuration.nix" ]
+then
+    sudo nixos-generate-config --show-hardware-config > /etc/nixos/hardware-configuration.nix
+fi
+
 # Rebuild system
-sudo nixos-rebuild switch --flake "$CONFIG_DIR"#system || exit 1
+sudo nixos-rebuild switch --flake "$CONFIG_DIR"#$PROFILE || {
+    error "\nErrored while building system configuration."
+    exit 1
+}
 
 # ============= Setup User =============
 
 status "Installing user configuration..."
-home-manager switch --flake "$CONFIG_DIR" || exit 1
+nix run home-manager/master \
+    --extra-experimental-features nix-command \
+    --extra-experimental-features flakes -- \
+    switch --flake $CONFIG_DIR#$PROFILE;
 
 # ============= Neovim =============
 status "Installing Neovim configuration..."

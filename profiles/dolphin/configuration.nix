@@ -38,6 +38,7 @@
         { local = "${home}/Documents/job";          remote = "private/job";         }
         { local = "${home}/Documents/uni/lectures"; remote = "uni";                 }
     ];
+    nas.remote-backup-dir = "backups/manual";
 
     # Cloud drives
     fileSystems = 
