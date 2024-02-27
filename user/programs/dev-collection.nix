@@ -1,13 +1,16 @@
 { pkgs, ... }:
 {
+
+    imports = [
+        ./vscode.nix
+    ];
+
     home.packages = with pkgs; [
         zsh # better bash
         fish # shell for the 90s!
         kitty # terminal emulator
         gf # gdb fontend
         lazygit # git tui
-
-        vscodium
 
         gnumake # make
         cmakeMinimal # cmake
