@@ -36,6 +36,7 @@
 
     options.nas.remote-backup-dir = lib.mkOption {
         type = lib.types.str;
+        default = "";
     };
 
     options.nas.backup-exclude = lib.mkOption {
@@ -54,7 +55,7 @@
             name = "backup-home";
             script = name;
 
-            src = pkgs.writeShellScriptBin script ''
+            src =  pkgs.writeShellScriptBin script (if config.nas.remote-backup-dir != "" then ''
 
             ${ 
             if config.nas.always-sync then "" else ''
@@ -86,7 +87,9 @@
 
             echo "Done!"
 
-            '';
+            '' else ''
+            echo "Option 'nas.remote-backup-dir' not specified in nix configuration."
+            '');
 
             installPhase = ''
             mkdir -p $out/bin
