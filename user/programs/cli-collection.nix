@@ -14,6 +14,7 @@
         blatex # my latex document framework
         fzf # fuzzy finder
         graphviz # create graphs!
+        nurl # generate nix expressions from urls
     ];
 
     home.sessionVariables = {
