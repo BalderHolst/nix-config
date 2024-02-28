@@ -43,6 +43,9 @@ in
         })
     ];
 
+    config.home.packages = [
+        pkgs.rofi
+    ];
 
     config.home.file = {
         ".config/hypr/hyprland.conf".text = ''
