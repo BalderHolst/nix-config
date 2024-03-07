@@ -11,6 +11,7 @@
         kitty # terminal emulator
         gf # gdb fontend
         lazygit # git tui
+        nix-index # search for files in nixpkgs
 
         gnumake # make
         cmakeMinimal # cmake
