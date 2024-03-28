@@ -15,6 +15,8 @@
         fzf # fuzzy finder
         graphviz # create graphs!
         nurl # generate nix expressions from urls
+        usbutils # list usb devices
+        du-dust
     ];
 
     home.sessionVariables = {

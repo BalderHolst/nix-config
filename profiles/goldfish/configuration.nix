@@ -21,6 +21,8 @@
     networking.hostName = hostname;
     nixpkgs.config.allowUnfree = true;
 
+    services.logind.extraConfig = "RuntimeDirectorySize=4G";
+
     # Sync with NAS
     nas.network-ssid = "TP-Link_96CC";
     nas.rclone-device = "NAS";

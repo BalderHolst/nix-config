@@ -28,7 +28,6 @@ in
         # Tivaware
         gcc-arm-embedded-9 # toolchain
         (pkgs.callPackage ../../pkgs/lm4flash.nix { }) # flashing tool
-        glibc
 
         # FPGA (https://github.com/YosysHQ/oss-cad-suite-build?tab=readme-ov-file)
         (pkgs.callPackage ../../pkgs/oss-cad-suite.nix { }) # flashing tool

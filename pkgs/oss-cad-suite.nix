@@ -1,16 +1,8 @@
 { pkgs ? import <nixpkgs> { } }:
 let 
-    yosys-with-ghdl = pkgs.stdenv.mkDerivation {
-        name = "yosys-with-ghdl";
-        src = pkgs.yosys;
-
-        installPhase = ''
-            mkdir -p $out/bin
-            ln -sv ${pkgs.yosys}/bin/yosys $out/bin/yosys
-            mkdir -p $out/share/yosys/plugins
-            cp -rfv ${pkgs.yosys-ghdl}/share/yosys/plugins/ghdl.so $out/share/yosys/plugins/ghdl.so
-            '';
-    };
+    yosys-with-ghdl = pkgs.writeShellScriptBin "yosys" ''
+        exec ${pkgs.yosys}/bin/yosys -m ${pkgs.yosys-ghdl}/share/yosys/plugins/ghdl.so "$@"
+    '';
 
     bin-programs = with pkgs; [
         yosys-with-ghdl
@@ -34,6 +26,7 @@ let
         nextpnr
         nextpnrWithGui
         icestorm
+        python311Packages.apycula
         trellis        
         # Project Oxide
         # Project Apicula 

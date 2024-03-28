@@ -92,6 +92,12 @@ in
             '';
         };
 
+        programs.direnv = {
+            enable = true;
+            enableZshIntegration = true;
+            nix-direnv.enable = true;
+        };
+
         home.file = {
             ".p10k.zsh".source = ../configs/p10k.zsh;
         };
