@@ -14,6 +14,7 @@
             ../../system/hyprland.nix
             ../../system/sddm.nix
             ../../system/steam.nix
+            ../../system/docker.nix
         ];
 
     networking.hostName = hostname; # Define your hostname.
