@@ -1,20 +1,15 @@
-{ pkgs ? import <nixpkgs> { } }:
+{ pkgs ? import <nixpkgs> { }, name ? "clangd", include_paths ? [] }:
 
 let
-    name = "clangd-wrapped";
-    src = pkgs.clang-tools;
-
     inherit (pkgs) lib stdenv;
 
-    include_paths = [
-        (pkgs.glibc.dev + "/include")
-    ];
+    src = pkgs.clang-tools;
 
     # Create a directory with a 'compile_flags.txt' file to be passed into clangd.
     compile_flags = stdenv.mkDerivation {
         name = "compile_flags";
         src = ./.;
-        
+
         buildPhase = ""; # No build phase needed.
 
         installPhase = ''
@@ -40,7 +35,7 @@ stdenv.mkDerivation rec {
 
     installPhase = ''
         mkdir -p $out/bin
-        cp ${script}/bin/clangd $out/bin/clangd
+        cp ${script}/bin/clangd "$out/bin/${name}"
     '';
 }
 

@@ -27,7 +27,14 @@
         nodejs # local javascript runtime, mainly for pyright lsp
         nodePackages_latest.pyright # python lsp
         lua-language-server # lsp for lua
-        (callPackage ../../pkgs/clangd.nix { })
+        (callPackage ../../pkgs/clangd.nix { # clangd lsp with standard c library
+            name = "clangd";
+            include_paths = [ (pkgs.glibc.dev + "/include") ];
+        })
+        (callPackage ../../pkgs/clangd.nix { # clangd lsp with libcxx c++ library
+            name = "clangd++";
+            include_paths = [ (pkgs.libcxx + "/include/c++/v1") ];
+        })
         (callPackage ../../pkgs/vhdl_ls.nix { })
     ];
 }
