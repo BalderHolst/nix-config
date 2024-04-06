@@ -36,6 +36,7 @@ rec {
 
     firefox.username = username;
 
+    neovim.neo-keymaps = true;
 
     gtk.iconTheme = {
         package = pkgs.papirus-icon-theme;
