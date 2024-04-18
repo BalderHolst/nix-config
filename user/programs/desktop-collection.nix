@@ -27,6 +27,7 @@
         discord # communication
         transmission-qt # bittorrent client for file shareing
         obsidian # note taking
+        krita
     ];
 
     home.file = {

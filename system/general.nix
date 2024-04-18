@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, username, configDir, ... }:
 {
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users."${username}" = {
@@ -70,13 +70,13 @@
     # Locate
     services.locate = {
         enable = true;
-        locate = pkgs.mlocate;
+        package = pkgs.mlocate;
         interval = "hourly";
         localuser = null;
     };
 
     fonts.fontDir.enable = true;
-    fonts.fonts = with pkgs; [
+    fonts.packages = with pkgs; [
         nerdfonts
         font-awesome
     ];

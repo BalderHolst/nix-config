@@ -1,6 +1,7 @@
 { pkgs, config, lib, ... }:
 let
   exa = pkgs.eza + "/bin/eza";
+  nh = pkgs.nh + "/bin/nh";
 in 
 {
     options.zsh.configDir = lib.mkOption {
@@ -14,7 +15,7 @@ in
             localVariables = {
                 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true;
             };
-            shellAliases = {
+            shellAliases = rec {
 
                 ll = "${exa} -l";
                 lo = "${exa}";
@@ -31,8 +32,8 @@ in
                 gaa = "git add .";
                 gca = "git add . && git commit";
 
-                uhome = "home-manager switch --flake ${config.zsh.configDir}#$(hostname)";
-                uos = "sudo nixos-rebuild switch --flake ${config.zsh.configDir}#$(hostname) && home-manager switch --flake ${config.zsh.configDir}#$(hostname)";
+                uhome = "nh home switch ${config.zsh.configDir} --configuration $(hostname)";
+                uos = "${nh} os switch ${config.zsh.configDir} -H $(hostname) && ${uhome}";
 
                 hdmi-dublicate = "xrandr --output DisplayPort-0 --auto --same-as eDP";
             };

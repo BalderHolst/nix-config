@@ -8,10 +8,6 @@ let
     size = n: builtins.toString (builtins.floor n*ui_scale);
 in
 rec {
-    nixpkgs.config.allowUnfree = true;
-    nixpkgs.config.allowUnfreePredicate = (_: true);
-    nixpkgs.config.permittedInsecurePackages = [ "electron-25.9.0" ];
-
     home.homeDirectory = "/home/${username}";
     home.username = username;
 

@@ -14,7 +14,7 @@ let
 in
 pkgs.buildGoModule {
     inherit src name;
-    vendorSha256 = "sha256-budC8psvTtfVi3kYOaJ+dy/9H11ekJVkXMmeV9RhXVU=";
+    vendorHash = "sha256-budC8psvTtfVi3kYOaJ+dy/9H11ekJVkXMmeV9RhXVU=";
     doCheck = false;
 }
 

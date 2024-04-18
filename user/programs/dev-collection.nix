@@ -19,7 +19,6 @@
 
         gf # gdb fontend
         gdb # debugger
-        lldb_9 # another debugger
 
         python311 # Python interpreter
         python311Packages.bpython
@@ -29,6 +28,7 @@
         rustfmt # rust formatter
         clippy # rust linter
         cargo-expand # Expand macroes
+        sqlitebrowser # sqlite browser
     ];
 
     home.file = {

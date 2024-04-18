@@ -47,6 +47,7 @@ let
         verilog
         python311Packages.cocotb
         gtkwave
+        netlistsvg
     ];
 in
 pkgs.stdenv.mkDerivation {

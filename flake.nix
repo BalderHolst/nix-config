@@ -20,6 +20,9 @@
         pyprland = prev.callPackage pkgs/pyprland.nix { };
         matlab-icon = prev.callPackage pkgs/matlab-icon.nix { inherit configDir; };
         mathematica-icon = prev.callPackage pkgs/mathematica-icon.nix { mathematicaPath = "${configDir}/impure/mathematica/result/bin/mathematica"; };
+        waybar = prev.waybar.overrideAttrs (oldAttrs: {
+            mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
+        });
     });
 
     # configure pkgs
@@ -38,9 +41,7 @@
             allowUnfree = true;
             allowUnfreePredicate = (_: true);
         };
-        overlays = [
-            overlay
-        ];
+        overlays = [ overlay ];
     };
 
     # configure lib
@@ -48,7 +49,6 @@
 
     in
     {
-
         overlays.default = overlay;
 
         # Generate system configurations
@@ -63,6 +63,7 @@
                         hostname = profile;
                         inherit username;
                         inherit pkgs-unstable;
+                        inherit configDir;
                     };
                 };
             }) profiles
@@ -90,7 +91,7 @@
 
     inputs = rec {
 
-        nixpkgs-stable.url = "github:NixOS/nixpkgs/23.05";
+        nixpkgs-stable.url = "github:NixOS/nixpkgs/23.11";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
         home-manager = {

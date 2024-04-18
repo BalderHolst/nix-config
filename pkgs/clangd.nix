@@ -17,7 +17,7 @@ let
             cp ${
                 # Generate a 'compile_flags.txt' file with the include paths.
                 pkgs.writeText "compile_flags.txt"
-                (builtins.concatStringsSep " " (builtins.map (x: "-isystem ${x}") include_paths))
+                (builtins.concatStringsSep " " (builtins.map (x: "${x}") include_paths))
             } $out/compile_flags.txt
         '';
     };

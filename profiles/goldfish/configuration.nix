@@ -19,7 +19,6 @@
         ];
 
     networking.hostName = hostname;
-    nixpkgs.config.allowUnfree = true;
 
     services.logind.extraConfig = "RuntimeDirectorySize=4G";
 

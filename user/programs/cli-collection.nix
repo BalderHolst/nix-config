@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, configDir, ... }:
 {
     home.packages = with pkgs; [
         neofetch # fancy system info
@@ -17,10 +17,12 @@
         nurl # generate nix expressions from urls
         usbutils # list usb devices
         du-dust
+        nh
     ];
 
     home.sessionVariables = {
         PAGER = "bat";
+        FLAKE = configDir;
     };
 
     home.file = {

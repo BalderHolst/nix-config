@@ -18,7 +18,6 @@
         ];
 
     networking.hostName = hostname; # Define your hostname.
-    nixpkgs.config.allowUnfree = true;
     system.stateVersion = "23.05"; # Did you read the comment?
 
     services.xserver.enable = true;

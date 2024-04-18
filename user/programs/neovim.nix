@@ -29,15 +29,15 @@
 
         home.packages = with pkgs; [
             vscode-extensions.vadimcn.vscode-lldb # lldb vscode extension used in neovim
-                rust-analyzer # lsp for rust
-                nodejs # local javascript runtime, mainly for pyright lsp
-                nodePackages_latest.pyright # python lsp
-                lua-language-server # lsp for lua
-                (callPackage ../../pkgs/clangd.nix { # clangd lsp with standard c library
-                    name = "clangd";
-                    include_paths = [ (pkgs.glibc.dev + "/include") ];
-                })
-                (callPackage ../../pkgs/vhdl_ls.nix { })
+            rust-analyzer # lsp for rust
+            nodejs # local javascript runtime, mainly for pyright lsp
+            nodePackages_latest.pyright # python lsp
+            lua-language-server # lsp for lua
+            (callPackage ../../pkgs/clangd.nix { # clangd lsp with standard c library
+                name = "clangd";
+                include_paths = [ (pkgs.glibc.dev + "/include") ];
+            })
+            (callPackage ../../pkgs/vhdl_ls.nix { })
         ];
 
         home.file.".config/nvim/plugin/init.lua".text = (if config.neovim.neo-keymaps then ''

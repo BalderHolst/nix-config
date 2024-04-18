@@ -34,15 +34,6 @@ in
        ];
     };
 
-    # Enable experimental waybar features, to capture use the `wlr` module.
-    config.nixpkgs.overlays = [
-        (self: super: {
-            waybar = super.waybar.overrideAttrs (oldAttrs: {
-                mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
-            });
-        })
-    ];
-
     config.home.packages = [
         pkgs.rofi
     ];
@@ -118,11 +109,13 @@ in
         decoration {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
 
+            blur {
+                enabled = yes
+                size = 3
+                passes = 1
+            }
+
             rounding = 7
-            blur = yes
-            blur_size = 3
-            blur_passes = 1
-            blur_new_optimizations = on
 
             drop_shadow = yes
             shadow_range = 4
@@ -341,12 +334,12 @@ in
 
         "layer": "top",
 
-        "modules-left": ["wlr/workspaces", "hyprland/window"],
+        "modules-left": ["hyprland/workspaces", "hyprland/window"],
         "modules-center": [],
         "modules-right": ["cpu", "memory", "pulseaudio", "network", "battery", "clock", "tray"],
 
         // Modules configuration
-        "wlr/workspaces": {
+        "hyprland/workspaces": {
           "format": "{name}",
           "tooltip": false,
           "all-outputs": true,

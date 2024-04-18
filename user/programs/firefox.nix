@@ -103,6 +103,19 @@
                     };
                     definedAliases = [ "!y" "!you" "!youtube" ];
                 };
+                "PriceRunner" = {
+                    urls = [{
+                        template= "https://www.pricerunner.dk/results";
+                        params = [
+                            { name = "q"; value = "{searchTerms}"; }
+                        ];
+                    }];
+                    icon = builtins.fetchurl {
+                      url = "https://www.pricerunner.dk/images/i/pricerunner_favicon_black.ico";
+                      sha256 = "sha256:1600brn85z2qigss6s9xhy2fyhdxqjiq3paphls1mx8l7a4jjp59";
+                    };
+                    definedAliases = [ "!pr" "!price" "!pricerunner" ];
+                };
             };
             search.force = true;
             extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
