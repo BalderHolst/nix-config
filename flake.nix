@@ -25,8 +25,7 @@
         });
     });
 
-    # configure pkgs
-    pkgs-unstable = import nixpkgs-unstable {
+    pkgs-stable = import nixpkgs-stable {
         inherit system;
         config = {
             allowUnfree = true;
@@ -35,13 +34,19 @@
         overlays = [ overlay ];
     };
 
-    pkgs-stable = import nixpkgs-stable {
+    # Overlay to fix unstable packages
+    unstable-overlay = (final: prev: {
+        firefox = pkgs-stable.firefox;
+    });
+
+    # configure pkgs
+    pkgs-unstable = import nixpkgs-unstable {
         inherit system;
         config = {
             allowUnfree = true;
             allowUnfreePredicate = (_: true);
         };
-        overlays = [ overlay ];
+        overlays = [ overlay unstable-overlay ];
     };
 
     # configure lib
