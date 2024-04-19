@@ -1,4 +1,19 @@
-{ inputs, pkgs, config, lib, ... }:
+{ inputs, pkgs, config, lib, system, ... }:
+let
+    extra-extensions.rys = inputs.firefox-addons.lib."x86_64-linux".buildFirefoxXpiAddon {
+        pname = "RYS — Remove YouTube Suggestions";
+        version = "4.3.54";
+        addonId = "c7ad48bb-c7f5-42ec-8882-3b65f955c225";
+        url = "https://addons.mozilla.org/firefox/downloads/file/4246711/remove_youtube_s_suggestions-4.3.54.xpi";
+        sha256 = "sha256-1OqTBaa+9yul7Py3DgZYl14PI61mRAndrf88l7HsX84=";
+        meta = with lib; {
+            homepage = "https://prod.outgoing.prod.webservices.mozgcp.net/v1/f0c080567cceb13a165ec97ae4e7b0444fad901efa22634c1f89a5ae3b23f94d/https%3A//github.com/lawrencehook/remove-youtube-suggestions";
+            description = "Stop the YouTube rabbit hole. Customize YouTube's user interface to be less engaging.";
+            license = licenses.mpl20;
+            platforms = platforms.all;
+          };
+    };
+in
 {
 
     options.firefox.username = lib.mkOption { type = lib.types.str; };
@@ -118,9 +133,10 @@
                 };
             };
             search.force = true;
-            extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-                ublock-origin
-                vimium
+            extensions = [
+                inputs.firefox-addons.packages."x86_64-linux".ublock-origin
+                # vimium
+                extra-extensions.rys
             ];
         };
     };

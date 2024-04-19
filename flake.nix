@@ -1,9 +1,9 @@
 {
     description = "Balder's NixOs Configuration Flake";
 
-
     outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }:
     let
+
     system = "x86_64-linux";
     username = "balder";
     email = "balderwh@gmail.com";
@@ -87,6 +87,7 @@
                     inherit username;
                     inherit email;
                     inherit configDir;
+                    inherit system;
                 };
             };
             }) profiles

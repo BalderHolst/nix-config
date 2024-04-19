@@ -1,4 +1,4 @@
-{ username, email, config, inputs, pkgs, configDir, ... }:
+{ username, email, config, inputs, pkgs, configDir, system, ... }:
 
 let
     swap_escape = true;
