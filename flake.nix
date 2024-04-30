@@ -1,7 +1,7 @@
 {
     description = "Balder's NixOs Configuration Flake";
 
-    outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, home-manager, ... }:
+    outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, home-manager, rust-overlay, ... }:
     let
 
     system = "x86_64-linux";
@@ -46,7 +46,7 @@
             allowUnfree = true;
             allowUnfreePredicate = (_: true);
         };
-        overlays = [ overlay unstable-overlay ];
+        overlays = [ overlay rust-overlay.overlays.default unstable-overlay ];
     };
 
     # configure lib
@@ -116,5 +116,7 @@
             url = "github:horriblename/hyprgrass";
             inputs.hyprland.follows = "hyprland"; # IMPORTANT
         };
+
+        rust-overlay.url = "github:oxalica/rust-overlay";
     };
 }

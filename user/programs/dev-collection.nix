@@ -1,4 +1,14 @@
 { pkgs, ... }:
+let
+    # rust-toolchain = pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
+    #     extensions = [ "rust-src" ];
+    #     targets = [ "arm-unknown-linux-gnueabihf" ];
+    # });
+    rust-toolchain = pkgs.rust-bin.stable.latest.default.override {
+        extensions = [ "rust-src" ];
+        targets = [ "arm-unknown-linux-gnueabihf" ];
+    };
+in
 {
 
     imports = [
@@ -24,10 +34,7 @@
         python311Packages.bpython
 
         rustc # the rust compiler
-        cargo # rust build toolchain
-        rustfmt # rust formatter
-        clippy # rust linter
-        cargo-expand # Expand macroes
+        rust-toolchain # rust build toolchain
         sqlitebrowser # sqlite browser
     ];
 
