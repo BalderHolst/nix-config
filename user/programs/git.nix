@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ pkgs, lib, config, ... }:
 {
     options.git.userName = lib.mkOption {
         type = lib.types.str;
@@ -15,6 +15,7 @@
             l = "log --oneline --graph";
             pp = "!git pull && git push";
             ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi";
+            meld = "!m() { ${pkgs.meld}/bin/meld $(git rev-parse --show-toplevel); }; m";
             b = "blame -w -C -C -C";
         };
         diff-so-fancy.enable = true;
