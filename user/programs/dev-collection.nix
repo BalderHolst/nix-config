@@ -34,6 +34,7 @@ in
         python311Packages.bpython
 
         rustc # the rust compiler
+        cargo-expand
         rust-toolchain # rust build toolchain
         sqlitebrowser # sqlite browser
     ];
