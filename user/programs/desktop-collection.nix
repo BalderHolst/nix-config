@@ -28,6 +28,7 @@
         transmission-qt # bittorrent client for file shareing
         obsidian # note taking
         krita
+        gnome.eog
     ];
 
     home.file = {
