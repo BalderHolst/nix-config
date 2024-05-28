@@ -357,7 +357,7 @@ in
             "format": "{}",
             "max-length": 40,
             "interval": 36000,
-            "exec": "date +\"%d-%m-%Y\" ",
+            "exec": "date +\"%d-%m-%Y \"",
         },
         "cpu": {
             "format": "{usage}% ",
