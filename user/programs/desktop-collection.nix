@@ -29,6 +29,7 @@
         obsidian # note taking
         krita
         gnome.eog
+        musescore
     ];
 
     home.file = {
