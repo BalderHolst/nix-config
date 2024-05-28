@@ -328,15 +328,15 @@ in
     # Waybar config
     ".config/waybar/config".text = ''
     {
-        "height": ${config.hyprland.size 24},
-        "spacing": ${config.hyprland.size 10},
+        "height": 24,
+        "spacing": 10,
         // The begining of this file is filled in by home-manager
 
         "layer": "top",
 
         "modules-left": ["hyprland/workspaces", "hyprland/window"],
-        "modules-center": [],
-        "modules-right": ["cpu", "memory", "pulseaudio", "network", "battery", "clock", "tray"],
+        "modules-center": ["clock"],
+        "modules-right": ["cpu", "memory", "pulseaudio", "network", "battery", "custom/date", "tray"],
 
         // Modules configuration
         "hyprland/workspaces": {
@@ -349,9 +349,15 @@ in
             "spacing": 10
         },
         "clock": {
+            "format": "{:%H:%M}",
             "timezone": "Europe/Berlin",
             "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-            "format-alt": "{:%d/%m-%Y}"
+        },
+        "custom/date": {
+            "format": "{}",
+            "max-length": 40,
+            "interval": 36000,
+            "exec": "date +\"%d-%m-%Y\" ",
         },
         "cpu": {
             "format": "{usage}% ",
@@ -386,7 +392,7 @@ in
             "tooltip-format": "{ifname} via {gwaddr}  ",
             "format-linked": "{ifname} (No IP)  ",
             "format-disconnected": "disconnected",
-            "on-click": "${nm-connection-editor}"
+            "on-click": "/nix/store/wz5ys3v7pgnrddlycgiwmgskwjr30zji-network-manager-applet-1.36.0/bin/nm-connection-editor"
         },
         "pulseaudio": {
             "scroll-step": 1, // %, can be a float
@@ -521,7 +527,8 @@ in
         }
 
         #clock {
-            color: @primary;
+            background-color: @secondary;
+            color: @foreground;
         }
 
         #battery {
