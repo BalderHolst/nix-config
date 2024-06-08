@@ -74,16 +74,16 @@ in
             color7 #a9b1d6
 
             # bright
-            color8 #414868
+            color8 #858585
             color9 #f7768e
             color10 #9ece6a
             color11 #e0af68
             color12 #7aa2f7
-            color13 #bb9af7
+            color13 #FF6AC1
             color14 #7dcfff
             color15 #c0caf5
 
-            # extendedolors
+            # extended colors
             color16 #ff9e64
             color17 #db4b4b
         '';

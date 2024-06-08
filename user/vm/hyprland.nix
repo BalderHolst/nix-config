@@ -183,7 +183,7 @@ in
         bind = $mainMod, V, togglefloating, 
         bind = $mainMod, P, exec, ${launcher}
         bind = $mainMod, B, exec, ${browser}
-        bind = $mainMod SHIFT, S, exec, ${grim} -g "$(${slurp})" - | ${convert} - -shave 1x1 PNG:- | ${swappy} -f -
+        bind = $mainMod SHIFT, S, exec, ${grim} -g "$(${slurp})" - | ${convert} - -shave 3x3 PNG:- | ${swappy} -f -
         bind = $mainMod SHIFT, E, exec, ${paste} | ${swappy} -f -
         bind = $mainMod SHIFT, P, exec, eval "~/.nix-config/user/utils/passmenu" # TODO nixify
         bind=SUPER, F, fullscreen
