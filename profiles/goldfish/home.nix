@@ -12,18 +12,18 @@ rec {
     home.username = username;
 
     imports = [
-        ../../user/programs/git.nix
-        ../../user/programs/neovim.nix
-        ../../user/programs/steam.nix
-        ../../user/programs/pass.nix
-        ../../user/programs/zsh.nix
-        ../../user/programs/cli-collection.nix
-        ../../user/programs/dev-collection.nix
-        ../../user/programs/desktop-collection.nix
-        ../../user/programs/school-collection.nix
+        ../../user/modules/git.nix
+        ../../user/modules/neovim.nix
+        ../../user/modules/steam.nix
+        ../../user/modules/pass.nix
+        ../../user/modules/zsh.nix
+        ../../user/modules/cli-collection.nix
+        ../../user/modules/development
+        ../../user/modules/desktop-collection.nix
+        ../../user/modules/school-collection.nix
         ../../user/vm/hyprland.nix
-        ../../user/programs/firefox.nix
-        ../../user/programs/embedded-collection.nix
+        ../../user/modules/firefox.nix
+        ../../user/modules/embedded-collection.nix
     ];
 
     git.userName = "BalderHolst";

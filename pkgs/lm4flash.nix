@@ -5,7 +5,6 @@ let
 
     inherit (pkgs) stdenv;
 
-    # The path to the npm project
     src = pkgs.fetchFromGitHub {
             owner = "utzig";
             repo = "lm4tools";
@@ -24,7 +23,6 @@ stdenv.mkDerivation rec {
     inherit src name;
 
     buildInputs = [
-        pkgs.libusb1
         pkgs.gccgo13
         ];
 

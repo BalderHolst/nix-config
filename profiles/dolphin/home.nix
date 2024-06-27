@@ -12,15 +12,15 @@ rec {
     home.username = username;
 
     imports = [
-        ../../user/programs/git.nix
-        ../../user/programs/neovim.nix
-        ../../user/programs/pass.nix
-        ../../user/programs/zsh.nix
-        ../../user/programs/cli-collection.nix
-        ../../user/programs/dev-collection.nix
-        ../../user/programs/desktop-collection.nix
+        ../../user/modules/git.nix
+        ../../user/modules/neovim.nix
+        ../../user/modules/pass.nix
+        ../../user/modules/zsh.nix
+        ../../user/modules/cli-collection.nix
+        ../../user/modules/development
+        ../../user/modules/desktop-collection.nix
         ../../user/vm/hyprland.nix
-        ../../user/programs/firefox.nix
+        ../../user/modules/firefox.nix
     ];
 
     git.userName = "BalderHolst";

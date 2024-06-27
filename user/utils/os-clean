@@ -7,3 +7,6 @@ sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-tha
 
 echo -e "\n===== Cleaning up nix store ====="
 nix store gc -v
+
+echo -e "\n===== Optimizing nix store ====="
+nix-store --optimise

@@ -1,43 +1,25 @@
 { pkgs, ... }:
-let
-    # rust-toolchain = pkgs.rust-bin.selectLatestNightlyWith (toolchain: toolchain.default.override {
-    #     extensions = [ "rust-src" ];
-    #     targets = [ "arm-unknown-linux-gnueabihf" ];
-    # });
-    rust-toolchain = pkgs.rust-bin.stable.latest.default.override {
-        extensions = [ "rust-src" ];
-        targets = [ "arm-unknown-linux-gnueabihf" ];
-    };
-in
 {
 
     imports = [
-        ./vscode.nix
+        ./languages/c.nix
+        ./languages/python.nix
+        ./languages/rust.nix
     ];
 
     home.packages = with pkgs; [
-        zsh # better bash
-        fish # shell for the 90s!
-        kitty # terminal emulator
-        gf # gdb fontend
-        lazygit # git tui
+        zsh       # better bash
+        kitty     # terminal emulator
+        gnumake   # make
         nix-index # search for files in nixpkgs
-
-        gnumake # make
-        cmakeMinimal # cmake
-        gnat13 # GNU compilers 
-
-        gf # gdb fontend
-        gdb # debugger
-
-        python311 # Python interpreter
-        python311Packages.bpython
-
-        rustc # the rust compiler
-        cargo-expand
-        rust-toolchain # rust build toolchain
-        sqlitebrowser # sqlite browser
+        gdb       # THE debugger
     ];
+
+    lang = {
+        c.enable = true;
+        python.enable = true;
+        rust.enable = true;
+    };
 
     home.file = {
         ".config/kitty/kitty.conf".text = ''
