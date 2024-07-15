@@ -2,9 +2,8 @@
 {
 
     imports = [
-        ./languages/c.nix
-        ./languages/python.nix
-        ./languages/rust.nix
+        ./languages
+        ./embedded
     ];
 
     home.packages = with pkgs; [
@@ -14,12 +13,6 @@
         nix-index # search for files in nixpkgs
         gdb       # THE debugger
     ];
-
-    lang = {
-        c.enable = true;
-        python.enable = true;
-        rust.enable = true;
-    };
 
     home.file = {
         ".config/kitty/kitty.conf".text = ''

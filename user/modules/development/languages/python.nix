@@ -5,7 +5,7 @@ in
 {
 
     options.lang.python = {
-        enable = lib.mkEnableOption "Python";
+        enable = lib.mkEnableOption "Python language support";
     };
 
     config = lib.mkIf cfg.enable {

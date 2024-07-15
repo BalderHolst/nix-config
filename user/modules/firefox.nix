@@ -64,7 +64,20 @@ in
                       url = "https://crates.io/assets/cargo.png";
                       sha256 = "sha256:1x254p99awa3jf1n617dn997aw44qv41jkfinhfdg9d3qblhkkr6";
                     };
-                    definedAliases = [ "!rust" "!cargo" "!crate" "!crates" ];
+                    definedAliases = [ "!cargo" "!crate" "!crates" ];
+                };
+                "rust-lang-std" = {
+                    urls = [{
+                        template= "https://doc.rust-lang.org/std/";
+                        icon = builtins.fetchurl {
+                            url = "https://doc.rust-lang.org/static.files/rust-logo-151179464ae7ed46.svg";
+                            sha256 = "sha256:18kcl3libfj6xjxd6i2an487n70jp3qrk0hbc4xfqkfk0bm4k5cs";
+                        };
+                        params = [
+                            { name = "search"; value = "{searchTerms}"; }
+                        ];
+                    }];
+                    definedAliases = [ "!rust" ];
                 };
                 "PyPI" = {
                     urls = [{

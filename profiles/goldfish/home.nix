@@ -23,7 +23,6 @@ rec {
         ../../user/modules/school-collection.nix
         ../../user/vm/hyprland.nix
         ../../user/modules/firefox.nix
-        ../../user/modules/embedded-collection.nix
     ];
 
     git.userName = "BalderHolst";
@@ -34,6 +33,19 @@ rec {
     hyprland = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
 
     firefox.username = username;
+
+    lang = {
+        c.enable      = true;
+        python.enable = true;
+        rust.enable   = true;
+    };
+
+    embedded = {
+        arduino.enable = false;
+        avr.enable     = false;
+        tiva.enable    = false;
+        yosys.enable   = false;
+    };
 
     gtk.iconTheme = {
         package = pkgs.papirus-icon-theme;
