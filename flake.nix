@@ -56,6 +56,17 @@
     {
         overlays.default = overlay;
 
+        packages."${system}".install = pkgs-stable.stdenv.mkDerivation rec {
+            name = "install-config";
+            src = ./.;
+            buildPhase = "";
+            installPhase = ''
+                mkdir -p $out/bin
+                ln -s $src/install.sh $out/bin/${name}
+            '';
+        };
+
+
         # Generate system configurations
         nixosConfigurations = builtins.listToAttrs (
             builtins.map (profile: {
