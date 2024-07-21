@@ -67,7 +67,6 @@ nix-shell -p git --command "sudo nixos-rebuild boot --flake '$CONFIG_DIR'#$PROFI
 }
 
 # ============= Setup User =============
-
 status "Building user configuration..."
 nix run home-manager/master \
     --extra-experimental-features nix-command \
@@ -78,7 +77,7 @@ nix run home-manager/master \
     --flake $CONFIG_DIR#$PROFILE \
     || {
      warning "Errored while building USER configuration. Try booting into the new configuration and run the installer again."
- }
+}
 
 # ============= Neovim =============
 status "Installing Neovim configuration..."
