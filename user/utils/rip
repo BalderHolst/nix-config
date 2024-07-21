@@ -1,0 +1,15 @@
+#!nix-shell
+#!nix-shell -i bash -p dvdbackup
+
+dev=$1
+
+[[ -z $dev ]] && {
+    echo "Usage: $0 <device>"
+    exit 1
+}
+
+
+dvdbackup -i "$dev" -M -v && echo "Ripping complete."
+
+echo "Disk Space:"
+df -h
