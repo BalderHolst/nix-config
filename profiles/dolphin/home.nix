@@ -34,6 +34,19 @@ rec {
 
     neovim.neo-keymaps = false;
 
+    lang = {
+        c.enable      = true;
+        python.enable = true;
+        rust.enable   = true;
+    };
+
+    embedded = {
+        arduino.enable = false;
+        avr.enable     = false;
+        tiva.enable    = false;
+        yosys.enable   = false;
+    };
+
     gtk.iconTheme = {
         package = pkgs.papirus-icon-theme;
         name = "Papirus";
