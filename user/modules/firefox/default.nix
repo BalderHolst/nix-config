@@ -1,5 +1,6 @@
-{ inputs, pkgs, config, lib, system, ... }:
+{ username, inputs, pkgs, config, lib, system, ... }:
 let
+    theme = import ./themes/bali.nix { inherit pkgs lib; };
     extra-extensions.rys = inputs.firefox-addons.lib."x86_64-linux".buildFirefoxXpiAddon {
         pname = "RYS — Remove YouTube Suggestions";
         version = "4.3.54";
@@ -151,6 +152,18 @@ in
                 # vimium
                 extra-extensions.rys
             ];
+            userChrome = ''
+                @import "${theme.userChrome}";
+            '';
+            userContent = ''
+                @import "${theme.userChrome}";
+            '';
+            extraConfig = theme.userJs;
+            settings = {
+               "toolkit.legacyUserProfileCustomizations.stylesheets" = true; # Enable customChrome.cs
+               # "browser.uidensity" = 0; # Set UI density to normal
+               # "svg.context-properties.content.enabled" = true; # Enable SVG context-propertes
+            };
         };
     };
 }

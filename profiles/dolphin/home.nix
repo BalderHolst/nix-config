@@ -20,7 +20,7 @@ rec {
         ../../user/modules/development
         ../../user/modules/desktop-collection.nix
         ../../user/vm/hyprland.nix
-        ../../user/modules/firefox.nix
+        ../../user/modules/firefox
     ];
 
     git.userName = "BalderHolst";
