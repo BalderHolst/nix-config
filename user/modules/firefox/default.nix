@@ -1,6 +1,5 @@
 { username, inputs, pkgs, config, lib, system, ... }:
 let
-    theme = import ./themes/bali.nix { inherit pkgs lib; };
     extra-extensions.rys = inputs.firefox-addons.lib."x86_64-linux".buildFirefoxXpiAddon {
         pname = "RYS — Remove YouTube Suggestions";
         version = "4.3.54";
@@ -17,9 +16,19 @@ let
 in
 {
 
-    options.firefox.username = lib.mkOption { type = lib.types.str; };
+    options.firefox = {
+        username = lib.mkOption { type = lib.types.str; };
+        theme = lib.mkOption {
+            type = lib.types.str;
+            default = "default";
+        };
+    };
 
-    config.programs.firefox = {
+    config.programs.firefox =
+    let
+        theme = import (./themes/${config.firefox.theme}.nix) { inherit pkgs lib; };
+    in
+    {
         enable = true;
         profiles."${config.firefox.username}" = {
             bookmarks = [

@@ -33,6 +33,7 @@ rec {
     hyprland = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
 
     firefox.username = username;
+    firefox.theme = "another_online";
 
     lang = {
         c.enable      = true;
