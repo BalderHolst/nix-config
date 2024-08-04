@@ -108,7 +108,7 @@
 
     inputs = rec {
 
-        nixpkgs-stable.url = "github:NixOS/nixpkgs/23.11";
+        nixpkgs-stable.url = "github:NixOS/nixpkgs/24.05";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
         home-manager = {

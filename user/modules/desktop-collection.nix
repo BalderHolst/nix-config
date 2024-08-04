@@ -9,7 +9,7 @@
         sxiv                          # image viewer
         mpv                           # audio player
         vlc                           # video player
-        gnome.nautilus                # gui file explorer
+        nautilus                      # gui file explorer
         audacity                      # audio editor
         texlive.combined.scheme-full  # latex with everything
         python311Packages.pygments    # syntax highlighter for minted latex package
@@ -25,10 +25,10 @@
         tor-browser                   # secure and anonymous browsing
         xournalpp                     # write on pdfs!
         discord                       # communication
-        transmission-qt               # bittorrent client for file shareing
+        transmission_4-qt             # bittorrent client for file shareing
         obsidian                      # note taking
         krita                         # digital painting
-        gnome.eog                     # image viewer
+        eog                           # image viewer
         musescore                     # music notation
         olive-editor                  # video editor
         hyprpicker                    # color picker
