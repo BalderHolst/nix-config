@@ -1,5 +1,5 @@
-{ lib, ... }:
+{ pkgs, ... }:
 rec {
-    userChrome = lib.writeText "userChrome.css" "";
-    userJs = lib.writeText "user.js" "";
+    userChrome = pkgs.writeText "userChrome.css" "";
+    userJs = "";
 }
