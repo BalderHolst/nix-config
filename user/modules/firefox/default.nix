@@ -154,6 +154,15 @@ in
                     };
                     definedAliases = [ "!pr" "!price" "!pricerunner" ];
                 };
+                "drtv" = {
+                    urls = [{
+                        template= "https://www.dr.dk/drtv/soeg";
+                        params = [
+                            { name = "q"; value = "{searchTerms}"; }
+                        ];
+                    }];
+                    definedAliases = [ "!drtv" ];
+                };
             };
             search.force = true;
             extensions = [

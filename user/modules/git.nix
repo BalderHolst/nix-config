@@ -25,9 +25,6 @@
             rerere.enabled = true;
             column.ui = "auto";
         };
-        ignores = [
-            ".envrc"
-            ".direnv/"
-        ];
+        ignores = [ ];
     };
 }
