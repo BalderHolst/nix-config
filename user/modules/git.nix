@@ -17,6 +17,7 @@
             ignore = "!gi() { curl -sL https://www.toptal.com/developers/gitignore/api/$@ ;}; gi";
             meld = ''!m() { ${pkgs.meld}/bin/meld "$(git rev-parse --show-toplevel)"; }; m &'';
             b = "blame -w -C -C -C";
+            regret = "reset --soft HEAD~1";
         };
         diff-so-fancy.enable = true;
         extraConfig = {
