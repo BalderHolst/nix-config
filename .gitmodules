@@ -1,3 +1,0 @@
-[submodule "impure/matlab"]
-	path = impure/matlab
-	url = https://gitlab.com/doronbehar/nix-matlab

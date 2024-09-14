@@ -11,6 +11,10 @@ rec {
     home.homeDirectory = "/home/${username}";
     home.username = username;
 
+    home.packages = with pkgs; [
+        matlab
+    ];
+
     imports = [
         ../../user/modules/git.nix
         ../../user/modules/neovim.nix

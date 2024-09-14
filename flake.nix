@@ -18,7 +18,6 @@
         bmark = prev.callPackage pkgs/bmark.nix { };
         blatex = prev.callPackage pkgs/blatex.nix { };
         pyprland = prev.callPackage pkgs/pyprland.nix { };
-        matlab-icon = prev.callPackage pkgs/matlab-icon.nix { inherit configDir; };
         mathematica-icon = prev.callPackage pkgs/mathematica-icon.nix { mathematicaPath = "${configDir}/impure/mathematica/result/bin/mathematica"; };
         waybar = prev.waybar.overrideAttrs (oldAttrs: {
             mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
@@ -46,7 +45,12 @@
             allowUnfree = true;
             allowUnfreePredicate = (_: true);
         };
-        overlays = [ overlay rust-overlay.overlays.default unstable-overlay ];
+        overlays = [
+            overlay
+            rust-overlay.overlays.default
+            unstable-overlay
+            inputs.nix-matlab.overlay
+        ];
     };
 
     # configure lib
@@ -129,6 +133,11 @@
         hyprgrass = {
             url = "github:horriblename/hyprgrass";
             inputs.hyprland.follows = "hyprland"; # IMPORTANT
+        };
+
+        nix-matlab = {
+            inputs.nixpkgs.follows = "nixpkgs-unstable";
+            url = "gitlab:doronbehar/nix-matlab";
         };
 
         rust-overlay.url = "github:oxalica/rust-overlay";
