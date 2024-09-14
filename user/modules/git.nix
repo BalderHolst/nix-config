@@ -18,6 +18,7 @@
             meld = ''!m() { ${pkgs.meld}/bin/meld "$(git rev-parse --show-toplevel)"; }; m &'';
             b = "blame -w -C -C -C";
             regret = "reset --soft HEAD~1";
+            root = "rev-parse --show-toplevel"
         };
         diff-so-fancy.enable = true;
         extraConfig = {
