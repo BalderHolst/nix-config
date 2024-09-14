@@ -5,8 +5,8 @@
     ];
 
     # Enable the X11 windowing system.
+    services.displayManager.sddm.wayland.enable = true;
     services.xserver = {
-        enable = true;
         displayManager.sddm = {
             enable = true;
             theme = "sugar-dark";
