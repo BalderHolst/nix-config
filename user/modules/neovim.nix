@@ -29,11 +29,12 @@
 
         home.packages = with pkgs; [
             vscode-extensions.vadimcn.vscode-lldb # lldb vscode extension used in neovim
-            rust-analyzer # lsp for rust
-            nodejs # used by copilot
-            pyright # python lsp
-            lua-language-server # lsp for lua
-            (callPackage ../../pkgs/clangd.nix { # clangd lsp with standard c library
+            rust-analyzer                         # lsp for rust
+            nodejs                                # used by copilot
+            pyright                               # python lsp
+            lua-language-server                   # lsp for lua
+            matlab-language-server                # lsp for matlab
+            (callPackage ../../pkgs/clangd.nix {  # clangd lsp with standard c library
                 name = "clangd";
                 include_paths = [ (pkgs.glibc.dev + "/include") ];
             })
