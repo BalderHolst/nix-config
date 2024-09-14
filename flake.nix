@@ -121,7 +121,10 @@
             inputs.nixpkgs.follows = "nixpkgs-unstable";
         };
 
-        hyprland.url = "github:hyprwm/Hyprland";
+        hyprland = {
+            url = "github:hyprwm/Hyprland";
+            inputs.nixpkgs.follows = "nixpkgs-stable";
+        };
 
         hyprgrass = {
             url = "github:horriblename/hyprgrass";
