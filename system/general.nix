@@ -1,7 +1,7 @@
-{ pkgs, username, configDir, ... }:
+{ pkgs, user, ... }:
 {
     # Define a user account. Don't forget to set a password with ‘passwd’.
-    users.users."${username}" = {
+    users.users."${user.username}" = {
         isNormalUser = true;
         description = "Administrator of this computer.";
         extraGroups = [
@@ -11,7 +11,7 @@
             "docker"
             "dialout"
         ];
-        packages = with pkgs; [ ];
+        packages = [ ];
     };
 
     # Bootloader.

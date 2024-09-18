@@ -1,4 +1,4 @@
-{ username, email, config, inputs, pkgs, configDir, ... }:
+{ user, config, inputs, pkgs, configDir, ... }:
 
 let
     swap_escape = false;
@@ -7,9 +7,9 @@ let
     size = n: builtins.toString (builtins.floor n*ui_scale);
     ui_scale = 1.5;
 in
-rec {
-    home.homeDirectory = "/home/${username}";
-    home.username = username;
+{
+    home.homeDirectory = "/home/${user.username}";
+    home.username = user.username;
 
     imports = [
         ../../user/modules/git.nix
@@ -23,14 +23,14 @@ rec {
         ../../user/modules/firefox
     ];
 
-    git.userName = "BalderHolst";
-    git.userEmail = email;
+    git.userName = user.gitUser;
+    git.userEmail = user.email;
 
     zsh.configDir = configDir;
 
     hyprland = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
 
-    firefox.username = username;
+    firefox.username = user.username;
 
     neovim.neo-keymaps = false;
 

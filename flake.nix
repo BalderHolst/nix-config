@@ -1,13 +1,11 @@
 {
     description = "Balder's NixOs Configuration Flake";
 
-    outputs = inputs@{ self, nixpkgs-stable, nixpkgs-unstable, home-manager, rust-overlay, ... }:
+    outputs = inputs@{ nixpkgs-stable, nixpkgs-unstable, home-manager, rust-overlay, ... }:
     let
 
-    system = "x86_64-linux";
-    username = "balder";
-    email = "balderwh@gmail.com";
-    configDir = "/home/${username}/.nix-config";
+    user = import ./user.nix;
+    configDir = "/home/${user.username}/.nix-config";
 
     profiles = [
         "goldfish"
@@ -25,7 +23,7 @@
     });
 
     pkgs-stable = import nixpkgs-stable {
-        inherit system;
+        inherit (user) system;
         config = {
             allowUnfree = true;
             allowUnfreePredicate = (_: true);
@@ -40,7 +38,7 @@
 
     # configure pkgs
     pkgs-unstable = import nixpkgs-unstable {
-        inherit system;
+        inherit (user) system;
         config = {
             allowUnfree = true;
             allowUnfreePredicate = (_: true);
@@ -60,7 +58,7 @@
     {
         overlays.default = overlay;
 
-        packages."${system}".install = pkgs-stable.stdenv.mkDerivation rec {
+        packages."${user.system}".install = pkgs-stable.stdenv.mkDerivation rec {
             name = "install-config";
             src = ./.;
             buildPhase = "";
@@ -76,12 +74,11 @@
             builtins.map (profile: {
                 name = profile;
                 value = lib.nixosSystem {
-                    inherit system;
                     pkgs = pkgs-stable;
                     modules = [ ./profiles/${profile}/configuration.nix ];
                     specialArgs = {
                         hostname = profile;
-                        inherit username;
+                        inherit user;
                         inherit pkgs-unstable;
                         inherit configDir;
                     };
@@ -99,10 +96,8 @@
                 extraSpecialArgs = {
                     hostname = profile;
                     inherit inputs;
-                    inherit username;
-                    inherit email;
+                    inherit user;
                     inherit configDir;
-                    inherit system;
                 };
             };
             }) profiles

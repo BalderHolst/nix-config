@@ -1,4 +1,4 @@
-{ username, email, config, inputs, pkgs, configDir, system, ... }:
+{ user, config, inputs, pkgs, configDir, ... }:
 
 let
     swap_escape = true;
@@ -8,8 +8,8 @@ let
     size = n: builtins.toString (builtins.floor n*ui_scale);
 in
 rec {
-    home.homeDirectory = "/home/${username}";
-    home.username = username;
+    home.homeDirectory = "/home/${user.username}";
+    home.username = user.username;
 
     home.packages = with pkgs; [
         matlab
@@ -30,13 +30,13 @@ rec {
     ];
 
     git.userName = "BalderHolst";
-    git.userEmail = email;
+    git.userEmail = user.email;
 
     zsh.configDir = configDir;
 
     hyprland = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
 
-    firefox.username = username;
+    firefox.username = user.username;
     firefox.theme = "another_online";
 
     lang = {

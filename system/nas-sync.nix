@@ -1,4 +1,4 @@
-{ pkgs, config, lib, username, host, ... }:
+{ pkgs, config, user, lib, ... }:
 {
 
     options.nas.service-name = lib.mkOption {
@@ -160,7 +160,7 @@
             description = "Syncronize local directorioes with NAS";
             serviceConfig = {
                 Type = "forking";
-                User = username;
+                User = user.username;
                 ExecStart = start; 
                 ExecStop = stop;
                 ExecReload = reload; 

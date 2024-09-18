@@ -1,4 +1,4 @@
-{ pkgs, configDir, username, ... }:
+{ pkgs, configDir, ... }:
 {
 
     programs = {

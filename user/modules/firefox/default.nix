@@ -1,4 +1,4 @@
-{ username, inputs, pkgs, config, lib, system, ... }:
+{ user, inputs, pkgs, config, lib, ... }:
 let
     extra-extensions.rys = inputs.firefox-addons.lib."x86_64-linux".buildFirefoxXpiAddon {
         pname = "RYS — Remove YouTube Suggestions";

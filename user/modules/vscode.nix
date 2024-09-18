@@ -1,4 +1,4 @@
-{ pkgs, username, ... }:
+{ pkgs, user, ... }:
 let
     extensions = with pkgs.vscode-extensions; [
         bbenoist.nix
@@ -18,7 +18,7 @@ let
             sha256 = "sha256-F/YWOW4aD+XEm0sol88vUbDckCaiFvWW6reCdzVVjFQ=";
         }
     ];
-    home-dir = "/home/${username}";
+    home-dir = "/home/${user.username}";
     neovim-config-file = "${home-dir}/.config/VSCodium/User/nvim/init.lua";
     my-vscodium = (pkgs.stdenv.mkDerivation {
         name = "vscodium";

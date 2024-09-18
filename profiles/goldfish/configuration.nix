@@ -3,7 +3,7 @@
 # your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ hostname, config, username, pkgs, pkgs-unstable, rustPlatform, ... }:
+{ hostname, user, config, pkgs, pkgs-unstable, ... }:
 
 {
     imports =
@@ -28,7 +28,7 @@
     nas.interval = 60*2;
     nas.sync-locations = 
     let
-        home = "/home/${username}";
+        home = "/home/${user.username}";
     in
     [
         { local = "${home}/3d-print";               remote = "3d-print";            }
