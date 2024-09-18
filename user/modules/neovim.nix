@@ -34,6 +34,7 @@
             pyright                               # python lsp
             lua-language-server                   # lsp for lua
             matlab-language-server                # lsp for matlab
+            nixd                                  # lsp for nix
             (callPackage ../../pkgs/clangd.nix {  # clangd lsp with standard c library
                 name = "clangd";
                 include_paths = [ (pkgs.glibc.dev + "/include") ];
