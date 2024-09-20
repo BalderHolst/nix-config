@@ -14,23 +14,24 @@
 
     home = {
         packages = with pkgs; [
-            neofetch # fancy system info
-            tldr # shot and sweet command examples
-            zip # zip your files
-            unzip # unzip your files
-            todo # simple todo list
-            ripgrep # awesome grepping tool
-            jq # json parsing cli
-            bat # cat with colors
+            neofetch     # fancy system info
+            tldr         # shot and sweet command examples
+            zip          # zip your files
+            unzip        # unzip your files
+            todo         # simple todo list
+            ripgrep      # awesome grepping tool
+            jq           # json parsing cli
+            bat          # cat with colors
             wl-clipboard # cli clipboard manipulation. Also needed for neovim.
-            bmark # my terminal bookmark manager
-            blatex # my latex document framework
-            fzf # fuzzy finder
-            graphviz # create graphs!
-            nurl # generate nix expressions from urls
-            usbutils # list usb devices
-            du-dust
-            nh
+            bmark        # my terminal bookmark manager
+            blatex       # my latex document framework
+            fzf          # fuzzy finder
+            graphviz     # create graphs!
+            nurl         # generate nix expressions from urls
+            usbutils     # list usb devices
+            du-dust      # disk usage
+            nh           # nix helper
+            fd           # file finder
         ];
 
         sessionVariables = {
