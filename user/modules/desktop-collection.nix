@@ -7,8 +7,9 @@
         libreoffice                   # office suite to open those awful microsoft files
         zathura                       # pdf-viewer
         sxiv                          # image viewer
-        mpv                           # audio player
-        vlc                           # video player
+        eog                           # another image viewer
+        mpv                           # media player
+        xplayer                       # video player
         nautilus                      # gui file explorer
         audacity                      # audio editor
         texlive.combined.scheme-full  # latex with everything
@@ -28,7 +29,6 @@
         transmission_4-qt             # bittorrent client for file shareing
         obsidian                      # note taking
         krita                         # digital painting
-        eog                           # image viewer
         musescore                     # music notation
         olive-editor                  # video editor
         hyprpicker                    # color picker
