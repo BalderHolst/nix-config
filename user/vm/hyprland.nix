@@ -49,6 +49,15 @@ in
             layout = dwindle
         }
 
+        # unscale XWayland
+        xwayland {
+            force_zero_scaling = true
+        }
+        # toolkit-specific scale
+        env = GDK_SCALE,3
+        env = XCURSOR_SIZE,32
+        env = QT_ENABLE_HIGHDPI_SCALING,1
+
         binds {
             workspace_back_and_forth = true
         }
