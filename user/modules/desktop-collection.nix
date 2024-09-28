@@ -9,7 +9,9 @@
         sxiv                          # image viewer
         eog                           # another image viewer
         mpv                           # media player
-        xplayer                       # video player
+        vlc                           # good old video player (X11)
+        ffmpeg                        # THE cli video tool
+        xplayer                       # wayland video player
         nautilus                      # gui file explorer
         audacity                      # audio editor
         texlive.combined.scheme-full  # latex with everything

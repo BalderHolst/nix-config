@@ -32,6 +32,7 @@
             du-dust      # disk usage
             nh           # nix helper
             fd           # file finder
+            cloc         # count lines of code in a project
         ];
 
         sessionVariables = {
