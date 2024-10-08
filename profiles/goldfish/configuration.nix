@@ -3,7 +3,7 @@
 # your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ hostname, user, config, pkgs, pkgs-unstable, ... }:
+{ hostname, user, inputs, ... }:
 
 {
     imports =
@@ -16,9 +16,13 @@
             ../../system/steam.nix
             ../../system/act.nix
             ../../system/virtual-machines.nix
+            inputs.nix-ld.nixosModules.nix-ld
         ];
 
     networking.hostName = hostname;
+
+    programs.nix-ld.dev.enable = true;
+    programs.nix-ld.libraries = [ ];
 
     services.logind.extraConfig = "RuntimeDirectorySize=4G";
 

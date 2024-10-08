@@ -105,7 +105,7 @@
 
     };
 
-    inputs = rec {
+    inputs = {
 
         nixpkgs-stable.url = "github:NixOS/nixpkgs/24.05";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -133,6 +133,11 @@
         nix-matlab = {
             inputs.nixpkgs.follows = "nixpkgs-unstable";
             url = "gitlab:doronbehar/nix-matlab";
+        };
+
+        nix-ld = {
+            url = "github:Mic92/nix-ld";
+            inputs.nixpkgs.follows = "nixpkgs-stable";
         };
 
         rust-overlay.url = "github:oxalica/rust-overlay";
