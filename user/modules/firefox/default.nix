@@ -167,7 +167,8 @@ in
             search.force = true;
             extensions = [
                 inputs.firefox-addons.packages."x86_64-linux".ublock-origin
-                # vimium
+                inputs.firefox-addons.packages."x86_64-linux".sponsorblock
+                inputs.firefox-addons.packages."x86_64-linux".return-youtube-dislikes
                 extra-extensions.rys
             ];
             userChrome = ''
