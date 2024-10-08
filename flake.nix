@@ -75,7 +75,10 @@
                 name = profile;
                 value = lib.nixosSystem {
                     pkgs = pkgs-stable;
-                    modules = [ ./profiles/${profile}/configuration.nix ];
+                    modules = [
+                        ./profiles/${profile}/configuration.nix
+                        inputs.nix-ld.nixosModules.nix-ld
+                    ];
                     specialArgs = {
                         hostname = profile;
                         inherit user;
