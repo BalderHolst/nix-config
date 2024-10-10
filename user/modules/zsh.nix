@@ -108,6 +108,7 @@ in
                 gu = "git pull && git push";
                 gaa = "git add .";
                 gca = "git add . && git commit";
+                mkdirr = ''function _mkcd() { mkdir -p "$1" && cd "$1"; }; _mkcd'';
 
                 uhome = "nh home switch ${config.zsh.configDir} --configuration $(hostname)";
                 uos = "${nh} os switch ${config.zsh.configDir} -H $(hostname) && ${uhome}";
