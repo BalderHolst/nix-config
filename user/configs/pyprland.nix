@@ -2,7 +2,7 @@
 let
 pavucontrol = pkgs.pavucontrol + "/bin/pavucontrol";
 kitty = pkgs.kitty + "/bin/kitty";
-bpython = pkgs.python311Packages.bpython + "/bin/bpython";
+bpython = pkgs.python3Packages.bpython + "/bin/bpython";
 in
 ''
     {

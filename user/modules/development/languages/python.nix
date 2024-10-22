@@ -10,8 +10,14 @@ in
 
     config = lib.mkIf cfg.enable {
         home.packages = with pkgs; [
-            python311                 # Python interpreter
-            python311Packages.bpython # Fancy Python REPL
+            (python3.withPackages (python-pkgs: with python-pkgs; [
+                  # select Python packages here
+                  pandas
+                  requests
+                  numpy
+                  matplotlib
+                  bpython
+            ]))
         ];
     };
 }

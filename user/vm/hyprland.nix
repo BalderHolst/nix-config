@@ -17,7 +17,7 @@ let
     pypr = pkgs.pyprland + "/bin/pypr";
     pavucontrol = pkgs.pavucontrol + "/bin/pavucontrol";
     kitty = pkgs.kitty + "/bin/kitty";
-    bpython = pkgs.python311Packages.bpython + "/bin/bpython";
+    bpython = pkgs.python3Packages.bpython + "/bin/bpython";
     nm-connection-editor = pkgs.networkmanagerapplet + "/bin/nm-connection-editor";
 in 
 {

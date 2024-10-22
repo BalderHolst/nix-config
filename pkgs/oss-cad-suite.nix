@@ -7,7 +7,7 @@ let
     bin-programs = with pkgs; [
         yosys-with-ghdl
         ghdl
-        python311Packages.amaranth
+        python3Packages.amaranth
         # python311Packages.migen
         abc-verifier
 
@@ -26,7 +26,7 @@ let
         nextpnr
         nextpnrWithGui
         icestorm
-        python311Packages.apycula
+        python3Packages.apycula
         trellis        
         # Project Oxide
         # Project Apicula 
@@ -45,7 +45,7 @@ let
         gaw
         verilator
         verilog
-        python311Packages.cocotb
+        python3Packages.cocotb
         gtkwave
         netlistsvg
     ];

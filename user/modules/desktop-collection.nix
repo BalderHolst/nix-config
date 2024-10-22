@@ -15,8 +15,6 @@
         nautilus                      # gui file explorer
         audacity                      # audio editor
         texlive.combined.scheme-full  # latex with everything
-        python311Packages.pygments    # syntax highlighter for minted latex package
-        python311Packages.dbus-python # used for initializing eduroam
         gimp                          # image manipulation
         drawio                        # create diagrams
         tidal-hifi                    # music streaming
