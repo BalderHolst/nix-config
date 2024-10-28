@@ -115,6 +115,8 @@ in
 
                 hdmi-dublicate = "xrandr --output DisplayPort-0 --auto --same-as eDP";
 
+                cd="z"; # use zoxide
+
                 direnv-flake = "echo 'use flake' > .envrc && direnv allow";
                 direnv-nix = "echo 'use nix' > .envrc && direnv allow";
             };
