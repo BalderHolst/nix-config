@@ -9,8 +9,8 @@ rustPlatform.buildRustPackage rec {
   src = fetchFromGitHub {
     owner = "BalderHolst";
     repo = "blatex";
-    rev = "166bad3c239509e80e626277b309a5fca5675624";
-    sha256 = "sha256-iVEwUo1MkGfqduxh6rEBU8ZaryRb7xQI7q2lklV9fMM=";
+    rev = "aae32ad93c2e6e4b8d2d6cb0925c42ea9e8c73b0";
+    sha256 = "sha256-wPWK7etyUmGNqNVaSkAxje+bJ5scXDx+/kcgi9ddyJw=";
   };
 
   cargoLock = {
