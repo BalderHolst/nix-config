@@ -24,6 +24,7 @@
         extraConfig = {
             init.defaultBranch = "main";
             pull.rebase = true;
+            push.autoSetupRemote = true;
             rerere.enabled = true;
             column.ui = "auto";
         };
