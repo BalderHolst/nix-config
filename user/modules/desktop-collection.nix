@@ -3,7 +3,7 @@
     home.packages = with pkgs; [
         pavucontrol                   # audio control GUI
         firefox-wayland               # main browser
-        brave                         # backup (chromium) browser
+        chromium                      # backup browser
         libreoffice                   # office suite to open those awful microsoft files
         zathura                       # pdf-viewer
         sxiv                          # image viewer
