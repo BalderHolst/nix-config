@@ -33,6 +33,7 @@
             nh           # nix helper
             fd           # file finder
             cloc         # count lines of code in a project
+            man-pages    # man pages for development
         ];
 
         sessionVariables = {
