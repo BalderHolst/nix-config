@@ -15,7 +15,7 @@
     home = {
         packages = with pkgs; [
             neofetch     # fancy system info
-            tldr         # shot and sweet command examples
+            tealdeer     # shot and sweet command examples
             zip          # zip your files
             unzip        # unzip your files
             todo         # simple todo list
@@ -37,7 +37,10 @@
         ];
 
         sessionVariables = {
+            NIXPKGS_ALLOW_UNFREE=1;
             PAGER = "bat";
+            MANPAGER = "bat";
+            BROWSER = "firefox";
             FLAKE = configDir;
         };
 
