@@ -1,0 +1,37 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash
+#!nix-shell -p wget steam-run
+
+## Install the SMAPI modding framework for Stardew Valley on Steam
+
+URL="https://github.com/Pathoschild/SMAPI/releases/download/4.1.7/SMAPI-4.1.7-installer.zip"
+INSTALL_SCRIPT="install on Linux.sh"
+
+NAME="$(basename -- $URL)"
+TMP_DIR="$(mktemp -d)"
+ZIP_PATH="$TMP_DIR/$NAME"
+
+# Print a message in blue
+function info {
+    echo -e "\e[1;34m$1\e[0m"
+}
+
+info "Downloading ZIP file..."
+wget --output-document "$ZIP_PATH" "$URL"
+
+info "Unziping..."
+unzip "$ZIP_PATH" -d "$TMP_DIR"
+
+info "Installing..."
+
+# Locating install script
+installer="$(find "$TMP_DIR" -name "$INSTALL_SCRIPT")"
+echo "Located installer: '$installer'"
+
+if [ -z "$installer" ]; then
+    echo "Error: Could not locate install script"
+    exit 1
+fi
+
+# Running install script
+steam-run "$installer"
