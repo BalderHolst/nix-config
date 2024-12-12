@@ -1,0 +1,14 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -i bash
+#!nix-shell -p pdftk
+
+## Merge PDF files into one
+
+files=("$@")
+
+if [ ${#files[@]} -lt 2 ]; then
+    echo "Usage: $0 <file1> ..."
+    exit 1
+fi
+
+pdftk "${files[@]}" cat output merged.pdf

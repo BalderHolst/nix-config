@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+## Move all files in ~/Downloads into the provided directory
+
+[[ -z "$1" ]] && echo "Usage: mvdl <directory>" && exit 1
+
+DIR="$1"
+
+# Create directory if it doesn't exist
+[[ ! -d "$DIR" ]] && mkdir -pv "$DIR"
+
+# Move all files in ~/Downloads to the provided directory
+mv -v ~/Downloads/* "$DIR"
