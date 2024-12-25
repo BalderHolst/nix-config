@@ -4,6 +4,7 @@
     imports = [
         ./languages
         ./embedded
+        ./pcb
     ];
 
     home.packages = with pkgs; [

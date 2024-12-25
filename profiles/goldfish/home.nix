@@ -7,7 +7,7 @@ let
     ui_scale = 1;
     size = n: builtins.toString (builtins.floor n*ui_scale);
 in
-rec {
+{
     home.homeDirectory = "/home/${user.username}";
     home.username = user.username;
 
@@ -16,17 +16,12 @@ rec {
     ];
 
     imports = [
-        ../../user/modules/git.nix
-        ../../user/modules/neovim.nix
+        ../../user/modules
         ../../user/modules/steam.nix
         ../../user/modules/pass.nix
-        ../../user/modules/zsh.nix
         ../../user/modules/cli-collection.nix
-        ../../user/modules/development
         ../../user/modules/desktop-collection.nix
-        ../../user/modules/school-collection.nix
         ../../user/vm/hyprland.nix
-        ../../user/modules/firefox
     ];
 
     git.userName = "BalderHolst";
@@ -41,8 +36,11 @@ rec {
 
     lang = {
         c.enable      = true;
-        python.enable = true;
         rust.enable   = true;
+        python = {
+            enable = true;
+            notebooks = true;
+        };
     };
 
     embedded = {
@@ -51,6 +49,10 @@ rec {
         tiva.enable    = false;
         yosys.enable   = false;
     };
+
+    latex.enable = true;
+
+    pcb.enable = false;
 
     gtk.iconTheme = {
         package = pkgs.papirus-icon-theme;

@@ -24,7 +24,6 @@
             bat          # cat with colors
             wl-clipboard # cli clipboard manipulation. Also needed for neovim.
             bmark        # my terminal bookmark manager
-            blatex       # my latex document framework
             fzf          # fuzzy finder
             graphviz     # create graphs!
             nurl         # generate nix expressions from urls
@@ -33,7 +32,6 @@
             nh           # nix helper
             fd           # file finder
             cloc         # count lines of code in a project
-            man-pages    # man pages for development
         ];
 
         sessionVariables = {

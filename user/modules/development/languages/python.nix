@@ -6,6 +6,7 @@ in
 
     options.lang.python = {
         enable = lib.mkEnableOption "Python language support";
+        notebooks = lib.mkEnableOption "Jupyter notebooks";
     };
 
     config = lib.mkIf cfg.enable {
@@ -17,7 +18,8 @@ in
                   numpy
                   matplotlib
                   bpython
-            ]))
+            ] ++ (if cfg.notebooks then [ jupyter ] else [])
+            ))
         ];
     };
 }
