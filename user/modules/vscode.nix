@@ -38,7 +38,7 @@ in
 {
     home.packages = [ my-vscodium ];
 
-    home.file."${home-dir}/.config/VSCodium/User/settings.json".text = ''
+    home.file."${home-dir}/.config/VSCodium/User/settings.json".text = /* json */ ''
         {
             "editor.fontFamily": "Fira Code",
             "editor.fontLigatures": true,

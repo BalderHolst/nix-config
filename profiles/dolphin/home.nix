@@ -62,7 +62,7 @@ in
 
     gtk = {
         enable = true;
-        font.name = "FiraCode Nerd Font";
+        font.name = "Noto Sans";
         theme = {
             name = "Sierra-compact-dark";
             package = pkgs.sierra-gtk-theme;

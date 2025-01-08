@@ -77,6 +77,7 @@
 
     fonts.fontDir.enable = true;
     fonts.packages = with pkgs; [
+        noto-fonts
         nerdfonts
         font-awesome
     ];
