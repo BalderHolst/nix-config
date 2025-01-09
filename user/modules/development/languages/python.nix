@@ -52,6 +52,10 @@ let
                 "command" = "notebook.cell.execute";
                 "when" = "notebookCellListFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code' || !notebookCellExecuting && notebookCellType == 'code' && notebookCellListFocused || inlineChatFocused && notebookCellChatFocused && notebookKernelCount > 0 || !notebookCellExecuting && notebookCellType == 'code' && notebookCellListFocused || inlineChatFocused && notebookCellChatFocused && notebookKernelSourceCount > 0 || inlineChatFocused && notebookCellChatFocused && notebookMissingKernelExtension && !notebookCellExecuting && notebookCellType == 'code'";
             }
+            {
+                "key" = "ctrl+shift+enter";
+                "command" = "jupyter.runPrecedentCells";
+            }
         ];
 
         package = let
@@ -91,7 +95,7 @@ let
 
                 # Install executable
                 mkdir -p $out/bin
-                ln -s ${codium} $out/bin/${name}
+                ln -s ${codium} $out/bin/${exec}
                 ln -s ${codium} $out/bin/jcode
 
                 # Install desktop item
