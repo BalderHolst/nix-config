@@ -353,7 +353,7 @@ in
         },
         "clock": {
             "format": "{:%H:%M}",
-            "timezone": "Asia/Seoul",
+            "timezone": "Europe/Berlin",
             "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         },
         "custom/date": {
