@@ -5,6 +5,7 @@ let
     jupyter-vscode = rec {
         name = "Jupyter-VSCode";
         exec = "jupyter-vscode";
+        aliases = [ "jcode" "jupyter-code" ];
 
         configDir = ".config/${name}";
         settings = {
@@ -95,8 +96,9 @@ let
 
                 # Install executable
                 mkdir -p $out/bin
-                ln -s ${codium} $out/bin/${exec}
-                ln -s ${codium} $out/bin/jcode
+                ${
+                    builtins.concatStringsSep "\n" (map (alias: "ln -s ${codium} $out/bin/${alias}") (aliases ++ [exec]))
+                }
 
                 # Install desktop item
                 mkdir -p $out/share/applications
@@ -123,6 +125,7 @@ in
                   numpy
                   matplotlib
                   bpython
+                  pip
             ] ++ (if cfg.notebooks then [ jupyter ] else [])
             ))
         ] ++ (if cfg.notebooks then [ jupyter-vscode.package ] else []);

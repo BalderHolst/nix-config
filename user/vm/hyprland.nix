@@ -167,17 +167,8 @@ in
             disable_hyprland_logo = true
         }
 
-        # Example windowrule v1
-        # windowrule = float, ^(kitty)$
-        # Example windowrule v2
-        # windowrulev2 = float,class:^(kitty)$,title:^(kitty)$
-        # See https://wiki.hyprland.org/Configuring/Window-Rules/ for more
-
-
-        # See https://wiki.hyprland.org/Configuring/Keywords/ for more
         $mainMod = SUPER
 
-        # Example binds, see https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = $mainMod, RETURN, exec, ${terminal}
         bind = $mainMod, Q, killactive, 
         bind = , swipe:4:d, killactive
@@ -192,6 +183,7 @@ in
         bind=SUPER, F, fullscreen
         # bind = $mainMod, P, pseudo, # dwindle
         bind = $mainMod, S, togglesplit, # dwindle
+        bind = $mainMod, G, togglesplit
 
         # Volume and Brightness
         bind = ,XF86MonBrightnessUp, exec, ${brightnessctl} set +4%
