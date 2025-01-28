@@ -12,12 +12,10 @@ in
     home.username = user.username;
 
     imports = [
-        ../../user/modules/git.nix
-        ../../user/modules/neovim.nix
+        ../../user/modules
+        ../../user/modules/steam.nix
         ../../user/modules/pass.nix
-        ../../user/modules/zsh.nix
         ../../user/modules/cli-collection.nix
-        ../../user/modules/development
         ../../user/modules/desktop-collection.nix
         ../../user/vm/hyprland.nix
         ../../user/modules/firefox
@@ -36,9 +34,14 @@ in
 
     lang = {
         c.enable      = true;
-        python.enable = true;
         rust.enable   = true;
+        python = {
+            enable = true;
+            notebooks = true;
+        };
     };
+
+    latex.enable = true;
 
     embedded = {
         arduino.enable = false;
