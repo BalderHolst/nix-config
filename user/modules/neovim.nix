@@ -1,4 +1,9 @@
 { pkgs, lib, config, ... }:
+let
+    n-shortcut = pkgs.writeShellScriptBin "n" ''
+        nvim "$(${pkgs.fzf}/bin/fzf)"
+    '';
+in
 {
     options.neovim.neo-keymaps = lib.mkOption {
         type = lib.types.bool;
@@ -28,6 +33,8 @@
         };
 
         home.packages = with pkgs; [
+            n-shortcut                            # shortcut to open nvim with fzf
+            tree-sitter                           # used by nvim-treesitter
             vscode-extensions.vadimcn.vscode-lldb # lldb vscode extension used in neovim
             rust-analyzer                         # lsp for rust
             nodejs                                # used by copilot
@@ -35,11 +42,7 @@
             lua-language-server                   # lsp for lua
             matlab-language-server                # lsp for matlab
             nixd                                  # lsp for nix
-            (callPackage ../../pkgs/clangd.nix {  # clangd lsp with standard c library
-                name = "clangd";
-                include_paths = [ (pkgs.glibc.dev + "/include") ];
-            })
-            (callPackage ../../pkgs/vhdl_ls.nix { })
+            clang-tools                           # lsp for c/c++
         ];
 
         home.file.".config/nvim/plugin/init.lua".text = (if config.neovim.neo-keymaps then ''

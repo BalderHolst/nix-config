@@ -125,6 +125,7 @@ in
                   numpy
                   matplotlib
                   bpython
+                  tqdm
                   pip
             ] ++ (if cfg.notebooks then [ jupyter ] else [])
             ))

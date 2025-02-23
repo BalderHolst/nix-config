@@ -113,6 +113,7 @@
 
         # ====== CLI ======
         htop # process viewer
+        btop # better process viewer
         wget # cli file downloader
         tree # overview of file structures
         bat # better cat

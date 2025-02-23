@@ -12,6 +12,7 @@ in
         home.packages = with pkgs; [
             texlive.combined.scheme-full  # latex with everything
             blatex                        # my latex document framework
+            pdfpc                         # pdf presenter
         ];
     };
 }

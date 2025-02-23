@@ -173,6 +173,12 @@ in
                     echo "$task"
                 done <<< $todos
             }
+
+            if [ -n "$fzf-share" ]; then
+              source "$(fzf-share)/key-bindings.zsh"
+              source "$(fzf-share)/completion.zsh"
+            fi
+
             '';
         };
 
@@ -181,6 +187,10 @@ in
             enableZshIntegration = true;
             nix-direnv.enable = true;
         };
+
+        home.packages = with pkgs; [
+            fzf
+        ];
 
         home.sessionVariables = {
             ZSH_DISABLE_COMPFIX = "true";

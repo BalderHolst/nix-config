@@ -34,6 +34,7 @@
     # Overlay to fix unstable packages
     unstable-overlay = (final: prev: {
         firefox = pkgs-stable.firefox;
+        pdfpc = pkgs-stable.pdfpc;
     });
 
     # configure pkgs
