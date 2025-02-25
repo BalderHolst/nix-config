@@ -1,13 +1,20 @@
 #!nix-shell
-#!nix-shell -i bash -p dvdbackup
+#!nix-shell -i bash -p dvdbackup fzf
 
 dev=$1
 
+# If no device is provided, prompt the user to select one
 [[ -z $dev ]] && {
-    echo "Usage: $0 <device>"
-    exit 1
+    devices=$(df -Th)
+    line=$(echo "$devices" | tail -n +2 | fzf --header="$(echo $devices | head -n 1)")
+
+    # Abort if no device is selected
+    [[ -z $line ]] && exit 0
+
+    dev=$(echo $line | awk '{print $1}')
 }
 
+echo "Ripping $dev..."
 
 dvdbackup -i "$dev" -M -v && echo "Ripping complete."
 
