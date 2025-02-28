@@ -12,4 +12,4 @@ fi
 unzip -d matlab-installer "$1"
 
 # Run installer with correct enviornment
-nix run gitlab:doronbehar/nix-matlab#matlab-shell
+echo "echo -e '\nRunning installer in matlab-shell'; ./matlab-installer/install" | nix run gitlab:doronbehar/nix-matlab#matlab-shell
