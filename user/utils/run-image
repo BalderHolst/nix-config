@@ -1,0 +1,123 @@
+#!/usr/bin/env bash
+
+## Run a docker container with the given image and workdir for testing
+
+SUFFIX="test-container"
+
+IMAGE="ubuntu:latest"
+
+# Make sure docker is installed
+if ! [ -x "$(command -v docker)" ]; then
+    echo "Error: docker is not installed." >&2
+    exit 1
+fi
+
+function help() {
+    echo "Usage: $0 [OPTIONS] [<workdir>]"
+    echo ""
+    echo "Options:"
+    echo "  --rebuild   Rebuild the container"
+    echo "  --repull    Pull the image before running"
+    echo "  --image     Set the image to run (default: $IMAGE)"
+    echo "  --help      Show this help message"
+}
+
+# Parse command line arguments
+while [ "$1" != "" ]; do
+    case $1 in
+        --rebuild )     shift
+                        REBUILD=1
+                        ;;
+        --repull )      shift
+                        REPULL=1
+                        ;;
+        --image )       shift
+                        IMAGE=$1
+                        ;;
+        --clean )       shift
+                        CLEAN=1
+                        ;;
+        --help )        help; 
+                        exit 0
+                        ;;
+        * )             echo "Error: Invalid argument '$1'" >&2;
+                        help
+                        exit 1
+                        ;;
+    esac
+    shift
+done
+
+# Make sure the image is set
+if [ -z "$IMAGE" ]; then
+    echo "Error: No image specified." >&2
+    exit 1
+fi
+
+# Remove all containers with the suffix and print their names
+if [ "$CLEAN" == "1" ]; then
+    echo "Removing containers with the suffix '$SUFFIX'..."
+
+    # Get container names with the suffix at the end
+    containers=$(docker ps -a --format "{{.Names}}" | grep -E "$SUFFIX\$")
+
+    if [ -z "$containers" ]; then
+        echo "No containers found."
+        exit 0
+    fi
+    echo "$containers" | xargs docker rm -f | sed 's/^/    /'
+    exit 0
+fi
+
+
+CONTAINER="$(echo $IMAGE | sed 's/[^a-zA-Z0-9]/-/g')-$SUFFIX"
+
+# Pull the latest Ubuntu image
+if [ "$REPULL" == "1" ]; then
+    echo "Pulling the latest '$IMAGE' image..."
+    docker pull $IMAGE
+    REBUILD=1 
+fi
+
+# Remove container if the `--rebuild` flag is set
+if [ "$REBUILD" == "1" ]; then
+    if [ "$(docker ps -aq -f name=$CONTAINER)" ]; then
+        echo "Removing container..."
+        docker rm -f $CONTAINER > /dev/null
+    fi
+fi
+
+# Pull the latest Ubuntu image
+if [[ "$(docker images -q $IMAGE)" == "" ]]; then
+    echo "Pulling the latest $IMAGE image..."
+    docker pull $IMAGE
+fi
+
+# Start if container is stopped
+if [ "$(docker ps -aq -f status=exited -f name=$CONTAINER)" ]; then
+        echo "Starting container..."
+        docker start $CONTAINER > /dev/null
+fi
+
+XAUTH=/tmp/.docker.xauth
+
+[ "$(docker ps | grep $CONTAINER)" ] && {
+        echo "Attaching to running container ..."
+        docker exec -it \
+            --privileged \
+            $CONTAINER bash
+        exit 0
+}
+
+echo "Running container..."
+docker run -it \
+        --name $CONTAINER \
+        --env="DISPLAY=$DISPLAY" \
+        --env="XAUTHORITY=$XAUTH" \
+        --volume="$XAUTH:$XAUTH" \
+        --volume="/tmp/.X11-unix:/tmp/.X11-unix:rw" \
+        --env="QT_X11_NO_MITSHM=1" \
+        --net=host \
+        --privileged \
+        $IMAGE \
+        bash
