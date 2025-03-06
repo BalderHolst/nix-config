@@ -91,5 +91,9 @@
         };
     });
 
+    environment.sessionVariables = {
+        QT_XCB_GL_INTEGRATION = "none"; # Make Mathematica happy
+    };
+
     system.stateVersion = "23.05";
 }

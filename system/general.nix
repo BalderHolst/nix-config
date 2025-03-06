@@ -109,7 +109,6 @@
         libnotify # send notifications
         home-manager # nix home manager
         pkgs.libsForQt5.qt5.qtgraphicaleffects # library used by a lot of sddm themes
-        glibc
 
         # ====== CLI ======
         htop # process viewer

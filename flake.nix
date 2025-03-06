@@ -135,7 +135,7 @@
         };
 
         nix-matlab = {
-            inputs.nixpkgs.follows = "nixpkgs-unstable";
+            inputs.nixpkgs.follows = "nixpkgs-stable";
             url = "gitlab:doronbehar/nix-matlab";
         };
 

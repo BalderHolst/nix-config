@@ -3,81 +3,82 @@ let
     exa = pkgs.eza + "/bin/eza";
     nh = pkgs.nh + "/bin/nh";
     oh-my-posh = pkgs.oh-my-posh + "/bin/oh-my-posh";
-    oh-my-posh-config = pkgs.writeText "oh-my-posh-config.toml" ''
-    #:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+    oh-my-posh-config = pkgs.writeText "oh-my-posh-config.toml" /* toml */ ''
 
-    version = 2
-    final_space = true
-    console_title_template = '{{ .Shell }} in {{ .Folder }}'
+        #:schema https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 
-    [[blocks]]
-      type = 'prompt'
-      alignment = 'left'
-      newline = true
+        version = 2
+        final_space = true
+        console_title_template = '{{ .Shell }} in {{ .Folder }}'
 
-      [[blocks.segments]]
-        type = 'path'
-        style = 'plain'
-        background = 'transparent'
-        foreground = 'cyan'
-        template = '{{ .Path }}'
+        [[blocks]]
+          type = 'prompt'
+          alignment = 'left'
+          newline = true
 
-        [blocks.segments.properties]
-          style = 'full'
+          [[blocks.segments]]
+            type = 'path'
+            style = 'plain'
+            background = 'transparent'
+            foreground = 'cyan'
+            template = '{{ .Path }}'
 
-      [[blocks.segments]]
-        type = 'git'
-        style = 'plain'
-        foreground = 'darkGray'
-        background = 'transparent'
-        template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
+            [blocks.segments.properties]
+              style = 'full'
 
-        [blocks.segments.properties]
-          branch_icon = ""
-          commit_icon = '@'
-          fetch_status = true
+          [[blocks.segments]]
+            type = 'git'
+            style = 'plain'
+            foreground = 'darkGray'
+            background = 'transparent'
+            template = ' {{ .HEAD }}{{ if or (.Working.Changed) (.Staging.Changed) }}*{{ end }} <cyan>{{ if gt .Behind 0 }}⇣{{ end }}{{ if gt .Ahead 0 }}⇡{{ end }}</>'
 
-    [[blocks]]
-      type = 'rprompt'
-      overflow = 'hidden'
+            [blocks.segments.properties]
+              branch_icon = ""
+              commit_icon = '@'
+              fetch_status = true
 
-      [[blocks.segments]]
-        type = 'executiontime'
-        style = 'plain'
-        foreground = 'yellow'
-        background = 'transparent'
-        template = '{{ .FormattedMs }}'
+        [[blocks]]
+          type = 'rprompt'
+          overflow = 'hidden'
 
-        [blocks.segments.properties]
-          threshold = 5000
+          [[blocks.segments]]
+            type = 'executiontime'
+            style = 'plain'
+            foreground = 'yellow'
+            background = 'transparent'
+            template = '{{ .FormattedMs }}'
 
-    [[blocks]]
-      type = 'prompt'
-      alignment = 'left'
-      newline = true
+            [blocks.segments.properties]
+              threshold = 5000
 
-      [[blocks.segments]]
-        type = 'text'
-        style = 'plain'
-        foreground_templates = [
-          "{{if gt .Code 0}}red{{end}}",
-          "{{if eq .Code 0}}lightMagenta{{end}}",
-        ]
-        background = 'transparent'
-        template = '❯'
+        [[blocks]]
+          type = 'prompt'
+          alignment = 'left'
+          newline = true
 
-    [transient_prompt]
-      foreground_templates = [
-        "{{if gt .Code 0}}red{{end}}",
-        "{{if eq .Code 0}}magenta{{end}}",
-      ]
-      background = 'transparent'
-      template = '❯ '
+          [[blocks.segments]]
+            type = 'text'
+            style = 'plain'
+            foreground_templates = [
+              "{{if gt .Code 0}}red{{end}}",
+              "{{if eq .Code 0}}lightMagenta{{end}}",
+            ]
+            background = 'transparent'
+            template = '❯'
 
-    [secondary_prompt]
-      foreground = 'lightMagenta'
-      background = 'transparent'
-      template = '❯❯ '
+        [transient_prompt]
+          foreground_templates = [
+            "{{if gt .Code 0}}red{{end}}",
+            "{{if eq .Code 0}}magenta{{end}}",
+          ]
+          background = 'transparent'
+          template = '❯ '
+
+        [secondary_prompt]
+          foreground = 'lightMagenta'
+          background = 'transparent'
+          template = '❯❯ '
     '';
 in 
 {
@@ -150,34 +151,34 @@ in
               theme = "robbyrussell";
             };
 
-            initExtra = ''
+            initExtra = /*bash*/ ''
 
-            # Extra navigation aliases
-            alias ..='cd ..'
-            alias ...='cd ../..'
+                # Extra navigation aliases
+                alias ..='cd ..'
+                alias ...='cd ../..'
 
-            # Source bookmarks file if it exists
-            [ -f ~/.local/share/bmark/aliases.sh ] && source ~/.local/share/bmark/aliases.sh
+                # Source bookmarks file if it exists
+                [ -f ~/.local/share/bmark/aliases.sh ] && source ~/.local/share/bmark/aliases.sh
 
-            # Initialize oh-my-posh prompt
-            eval "$(${oh-my-posh} init zsh --config ${oh-my-posh-config})"
+                # Initialize oh-my-posh prompt
+                eval "$(${oh-my-posh} init zsh --config ${oh-my-posh-config})"
 
-            # Add utils to PATH
-            PATH="$PATH"":${../utils}"
+                # Add utils to PATH
+                PATH="$PATH"":${../utils}"
 
-            # Display incomplete todos
-            todos="$(todo list)"
-            [ "$todos" = "" ] || {
-                echo "TODO:"
-                while IFS= read -r task; do
-                    echo "$task"
-                done <<< $todos
-            }
+                # Display incomplete todos
+                todos="$(todo list)"
+                [ "$todos" = "" ] || {
+                    echo "TODO:"
+                    while IFS= read -r task; do
+                        echo "$task"
+                    done <<< $todos
+                }
 
-            if [ -n "$fzf-share" ]; then
-              source "$(fzf-share)/key-bindings.zsh"
-              source "$(fzf-share)/completion.zsh"
-            fi
+                if [ -n "$fzf-share" ]; then
+                  source "$(fzf-share)/key-bindings.zsh"
+                  source "$(fzf-share)/completion.zsh"
+                fi
 
             '';
         };
