@@ -101,6 +101,7 @@ in
                 r = "${pkgs.lf}/bin/lf";
                 t = "kitty --detach";
                 zathura = "${pkgs.zathura}/bin/zathura --fork";
+                sovs="source";
 
                 # Git
                 gs = "git status";
@@ -156,6 +157,7 @@ in
                 # Extra navigation aliases
                 alias ..='cd ..'
                 alias ...='cd ../..'
+
 
                 # Source bookmarks file if it exists
                 [ -f ~/.local/share/bmark/aliases.sh ] && source ~/.local/share/bmark/aliases.sh
