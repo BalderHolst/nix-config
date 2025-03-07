@@ -3,8 +3,7 @@
 ## Run a docker container with the given image and workdir for testing
 
 SUFFIX="test-container"
-
-IMAGE="ubuntu:latest"
+DEFAULT_IMAGE="nixos/nix"
 
 # Make sure docker is installed
 if ! [ -x "$(command -v docker)" ]; then
@@ -13,16 +12,16 @@ if ! [ -x "$(command -v docker)" ]; then
 fi
 
 function help() {
-    echo "Usage: $0 [OPTIONS] [<workdir>]"
+    echo "Usage: $0 [OPTIONS] [<image>]"
     echo ""
     echo "Options:"
     echo "  --rebuild   Rebuild the container"
     echo "  --repull    Pull the image before running"
-    echo "  --image     Set the image to run (default: $IMAGE)"
     echo "  --help      Show this help message"
 }
 
 # Parse command line arguments
+IMAGE=""
 while [ "$1" != "" ]; do
     case $1 in
         --rebuild )     shift
@@ -31,18 +30,20 @@ while [ "$1" != "" ]; do
         --repull )      shift
                         REPULL=1
                         ;;
-        --image )       shift
-                        IMAGE=$1
-                        ;;
         --clean )       shift
                         CLEAN=1
                         ;;
         --help )        help; 
                         exit 0
                         ;;
-        * )             echo "Error: Invalid argument '$1'" >&2;
-                        help
-                        exit 1
+        * )             if [ -z "$IMAGE" ]; then
+                            IMAGE=$1
+                            shift
+                        else
+                            help
+                            echo "Error: Too many arguments." >&2
+                            exit 1
+                        fi
                         ;;
     esac
     shift
@@ -50,8 +51,7 @@ done
 
 # Make sure the image is set
 if [ -z "$IMAGE" ]; then
-    echo "Error: No image specified." >&2
-    exit 1
+    IMAGE=$DEFAULT_IMAGE
 fi
 
 # Remove all containers with the suffix and print their names
@@ -72,7 +72,7 @@ fi
 
 CONTAINER="$(echo $IMAGE | sed 's/[^a-zA-Z0-9]/-/g')-$SUFFIX"
 
-# Pull the latest Ubuntu image
+# Pull the latest image
 if [ "$REPULL" == "1" ]; then
     echo "Pulling the latest '$IMAGE' image..."
     docker pull $IMAGE
@@ -87,7 +87,7 @@ if [ "$REBUILD" == "1" ]; then
     fi
 fi
 
-# Pull the latest Ubuntu image
+# Pull the latest image
 if [[ "$(docker images -q $IMAGE)" == "" ]]; then
     echo "Pulling the latest $IMAGE image..."
     docker pull $IMAGE
