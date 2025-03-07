@@ -7,21 +7,18 @@ nix run github:BalderHolst/nix-config#install \
     --extra-experimental-features flakes
 ```
 
-# Install with Shell
+# Install with Clone
 
-First run this command:
+Start by cloning the repository into `~/.nix-config`.
 
 ```bash
-nix-shell -p git
+nix-shell -p git --command "git clone https://github.com/BalderHolst/nix-hyprland-config ~/.nix-config"
 ```
 
-This will open a shell with `git` installed.
+Now run the install script:
 
-Now run the following commands:
-
-NOTE: Part of this script requires `sudo` privileges. Please review the script before running!
+WARNING: Part of this script requires `sudo` privileges. Please review the script before running!
 
 ```bash
-git clone https://github.com/BalderHolst/nix-hyprland-config ~/.config/home-manager
-~/.config/home-manager/install.sh
+~/.nix-config/install.sh
 ```
