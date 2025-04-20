@@ -20,8 +20,6 @@
 
     networking.hostName = hostname;
 
-    programs.nix-ld.dev.enable = true;
-
     services.logind.extraConfig = "RuntimeDirectorySize=4G";
 
     # Sync with NAS
