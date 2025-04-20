@@ -3,7 +3,7 @@
 # your system. Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ hostname, user, ... }:
+{ hostname, user, pkgs, ... }:
 
 {
     imports =
@@ -93,6 +93,7 @@
 
     environment.sessionVariables = {
         QT_XCB_GL_INTEGRATION = "none"; # Make Mathematica happy
+        LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.glib.out}/lib";
     };
 
     system.stateVersion = "23.05";

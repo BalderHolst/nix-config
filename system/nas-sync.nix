@@ -44,6 +44,11 @@
         default = [];
     };
 
+    options.nas.rclone-flags = lib.mkOption {
+        type = lib.types.str;
+        default = "--transfers=1";
+    };
+
     config.environment.systemPackages = [
         (
         let 
@@ -71,7 +76,6 @@
             time=$(date "+%Y.%d.%m-%H.%M.%S")
             name="$time-$(hostname)-home-backup.tar.gz"
 
-            
             path="${config.nas.temp-dir}/backups/$name"
             mkdir -p "${config.nas.temp-dir}/backups"
 
@@ -81,7 +85,7 @@
 
             echo "Sending to ${config.nas.rclone-device}..."
 
-            ${pkgs.callPackage ../pkgs/rclone.nix {}}/bin/rclone copy -v "$path" "${config.nas.rclone-device}:${config.nas.remote-backup-dir}"
+            ${pkgs.callPackage ../pkgs/rclone.nix {}}/bin/rclone copy -v "$path" "${config.nas.rclone-device}:${config.nas.remote-backup-dir} ${config.nas.rclone-flags}"
 
             rm -v "$path"
 
@@ -115,7 +119,7 @@
                         (x: 
                         let 
                             remote = "${config.nas.rclone-device}:${x.remote}";
-                            rclone = "${pkgs.callPackage ../pkgs/rclone.nix {}}/bin/rclone";
+                            rclone = "${pkgs.callPackage ../pkgs/rclone.nix {}}/bin/rclone ${config.nas.rclone-flags}";
                         in
                         ''
                         [[ -d "${x.local}" ]] || mkdir -p ${x.local}
