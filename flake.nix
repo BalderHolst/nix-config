@@ -79,7 +79,6 @@
                     pkgs = pkgs-stable;
                     modules = [
                         ./profiles/${profile}/configuration.nix
-                        inputs.nix-ld.nixosModules.nix-ld
                     ];
                     specialArgs = {
                         hostname = profile;
@@ -138,11 +137,6 @@
         nix-matlab = {
             inputs.nixpkgs.follows = "nixpkgs-stable";
             url = "gitlab:doronbehar/nix-matlab";
-        };
-
-        nix-ld = {
-            url = "github:Mic92/nix-ld";
-            inputs.nixpkgs.follows = "nixpkgs-stable";
         };
 
         rust-overlay.url = "github:oxalica/rust-overlay";
