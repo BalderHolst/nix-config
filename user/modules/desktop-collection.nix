@@ -28,6 +28,7 @@
         audacity                      # audio editor
         hyprpicker                    # color picker
         discord                       # communication
+        font-manager                  # font management
     ];
 
     home.file = {

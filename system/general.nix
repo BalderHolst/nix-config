@@ -80,6 +80,7 @@
         noto-fonts
         nerdfonts
         font-awesome
+        lmodern
     ];
 
     services.dbus.packages = [ pkgs.gcr ];
