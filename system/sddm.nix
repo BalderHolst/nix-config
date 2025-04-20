@@ -5,14 +5,18 @@
     ];
 
     # Enable the X11 windowing system.
-    services.displayManager.sddm.wayland.enable = true;
-    services.xserver = {
+    services = {
+        displayManager.sddm.wayland.enable = true;
         displayManager.sddm = {
             enable = true;
             theme = "sugar-dark";
         };
-        layout = "dk";
-        xkbVariant = "";
+        xserver = {
+            xkb = {
+                variant = "";
+                layout = "dk";
+            };
+        };
     };
 
     # Kill X11 server after 5 seconds on shutdown
