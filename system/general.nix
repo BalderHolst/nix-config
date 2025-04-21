@@ -96,7 +96,7 @@
     };
 
     hardware = {
-        opengl.enable = true; # enable opengl
+        graphics.enable = true; # enable opengl
         nvidia.modesetting.enable = true;
     };
 

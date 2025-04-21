@@ -22,6 +22,8 @@
 
     services.logind.extraConfig = "RuntimeDirectorySize=4G";
 
+    virtual-machines.enable = false;
+
     # Sync with NAS
     nas.network-ssid = "TP-Link_96CC";
     nas.rclone-device = "NAS";

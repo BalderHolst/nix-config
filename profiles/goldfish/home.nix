@@ -39,7 +39,7 @@ in
         rust.enable   = true;
         python = {
             enable = true;
-            notebooks = true;
+            notebooks = false;
         };
     };
 

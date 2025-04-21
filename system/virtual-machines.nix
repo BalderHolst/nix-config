@@ -1,11 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
+let
+    cfg = config.virtual-machines;
+in
 {
-    virtualisation.libvirtd.enable = true;
+    options.virtual-machines = {
+        enable = lib.mkEnableOption "Virtual machines with QEMU and libvirt";
+    };
 
-    environment.systemPackages = with pkgs; [
-        virt-manager
-        libvirt
-        qemu
+    config = lib.mkIf cfg.enable {
+        virtualisation.libvirtd.enable = true;
+        environment.systemPackages = with pkgs; [
+            virt-manager
+            libvirt
+            qemu
         ];
-
+    };
 }
