@@ -36,6 +36,7 @@
         firefox = pkgs-stable.firefox;
         pdfpc = pkgs-stable.pdfpc;
         font-manager = pkgs-stable.font-manager;
+        stable = pkgs-stable;
     });
 
     # configure pkgs

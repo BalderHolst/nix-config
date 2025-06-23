@@ -11,8 +11,8 @@ let
     bmark = pkgs.bmark + "/bin/bmark";
     brightnessctl = pkgs.brightnessctl + "/bin/brightnessctl";
     wpctl = pkgs.wireplumber + "/bin/wpctl";
-    waybar = pkgs.waybar + "/bin/waybar";
-    hyprpaper = pkgs.hyprpaper + "/bin/hyprpaper";
+    waybar = pkgs.stable.waybar + "/bin/waybar";
+    hyprpaper = pkgs.stable.hyprpaper + "/bin/hyprpaper";
     convert = pkgs.imagemagick + "/bin/convert";
     pypr = pkgs.pyprland + "/bin/pypr";
     pavucontrol = pkgs.pavucontrol + "/bin/pavucontrol";
@@ -30,7 +30,7 @@ in
 
     config.wayland.windowManager.hyprland = {
        plugins = [
-          inputs.hyprgrass.packages.${pkgs.system}.default
+          # inputs.hyprgrass.packages.${pkgs.system}.default
        ];
     };
 
