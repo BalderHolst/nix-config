@@ -71,13 +71,11 @@
         enable = true;
         package = pkgs.mlocate;
         interval = "hourly";
-        localuser = null;
     };
 
     fonts.fontDir.enable = true;
     fonts.packages = with pkgs; [
         noto-fonts
-        nerdfonts
         font-awesome
         lmodern
     ];
