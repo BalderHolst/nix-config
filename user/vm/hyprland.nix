@@ -58,6 +58,10 @@ in
         env = XCURSOR_SIZE,32
         env = QT_ENABLE_HIGHDPI_SCALING,1
 
+        cursor {
+            no_hardware_cursors = true
+        }
+
         binds {
             workspace_back_and_forth = true
         }

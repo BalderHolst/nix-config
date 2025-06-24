@@ -94,6 +94,8 @@
     environment.sessionVariables = {
         QT_XCB_GL_INTEGRATION = "none"; # Make Mathematica happy
         LD_LIBRARY_PATH = "$LD_LIBRARY_PATH:${pkgs.glib.out}/lib";
+        WLR_NO_HARDWARE_CURSORS = "1";
+        XDG_SESSION_TYPE = "wayland";
     };
 
     system.stateVersion = "23.05";
