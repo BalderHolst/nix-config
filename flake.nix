@@ -53,10 +53,6 @@
             inputs.nix-matlab.overlay
         ];
     };
-
-    # configure lib
-    lib = nixpkgs-stable.lib;
-
     in
     {
         overlays.default = overlay;
@@ -76,7 +72,7 @@
         nixosConfigurations = builtins.listToAttrs (
             builtins.map (profile: {
                 name = profile;
-                value = lib.nixosSystem {
+                value = nixpkgs-stable.lib.nixosSystem {
                     pkgs = pkgs-stable;
                     modules = [
                         ./profiles/${profile}/configuration.nix
