@@ -15,12 +15,15 @@
             ../../system/sddm.nix
             ../../system/steam.nix
             ../../system/docker.nix
+            ../../system/act.nix
         ];
 
     networking.hostName = hostname; # Define your hostname.
     system.stateVersion = "23.05"; # Did you read the comment?
 
     services.xserver.enable = true;
+
+    programs.nix-ld.enable = true;
 
     # Sync with NAS
     nas.always-sync = true;

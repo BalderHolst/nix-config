@@ -17,6 +17,29 @@ in
             vimAlias = true;
         };
 
+        programs.neovide = {
+            enable = true;
+            settings = {
+                fork = false;
+                frame = "full";
+                idle = true;
+                maximized = false;
+                neovim-bin = "nvim";
+                no-multigrid = false;
+                srgb = false;
+                tabs = true;
+                theme = "auto";
+                title-hidden = true;
+                vsync = true;
+                wsl = false;
+
+                font = {
+                    normal = [];
+                    size = 14.0;
+                };
+            };
+        };
+
         home.sessionVariables =
         let
             vhdl_ls_config = pkgs.writeText "vhdl_ls.toml" ''
@@ -29,6 +52,7 @@ in
         in
         {
             EDITOR = "nvim";
+            VISUAL = "neovide";
             VHDL_LS_CONFIG = "${vhdl_ls_config}";
         };
 
@@ -43,6 +67,8 @@ in
             matlab-language-server                # lsp for matlab
             nixd                                  # lsp for nix
             clang-tools                           # lsp for c/c++
+            yarn                                  # For markdown preview plugin
+            nodePackages.npm                      # For markdown preview plugin
         ];
 
         home.file.".config/nvim/plugin/init.lua".text = (if config.neovim.neo-keymaps then ''
