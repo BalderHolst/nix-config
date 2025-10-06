@@ -35,7 +35,7 @@
     in
     [
         { local = "${home}/3d-print";               remote = "3d-print";            }
-        { local = "${home}/Pictures";               remote = "general/pictures";    }
+        # { local = "${home}/Pictures";               remote = "general/pictures";    }
         { local = "${home}/Documents/opskrifter";   remote = "general/opskrifter";  }
         { local = "${home}/Documents/papirer";      remote = "private/papirer";     }
         { local = "${home}/Documents/job";          remote = "private/job";         }

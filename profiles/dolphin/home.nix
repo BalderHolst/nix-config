@@ -32,6 +32,8 @@ in
 
     neovim.neo-keymaps = false;
 
+    pcb.enable = true;
+
     lang = {
         c.enable      = true;
         rust.enable   = true;
