@@ -33,6 +33,7 @@ in
     neovim.neo-keymaps = false;
 
     pcb.enable = true;
+    cad.enable = true;
 
     lang = {
         c.enable      = true;

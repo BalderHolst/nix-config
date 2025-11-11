@@ -5,6 +5,7 @@
         ./languages
         ./embedded
         ./pcb
+        ./cad
     ];
 
     home.packages = with pkgs; [

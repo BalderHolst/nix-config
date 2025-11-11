@@ -15,7 +15,6 @@
         wf-recorder                   # screen recorder
         filezilla                     # ftp gui interface
         transmission_4-qt             # bittorrent client for file shareing
-        prusa-slicer                  # slicer for 3d printing
         tor-browser                   # secure and anonymous browsing
         xournalpp                     # write on pdfs!
         obsidian                      # note taking
