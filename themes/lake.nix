@@ -7,8 +7,8 @@
     disabled = "707880";
     focus = "80C0FF";
     wallpaper = builtins.fetchurl {
-      url = "https://free4kwallpapers.com/uploads/originals/2020/07/22/minimal-landscape-black-and-white-wallpaper.png";
-      sha256 = "sha256:1lcv6naa0p5p3d3a69yymrhz72r2i0y74y1drl6amyswi16p0sdn";
+      url = "https://backiee.com/static/wallpapers/7680x4320/362688.jpg";
+      sha256 = "sha256:1c4lqhfjkljdcmgk7i9v4bxyqnyqfh9j68iwn9g9gl850049gq2z";
     };
     # Mirror: https://wallpapers.com/images/high/landscape-white-minimalist-d0h9lllw9ds8g39m.webp
  }

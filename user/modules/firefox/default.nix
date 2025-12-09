@@ -117,7 +117,7 @@ in
                     urls = [{
                         template= "https://doc.rust-lang.org/std/";
                         icon = builtins.fetchurl {
-                            url = "https://doc.rust-lang.org/static.files/rust-logo-151179464ae7ed46.svg";
+                            url = "https://raw.githubusercontent.com/rust-lang/rust-artwork/bf0b3272f9ba8d22f7fd45e408496d05621b3b5c/logo/rust-logo-blk.svg";
                             sha256 = "sha256:18kcl3libfj6xjxd6i2an487n70jp3qrk0hbc4xfqkfk0bm4k5cs";
                         };
                         params = [
@@ -134,8 +134,8 @@ in
                         ];
                     }];
                     icon = builtins.fetchurl {
-                      url = "https://pypi.org/static/images/logo-small.2a411bc6.svg";
-                      sha256 = "sha256:12ydpzmbc1a2h4g1gjk8wi02b3vkfqg84zja2v4c403iqdyi5xzr";
+                        url = "https://pypi.org/static/images/logo-small.8998e9d1.svg";
+                      sha256 = "sha256:02azs1k7prj7f305xqdy7l4aldk3saczx1pvxvl6dp9x67glyiww";
                     };
                     definedAliases = [ "!py" "!pip" "!pypi" ];
                 };
@@ -186,8 +186,8 @@ in
                         ];
                     }];
                     icon = builtins.fetchurl {
-                      url = "https://www.pricerunner.dk/images/i/pricerunner_favicon_black.ico";
-                      sha256 = "sha256:1600brn85z2qigss6s9xhy2fyhdxqjiq3paphls1mx8l7a4jjp59";
+                      url = "https://owp.klarna.com/images/i/pricerunner_favicon_black.ico";
+                      sha256 = "sha256:0l3c7a8p9f8dn4kyrk6h0glr98mzgjwsvqzy2rz92fn2q1qf51ny";
                     };
                     definedAliases = [ "!pr" "!price" "!pricerunner" ];
                 };
