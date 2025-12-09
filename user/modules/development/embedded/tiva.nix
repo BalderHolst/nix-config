@@ -10,7 +10,7 @@ in
 
     config = lib.mkIf cfg.enable {
         home.packages = with pkgs; [
-            gcc-arm-embedded-9 # toolchain
+            gcc-arm-embedded # toolchain
             (pkgs.callPackage ../../../../pkgs/lm4flash.nix { }) # flashing tool
         ];
     };

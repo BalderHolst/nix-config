@@ -20,6 +20,15 @@
         waybar = prev.waybar.overrideAttrs (oldAttrs: {
             mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
         });
+        gcc-arm-embedded = prev.gcc-arm-embedded.overrideAttrs (old: {
+            # Resolve file conflict with gdb
+            pname = old.pname + "-fixed";
+            fixupPhase = ''
+                ${old.fixupPhase or ""}
+                rm -rf $out/share/info
+                rm -rf $out/share/gdb
+            '';
+        });
     });
 
     pkgs-stable = import nixpkgs-stable {

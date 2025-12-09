@@ -10,9 +10,9 @@ in
 
     config = lib.mkIf cfg.enable {
         home.packages = with pkgs; [
-            cmakeMinimal # CMake
-            gnat14       # GNU compilers 
-            man-pages    # man pages for development
+            cmake     # CMake
+            gnat      # GNU compilers 
+            man-pages # man pages for development
         ];
     };
 }

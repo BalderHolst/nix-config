@@ -48,6 +48,7 @@ in
         avr.enable     = false;
         tiva.enable    = false;
         yosys.enable   = false;
+        pico.enable    = true;
     };
 
     latex.enable = true;

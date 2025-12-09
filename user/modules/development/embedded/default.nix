@@ -6,6 +6,7 @@
         ./tiva.nix
         ./yosys.nix
         ./arduino.nix
+        ./pico.nix
     ];
 
     config = {
