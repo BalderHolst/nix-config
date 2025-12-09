@@ -10,7 +10,7 @@ in
 
     config = lib.mkIf cfg.enable {
         home.packages = with pkgs; [
-            kicad # design PCBs and draw circuits
+            stable.kicad # design PCBs and draw circuits
         ];
     };
 }

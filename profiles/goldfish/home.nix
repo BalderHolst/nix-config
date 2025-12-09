@@ -53,7 +53,7 @@ in
 
     latex.enable = true;
 
-    pcb.enable = false;
+    pcb.enable = true;
 
     gtk.iconTheme = {
         package = pkgs.papirus-icon-theme;
