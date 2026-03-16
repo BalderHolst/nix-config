@@ -18,6 +18,9 @@
             ../../system/virtual-machines.nix
         ];
 
+    # Enable comma with the pre-indexed database
+    programs.nix-index-database.comma.enable = true;
+
     networking.hostName = hostname;
 
     services.logind.extraConfig = "RuntimeDirectorySize=4G";
