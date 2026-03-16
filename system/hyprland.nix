@@ -6,6 +6,8 @@
         xwayland.enable = true;
     };
 
+    services.upower.enable = true;
+
     xdg.portal = {
         enable = true;
         wlr.enable = true;

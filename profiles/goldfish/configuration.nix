@@ -21,6 +21,7 @@
     networking.hostName = hostname;
 
     services.logind.extraConfig = "RuntimeDirectorySize=4G";
+    services.gvfs.enable = true;
 
     virtual-machines.enable = false;
 

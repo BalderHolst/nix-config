@@ -85,6 +85,7 @@
                     pkgs = pkgs-stable;
                     modules = [
                         ./profiles/${profile}/configuration.nix
+                        inputs.nix-index-database.nixosModules.default
                     ];
                     specialArgs = {
                         hostname = profile;
@@ -132,6 +133,11 @@
 
         hyprland = {
             url = "github:hyprwm/Hyprland";
+            inputs.nixpkgs.follows = "nixpkgs-stable";
+        };
+
+        nix-index-database = {
+            url = "github:nix-community/nix-index-database";
             inputs.nixpkgs.follows = "nixpkgs-stable";
         };
 

@@ -20,12 +20,13 @@
         xournalpp                     # write on pdfs!
         obsidian                      # note taking
         gimp                          # image manipulation
+        figma-linux                   # design tool
         # krita                       # digital painting
         drawio                        # create diagrams
         # olive-editor                # video editor
         tidal-hifi                    # music streaming
         musescore                     # music notation
-        audacity                      # audio editor
+        stable.audacity               # audio editor
         hyprpicker                    # color picker
         discord                       # communication
         font-manager                  # font management

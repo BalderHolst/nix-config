@@ -11,7 +11,6 @@
         zsh       # better bash
         kitty     # terminal emulator
         gnumake   # make
-        nix-index # search for files in nixpkgs
         gdb       # THE debugger
     ];
 
