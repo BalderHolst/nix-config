@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+
+import os
+import sys
+import subprocess
+from pathlib import Path
+
+def convert_aac_to_wav():
+    # 1. Check for directory argument
+    if len(sys.argv) < 2:
+        print("Please specify a directory as the first argument.")
+        sys.exit(1)
+
+    target_dir = Path(sys.argv[1])
+
+    if not target_dir.is_dir():
+        print(f"Error: {target_dir} is not a valid directory.")
+        sys.exit(1)
+
+    # 2. Find all .aac files
+    # rglob handles recursive searching (equivalent to 'find')
+    aac_files = list(target_dir.rglob("*.aac"))
+
+    if not aac_files:
+        print("No .aac files found.")
+        return
+
+    for f in aac_files:
+        print(f)
+
+    # 3. User confirmation
+    input("\nConverting these files. Press Enter to continue...")
+
+    # 4. Conversion loop
+    for aac_path in aac_files:
+        # Change extension from .aac to .wav
+        wav_path = aac_path.with_suffix(".wav")
+
+        print(f"Converting: '{aac_path.name}' -> '{wav_path.name}'... ", end="")
+
+        if wav_path.exists():
+            print("Exists. Skipping.")
+            continue
+
+        try:
+            subprocess.run(
+                ["ffmpeg", "-i", str(aac_path), str(wav_path)],
+                check=True,
+                capture_output=True,
+                text=True
+            )
+            print("Success!")
+        except subprocess.CalledProcessError as e:
+            print(f"Failed to convert {aac_path.name}: {e.stderr}")
+
+    print("\nDONE!")
+
+if __name__ == "__main__":
+    convert_aac_to_wav()
