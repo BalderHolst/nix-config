@@ -5,6 +5,8 @@ import sys
 import subprocess
 from pathlib import Path
 
+## Convert .aac files to .wav in a directory
+
 def convert_aac_to_wav():
     # 1. Check for directory argument
     if len(sys.argv) < 2:

@@ -1,0 +1,221 @@
+#!/usr/bin/env nix-shell
+#!nix-shell -i python3 -p python3 python3Packages.pydub python3Packages.numpy ffmpeg
+
+## Look for stereo audio files in a directory and convert them to mono
+
+import os
+import argparse
+import numpy as np
+from pydub import AudioSegment
+from concurrent.futures import ProcessPoolExecutor, as_completed
+from enum import Enum
+import json
+
+# Give this script a low scheduller priority to make sure the os does not freeze
+os.nice(19)
+
+CACHE_FILE = ".unstereo-cache.json"
+
+AUDIO_EXTENSIONS = ('.wav', '.mp3', '.flac', '.m4a', '.ogg', '.wma')
+
+class CheckResult(Enum):
+    Mono         = 0
+    Stereo       = 1
+    Cached       = 2
+    RightMono    = 3
+    LeftMono     = 4
+    Silent       = 5
+
+    def __str__(self):
+        match self:
+            case CheckResult.Mono: return "Mono"
+            case CheckResult.Stereo: return "Stereo"
+            case CheckResult.Cached: return "Cached"
+            case CheckResult.RightMono: return "Right Mono"
+            case CheckResult.LeftMono: return "Left Mono"
+            case CheckResult.Silent: return "Silent"
+            case other: return str(other)
+
+    def __repr__(self):
+        return self.__str__()
+
+# Contains files that have already been checked
+CACHE = set()
+
+def load_cache(dir: str) -> None:
+    global CACHE
+
+    cache_path = os.path.join(dir, CACHE_FILE)
+
+    if not os.path.exists(cache_path): return
+
+    with open(cache_path) as f:
+        CACHE = set(json.load(f))
+
+def save_cache(dir: str) -> None:
+    global CACHE
+    cache_path = os.path.join(dir, CACHE_FILE)
+    with open(cache_path, 'w') as f:
+        json.dump(list(CACHE), f)
+
+def check_one_channel_silent_np(target_dir, file_path, rms_threshold, preview_secs=1) -> CheckResult:
+
+    if os.path.relpath(file_path, target_dir) in CACHE: return CheckResult.Cached
+
+    try:
+        preview_audio = AudioSegment.from_file(file_path, parameters=["-t", f"{preview_secs}"])
+
+        if preview_audio.channels < 2:
+            return CheckResult.Mono
+
+        # Extract and shape preview array
+        preview_samples = np.array(preview_audio.get_array_of_samples(), dtype=np.float32)
+        preview_samples = preview_samples.reshape((-1, preview_audio.channels))
+
+        # Normalize based on bit depth
+        max_possible_value = 1 << (8 * preview_audio.sample_width - 1)
+        preview_samples /= max_possible_value
+
+        # Calculate RMS for preview snippet
+        pre_left_rms = np.sqrt(np.mean(preview_samples[:, 0] ** 2))
+        pre_right_rms = np.sqrt(np.mean(preview_samples[:, 1] ** 2))
+
+        pre_left_silent = pre_left_rms < rms_threshold
+        pre_right_silent = pre_right_rms < rms_threshold
+
+        if not pre_left_silent and not pre_right_silent:
+            return CheckResult.Stereo
+
+        # --- STAGE 2: FULL CONFIRMATION ---
+        audio = AudioSegment.from_file(file_path)
+
+        samples = np.array(audio.get_array_of_samples(), dtype=np.float32)
+        samples = samples.reshape((-1, audio.channels))
+        samples /= max_possible_value
+
+        is_left_silent = False
+        is_right_silent = False
+
+        if pre_left_silent:
+            left_rms = np.sqrt(np.mean(samples[:, 0] ** 2))
+            is_left_silent = left_rms < rms_threshold
+
+        if pre_right_silent:
+            right_rms = np.sqrt(np.mean(samples[:, 1] ** 2))
+            is_right_silent = right_rms < rms_threshold
+
+        if is_left_silent and not is_right_silent:
+            return CheckResult.RightMono    # Only right channel has sound
+        elif is_right_silent and not is_left_silent:
+            return CheckResult.LeftMono     # Only left channel has sound
+        elif is_left_silent and is_right_silent:
+            return CheckResult.Silent       # Entire file is silent
+
+    except Exception as e:
+        print(f"{os.path.basename(file_path)}: Error ({e})")
+        return None
+
+    return CheckResult.Stereo
+
+def convert_stereo_to_mono(file_path, result: CheckResult, output_dir=None, verbose=False):
+    """
+    Converts a stereo file with one dead channel into a clean, single-channel mono file.
+
+    :param file_path: Path to the original audio file.
+    :param silent_channel: 'Left' or 'Right' (indicating which channel is bad).
+    :param output_dir: Optional directory to save the new file. If None, saves in the same folder.
+    :return: Path to the newly created mono file, or None if failed.
+    """
+    try:
+        # Load the original file
+        audio = AudioSegment.from_file(file_path)
+
+        # Split into individual [Left, Right] mono segments
+        channels = audio.split_to_mono()
+
+        good_audio_channel = None
+
+        match result:
+            case CheckResult.RightMono: good_audio_channel = channels[1]
+            case CheckResult.LeftMono: good_audio_channel = channels[0]
+            case _: return
+
+        # Export the clean channel back to disk using its original format
+        # Pydub automatically detects the format from the extension
+        good_audio_channel.export(file_path)
+
+        if verbose:
+            print(f"Successfully converted: {os.path.relpath(file_path)}")
+
+    except Exception as e:
+        print(f"Failed to convert {os.path.basename(file_path)}: {e}")
+
+def main():
+    parser = argparse.ArgumentParser(description="Detect silent stereo channels in parallel.")
+    parser.add_argument("directory", type=str, help="Directory to scan.")
+    parser.add_argument("-t", "--threshold", type=float, default=0.0001, help="RMS threshold.")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Print all file RMS values.")
+    parser.add_argument("-w", "--workers", type=int, default=None, 
+                        help="Number of parallel worker processes. Defaults to available CPU cores.")
+    parser.add_argument("-y", "--yes", action="store_true", help="Don't ask if you want to convert files")
+
+    args = parser.parse_args()
+    target_dir = os.path.abspath(os.path.expanduser(args.directory))
+
+    load_cache(target_dir)
+
+    if not os.path.isdir(target_dir):
+        print(f"Error: '{target_dir}' is not a valid directory.")
+        exit(1)
+
+    # 1. Collect all target file paths first
+    file_paths = []
+    for dirpath, _, filenames in os.walk(target_dir):
+        for filename in filenames:
+            if filename.lower().endswith(AUDIO_EXTENSIONS):
+                file_paths.append(os.path.join(dirpath, filename))
+
+    mono_files = []
+
+    with ProcessPoolExecutor(max_workers=args.workers) as executor:
+        # Submit all tasks to the pool
+        futures = {
+            executor.submit(check_one_channel_silent_np, target_dir, path, args.threshold): path
+                for path in file_paths
+        }
+
+        for future in as_completed(futures):
+            result = future.result()
+            path = futures[future]
+
+            # As each process finishes, print its result immediately
+            if args.verbose:
+                print(f"{os.path.relpath(path)}: {result}")
+
+            if result == CheckResult.LeftMono or result == CheckResult.RightMono:
+                mono_files.append((path, result))
+            else:
+                CACHE.add(os.path.relpath(path, target_dir))
+
+    save_cache(target_dir)
+
+    print()
+
+    if len(mono_files) == 0:
+        print("Found no stereo files with silent tracks.")
+        exit(0)
+
+    print(f"Found {len(mono_files)} stereo files with silent tracks:")
+    for path, _ in mono_files: print(f"  {os.path.relpath(path)}")
+
+    if not args.yes:
+        resp = input("\nConvert all files to mono audio? [yes/NO]: ")
+        if resp != "yes": exit(0)
+
+    print()
+
+    for path, result in mono_files:
+        convert_stereo_to_mono(path, result, verbose=args.verbose)
+
+if __name__ == "__main__":
+    main()

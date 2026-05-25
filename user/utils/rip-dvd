@@ -1,6 +1,8 @@
 #!nix-shell
 #!nix-shell -i bash -p dvdbackup fzf
 
+## Rip a dvd
+
 dev=$1
 
 # If no device is provided, prompt the user to select one
