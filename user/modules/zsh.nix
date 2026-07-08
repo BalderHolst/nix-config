@@ -93,7 +93,7 @@ in
             localVariables = {
                 POWERLEVEL9K_DISABLE_CONFIGURATION_WIZARD=true;
             };
-            shellAliases = rec {
+            shellAliases = {
 
                 ll = "${exa} -l";
                 lo = "${exa}";
@@ -113,7 +113,7 @@ in
                 mkdirr = ''function _mkcd() { mkdir -p "$1" && cd "$1"; }; _mkcd'';
 
                 uhome = "nh home switch ${config.zsh.configDir} --configuration $(hostname)";
-                uos = "${nh} os switch ${config.zsh.configDir} -H $(hostname) && ${uhome}";
+                uos = "${nh} os switch ${config.zsh.configDir} -H $(hostname)";
 
                 hdmi-dublicate = "xrandr --output DisplayPort-0 --auto --same-as eDP";
 
