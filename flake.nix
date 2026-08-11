@@ -86,6 +86,7 @@
                     pkgs = pkgs-stable;
                     modules = [
                         ./profiles/${profile}/configuration.nix
+                        inputs.nix-index-database.nixosModules.default
                     ];
                     specialArgs = {
                         hostname = profile;
