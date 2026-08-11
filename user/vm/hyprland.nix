@@ -1,12 +1,12 @@
 { pkgs, config, inputs, lib, ... }:
 let
-    terminal = pkgs.kitty + "/bin/kitty";
+    terminal = pkgs.stable.kitty + "/bin/kitty";
     grim = pkgs.grim + "/bin/grim";
     slurp = pkgs.slurp + "/bin/slurp";
     swappy = pkgs.swappy + "/bin/swappy";
     paste = pkgs.wl-clipboard + "/bin/wl-paste";
     browser = pkgs.firefox + "/bin/firefox";
-    rofi = pkgs.rofi-wayland + "/bin/rofi";
+    rofi = pkgs.rofi + "/bin/rofi";
     launcher = "${rofi} -show drun";
     bmark = pkgs.bmark + "/bin/bmark";
     brightnessctl = pkgs.brightnessctl + "/bin/brightnessctl";
@@ -30,7 +30,6 @@ in
 
     config.wayland.windowManager.hyprland = {
        plugins = [
-          # inputs.hyprgrass.packages.${pkgs.system}.default
        ];
     };
 
@@ -75,10 +74,10 @@ in
           }
         }
 
-        gestures {
-          workspace_swipe = true
-          workspace_swipe_cancel_ratio = 0.15
-        }
+        # gestures {
+        #   workspace_swipe = true
+        #   workspace_swipe_cancel_ratio = 0.15
+        # }
 
         ${
         if config.hyprland.swap_escape then ''
@@ -96,7 +95,7 @@ in
         exec-once = dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY
         exec-once = ${waybar}
         exec-once = ${hyprpaper}
-        exec-once = ${pypr}
+        exec-once = ${terminal}
 
         # Cursor size in qt applications
         env = XCURSOR_SIZE, 18
@@ -164,7 +163,7 @@ in
 
         gestures {
             # See https://wiki.hyprland.org/Configuring/Variables/ for more
-            workspace_swipe = on
+            # workspace_swipe = on
         }
 
         misc {

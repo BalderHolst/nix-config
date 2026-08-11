@@ -14,7 +14,7 @@
 
     home = {
         packages = with pkgs; [
-            neofetch     # fancy system info
+            fastfetch    # fancy system info
             tealdeer     # shot and sweet command examples
             zip          # zip your files
             unzip        # unzip your files
@@ -28,7 +28,7 @@
             graphviz     # create graphs!
             nurl         # generate nix expressions from urls
             usbutils     # list usb devices
-            du-dust      # disk usage
+            dust         # disk usage
             nh           # nix helper
             fd           # file finder
             cloc         # count lines of code in a project
@@ -39,7 +39,7 @@
             PAGER = "bat";
             MANPAGER = "bat";
             BROWSER = "firefox";
-            FLAKE = configDir;
+            NH_FLAKE = configDir;
         };
 
         file = {

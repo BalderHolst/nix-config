@@ -31,6 +31,8 @@ in
     {
         enable = true;
 
+        configPath = ".mozilla/firefox";
+
         policies = {
             DisableTelemetry = true;
             DisableFirefoxStudies = true;
@@ -108,8 +110,8 @@ in
                         ];
                     }];
                     icon = builtins.fetchurl {
-                      url = "https://crates.io/assets/cargo.png";
-                      sha256 = "sha256:1x254p99awa3jf1n617dn997aw44qv41jkfinhfdg9d3qblhkkr6";
+                      url = "https://crates.io/_app/immutable/assets/cargo.HGlGwyXQ.png";
+                      sha256 = "sha256:0b312wric9rv3ijh3qxmpw0whlabx0nf8b07h40h1g7avjc457jq";
                     };
                     definedAliases = [ "!cargo" "!crate" "!crates" ];
                 };
@@ -178,19 +180,19 @@ in
                     };
                     definedAliases = [ "!y" "!you" "!youtube" ];
                 };
-                "PriceRunner" = {
-                    urls = [{
-                        template= "https://www.pricerunner.dk/results";
-                        params = [
-                            { name = "q"; value = "{searchTerms}"; }
-                        ];
-                    }];
-                    icon = builtins.fetchurl {
-                      url = "https://owp.klarna.com/images/i/pricerunner_favicon_black.ico";
-                      sha256 = "sha256:0l3c7a8p9f8dn4kyrk6h0glr98mzgjwsvqzy2rz92fn2q1qf51ny";
-                    };
-                    definedAliases = [ "!pr" "!price" "!pricerunner" ];
-                };
+                # "PriceRunner" = {
+                #     urls = [{
+                #         template= "https://www.pricerunner.dk/results";
+                #         params = [
+                #             { name = "q"; value = "{searchTerms}"; }
+                #         ];
+                #     }];
+                #     icon = builtins.fetchurl {
+                #       url = "https://owp.klarna.com/images/i/pricerunner_favicon_black.ico";
+                #       sha256 = "sha256:0l3c7a8p9f8dn4kyrk6h0glr98mzgjwsvqzy2rz92fn2q1qf51ny";
+                #     };
+                #     definedAliases = [ "!pr" "!price" "!pricerunner" ];
+                # };
                 "drtv" = {
                     urls = [{
                         template= "https://www.dr.dk/drtv/soeg";

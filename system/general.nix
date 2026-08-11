@@ -28,7 +28,7 @@
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
 
-    # Audo mount USB
+    # Auto mount USB
     services.devmon.enable = true;
 
     # Set your time zone.
@@ -67,11 +67,11 @@
     };
 
     # Locate
-    services.locate = {
-        enable = true;
-        package = pkgs.mlocate;
-        interval = "hourly";
-    };
+    # services.locate = {
+    #     enable = true;
+    #     package = pkgs.mlocate;
+    #     interval = "hourly";
+    # };
 
     fonts.fontDir.enable = true;
     fonts.packages = with pkgs; [
@@ -80,7 +80,6 @@
         lmodern
     ];
 
-    services.dbus.packages = [ pkgs.gcr ];
     services.pcscd.enable = true;
     programs.gnupg.agent = {
         enable = true;
@@ -99,6 +98,7 @@
     };
 
     services.dbus.enable = true;
+    # services.dbus.packages = [ pkgs.gcr ];
 
     environment.systemPackages = with pkgs; [
 

@@ -17,23 +17,23 @@ in
         ../../user/modules/pass.nix
         ../../user/modules/cli-collection.nix
         ../../user/modules/desktop-collection.nix
-        ../../user/vm/hyprland.nix
+        ../../user/vm/niri
         ../../user/modules/firefox
     ];
 
-    git.userName = user.gitUser;
+    git.userName =  user.gitUser;
     git.userEmail = user.email;
 
     zsh.configDir = configDir;
 
-    hyprland = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
+    niri = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
 
     firefox.username = user.username;
 
     neovim.neo-keymaps = false;
 
-    pcb.enable = true;
-    cad.enable = true;
+    pcb.enable = false;
+    cad.enable = false;
 
     lang = {
         c.enable      = true;
@@ -59,6 +59,7 @@ in
     };
 
     home.pointerCursor = {
+        enable = true;
         gtk.enable = true;
         x11.enable = true;
         name = "Bibata-Original-Classic";
@@ -67,6 +68,7 @@ in
     };
 
     gtk = {
+        gtk4.theme = config.gtk.theme;
         enable = true;
         font.name = "Noto Sans";
         theme = {

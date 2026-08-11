@@ -11,11 +11,13 @@ in
     };
 
     config = {
-        programs.neovim = {
-            enable = true;
-            viAlias = true;
-            vimAlias = true;
-        };
+        # programs.neovim = {
+        #     enable = true;
+        #     viAlias = true;
+        #     vimAlias = true;
+        #     withPython3 = false;
+        #     withRuby = false;
+        # };
 
         programs.neovide = {
             enable = true;
@@ -57,6 +59,7 @@ in
         };
 
         home.packages = with pkgs; [
+            neovim
             n-shortcut                            # shortcut to open nvim with fzf
             tree-sitter                           # used by nvim-treesitter
             vscode-extensions.vadimcn.vscode-lldb # lldb vscode extension used in neovim
@@ -68,11 +71,10 @@ in
             nixd                                  # lsp for nix
             clang-tools                           # lsp for c/c++
             yarn                                  # For markdown preview plugin
-            nodePackages.npm                      # For markdown preview plugin
         ];
 
-        home.file.".config/nvim/plugin/init.lua".text = (if config.neovim.neo-keymaps then ''
-            vim.cmd('set langmap=jn,nj,ke,ek')
-        '' else "");
+        # home.file.".config/nvim/plugin/init.lua".text = (if config.neovim.neo-keymaps then ''
+        #     vim.cmd('set langmap=jn,nj,ke,ek')
+        # '' else "");
     };
 }

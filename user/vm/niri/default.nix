@@ -1,0 +1,149 @@
+{ pkgs, config, inputs, lib, ... }:
+{
+
+    options.niri.theme       = lib.mkOption { type = lib.types.attrs; };
+    options.niri.monitor     = lib.mkOption { type = lib.types.str; };
+    options.niri.size        = lib.mkOption { type = lib.types.functionTo lib.types.str; };
+    options.niri.swap_escape = lib.mkOption { type = lib.types.bool; };
+    options.niri.utilsDir    = lib.mkOption { type = lib.types.str; };
+
+    config.home.packages = [ ];
+
+    config.home.file = {
+        ".config/niri/config.kdl".text = /* kdl */ ''
+
+window-rule {
+    match app-id="firefox$"
+    open-maximized true
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "dk"
+        }
+
+        repeat-delay 180
+        repeat-rate 50
+        // track-layout "global"
+        // numlock
+    }
+
+    touchpad {
+        // off
+        tap
+        // dwt
+        // dwtp
+        // drag false
+        // drag-lock
+        natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-factor 1.0
+        // scroll-factor vertical=1.0 horizontal=-2.0
+        // scroll-method "two-finger"
+        // scroll-button 273
+        // scroll-button-lock
+        // tap-button-map "left-middle-right"
+        // click-method "clickfinger"
+        // left-handed
+        // disabled-on-external-mouse
+        // middle-emulation
+    }
+
+    mouse {
+        // off
+        // natural-scroll
+        // accel-speed 0.2
+        // accel-profile "flat"
+        // scroll-factor 1.0
+        // scroll-factor vertical=1.0 horizontal=-2.0
+        // scroll-method "no-scroll"
+        // scroll-button 273
+        // scroll-button-lock
+        // left-handed
+        // middle-emulation
+    }
+
+    // disable-power-key-handling
+    // warp-mouse-to-focus
+    // focus-follows-mouse max-scroll-amount="0%"
+    workspace-auto-back-and-forth
+
+    mod-key "Super"
+    mod-key-nested "Alt"
+}
+
+spawn-at-startup "noctalia-shell"
+prefer-no-csd
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+cursor {
+    xcursor-theme "breeze_cursors"
+    xcursor-size 24
+    hide-when-typing
+    hide-after-inactive-ms 1000
+}
+
+xwayland-satellite {
+    // path ${lib.getExe pkgs.xwayland-satellite};
+}
+
+layout {
+
+    gaps 10
+    border {
+        width 2
+    }
+    focus-ring {
+        width 2
+    }
+}
+
+binds {
+    Mod+Return { spawn-sh "kitty"; }
+    Mod+Q { close-window; }
+    Mod+P { spawn-sh "noctalia-shell ipc call launcher toggle"; }
+    Mod+B { spawn-sh "firefox"; }
+    Mod+F { fullscreen-window; }
+    Mod+C { maximize-column; }
+    Mod+Shift+Return { toggle-window-floating; }
+
+    Mod+H { focus-column-left; }
+    Mod+J { focus-window-or-workspace-down {}; }
+    Mod+K { focus-window-or-workspace-up {}; }
+    Mod+L { focus-column-right {}; }
+
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
+    Mod+WheelScrollRight { focus-column-right; }
+    Mod+WheelScrollLeft { focus-column-left; }
+
+    // Workspace navigation
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+    Mod+5 { focus-workspace 5; }
+    Mod+6 { focus-workspace 6; }
+    Mod+7 { focus-workspace 7; }
+    Mod+8 { focus-workspace 8; }
+    Mod+9 { focus-workspace 9; }
+
+    Mod+Shift+1 { move-window-to-workspace 1; }
+    Mod+Shift+2 { move-window-to-workspace 2; }
+    Mod+Shift+3 { move-window-to-workspace 3; }
+    Mod+Shift+4 { move-window-to-workspace 4; }
+    Mod+Shift+5 { move-window-to-workspace 5; }
+    Mod+Shift+6 { move-window-to-workspace 6; }
+    Mod+Shift+7 { move-window-to-workspace 7; }
+    Mod+Shift+8 { move-window-to-workspace 8; }
+    Mod+Shift+9 { move-window-to-workspace 9; }
+
+    Mod+Escape { toggle-keyboard-shortcuts-inhibit; }
+
+    Mod+Shift+E { quit; }
+}
+        '';
+    };
+}

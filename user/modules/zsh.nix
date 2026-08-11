@@ -152,7 +152,7 @@ in
               theme = "robbyrussell";
             };
 
-            initExtra = /*bash*/ ''
+            initContent = /*bash*/ ''
 
                 # Extra navigation aliases
                 alias ..='cd ..'

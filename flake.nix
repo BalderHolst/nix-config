@@ -10,6 +10,7 @@
     profiles = [
         "goldfish"
         "dolphin"
+        "minimal"
     ];
 
     overlay = (final: prev: {
@@ -79,13 +80,12 @@
 
         # Generate system configurations
         nixosConfigurations = builtins.listToAttrs (
-            builtins.map (profile: {
+            map (profile: {
                 name = profile;
                 value = nixpkgs-stable.lib.nixosSystem {
                     pkgs = pkgs-stable;
                     modules = [
                         ./profiles/${profile}/configuration.nix
-                        inputs.nix-index-database.nixosModules.default
                     ];
                     specialArgs = {
                         hostname = profile;
@@ -99,7 +99,7 @@
 
         # Generate home-manager configurations
         homeConfigurations = builtins.listToAttrs (
-        builtins.map (profile: {
+        map (profile: {
             name = profile;
             value = home-manager.lib.homeManagerConfiguration {
                 pkgs = pkgs-unstable;
@@ -118,7 +118,7 @@
 
     inputs = {
 
-        nixpkgs-stable.url = "github:NixOS/nixpkgs/25.05";
+        nixpkgs-stable.url = "github:NixOS/nixpkgs/26.05";
         nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
         home-manager = {
@@ -132,18 +132,13 @@
         };
 
         hyprland = {
-            url = "github:hyprwm/Hyprland";
+            url = "git+https://github.com/hyprwm/Hyprland?submodules=1";
             inputs.nixpkgs.follows = "nixpkgs-stable";
         };
 
         nix-index-database = {
             url = "github:nix-community/nix-index-database";
             inputs.nixpkgs.follows = "nixpkgs-stable";
-        };
-
-        hyprgrass = {
-            url = "github:horriblename/hyprgrass";
-            inputs.hyprland.follows = "hyprland"; # IMPORTANT
         };
 
         nix-matlab = {
