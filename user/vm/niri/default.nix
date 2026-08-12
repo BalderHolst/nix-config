@@ -1,4 +1,7 @@
 { pkgs, config, inputs, lib, ... }:
+let
+    scripts = import ./scripts { inherit pkgs; };
+in
 {
 
     options.niri.theme       = lib.mkOption { type = lib.types.attrs; };
@@ -7,7 +10,12 @@
     options.niri.swap_escape = lib.mkOption { type = lib.types.bool; };
     options.niri.utilsDir    = lib.mkOption { type = lib.types.str; };
 
-    config.home.packages = [ ];
+    config.home.packages = with pkgs; [
+        noctalia-shell
+        kdePackages.breeze # Cursor
+        swaylock
+    ];
+
 
     config.home.file = {
         ".config/niri/config.kdl".text = /* kdl */ ''
@@ -75,6 +83,7 @@ input {
 }
 
 spawn-at-startup "noctalia-shell"
+
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
 
@@ -91,13 +100,31 @@ xwayland-satellite {
 
 layout {
 
+    always-center-single-column
+
+    // Visuals
     gaps 10
-    border {
-        width 2
-    }
-    focus-ring {
-        width 2
-    }
+    border { width 2; }
+    focus-ring { width 2; }
+
+    // Set transparent workspace background color.
+    background-color "transparent"
+}
+
+layer-rule {
+    // This is for swaybg; change for other wallpaper tools.
+    // Find the right namespace by running niri msg layers.
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}
+
+window-rule {
+    geometry-corner-radius 8
+    clip-to-geometry true
+}
+
+hotkey-overlay {
+    skip-at-startup
 }
 
 binds {
@@ -130,6 +157,8 @@ binds {
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
 
+    Mod+Z { spawn-sh "${scripts.create-empty-first-workspace}"; }
+
     Mod+Shift+1 { move-window-to-workspace 1; }
     Mod+Shift+2 { move-window-to-workspace 2; }
     Mod+Shift+3 { move-window-to-workspace 3; }
@@ -145,5 +174,10 @@ binds {
     Mod+Shift+E { quit; }
 }
         '';
+
+        ".cache/noctalia/wallpapers.json".text = builtins.toJSON {
+            defaultWallpaper = config.niri.theme.wallpaper;
+        };
+
     };
 }
