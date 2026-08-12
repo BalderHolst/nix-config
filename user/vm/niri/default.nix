@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, lib, ... }:
+{ pkgs, config, inputs, lib, configDir, ... }:
 let
     scripts = import ./scripts { inherit pkgs; };
 in
@@ -116,7 +116,7 @@ layout {
     }
 
 
-    background-color "#003300"
+    background-color "#${config.niri.theme.background}"
 }
 
 layer-rule {
@@ -186,6 +186,8 @@ binds {
         ".cache/noctalia/wallpapers.json".text = builtins.toJSON {
             defaultWallpaper = config.niri.theme.wallpaper;
         };
+
+        ".config/noctalia/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/user/vm/niri/noctalia.settings.json";
 
     };
 }
