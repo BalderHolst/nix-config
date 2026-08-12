@@ -45,6 +45,7 @@ in
     };
 
     latex.enable = true;
+    typst.enable = true;
 
     embedded = {
         arduino.enable = false;

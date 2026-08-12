@@ -95,7 +95,7 @@ cursor {
 }
 
 xwayland-satellite {
-    // path ${lib.getExe pkgs.xwayland-satellite};
+    path "${lib.getExe pkgs.xwayland-satellite}";
 }
 
 layout {
@@ -155,6 +155,7 @@ binds {
     Mod+WheelScrollLeft { focus-column-left; }
 
     // Workspace navigation
+    Mod+0 { spawn-sh "${scripts.create-empty-first-workspace}"; }
     Mod+1 { focus-workspace 1; }
     Mod+2 { focus-workspace 2; }
     Mod+3 { focus-workspace 3; }
@@ -165,7 +166,7 @@ binds {
     Mod+8 { focus-workspace 8; }
     Mod+9 { focus-workspace 9; }
 
-    Mod+Z { spawn-sh "${scripts.create-empty-first-workspace}"; }
+    Mod+O { toggle-overview; }
 
     Mod+Shift+1 { move-window-to-workspace 1; }
     Mod+Shift+2 { move-window-to-workspace 2; }
