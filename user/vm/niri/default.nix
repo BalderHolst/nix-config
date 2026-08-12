@@ -104,11 +104,19 @@ layout {
 
     // Visuals
     gaps 10
-    border { width 2; }
-    focus-ring { width 2; }
+    focus-ring {
+        off
+    }
 
-    // Set transparent workspace background color.
-    background-color "transparent"
+    border { 
+        width 2
+        inactive-color "#${config.niri.theme.background}"
+        active-color "#${config.niri.theme.focus}"
+        urgent-color "#${config.niri.theme.alert}"
+    }
+
+
+    background-color "#003300"
 }
 
 layer-rule {
