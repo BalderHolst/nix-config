@@ -20,10 +20,10 @@ in
     config.home.file = {
         ".config/niri/config.kdl".text = /* kdl */ ''
 
-window-rule {
-    match app-id="firefox$"
-    open-maximized true
-}
+// window-rule {
+//     match app-id="firefox$"
+//     open-maximized true
+// }
 
 input {
     keyboard {
