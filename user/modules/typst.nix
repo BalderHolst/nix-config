@@ -1,6 +1,7 @@
 { pkgs, lib, config, ... }:
 let
     cfg = config.typst;
+    typst-package-check = pkgs.callPackage ../../pkgs/typst-package-check.nix {};
 in
 {
 
@@ -12,6 +13,7 @@ in
         home.packages = with pkgs; [
             typst
             tinymist
+            typst-package-check
         ];
     };
 }
