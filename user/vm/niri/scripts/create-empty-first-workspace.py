@@ -15,6 +15,6 @@ for w in ws:
     if w.idx > last_w.idx:
         last_w = w
 
+inst.action("do-screen-transition", delay_ms=0)
 niri("focus-workspace", last_w.idx)
-time.sleep(1.0) # Wait for animation
 inst.action("move-workspace-to-index", index=1)

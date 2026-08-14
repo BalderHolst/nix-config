@@ -33,6 +33,46 @@
         LC_TIME = "da_DK.UTF-8";
     };
 
+
+    # Cloud drives
+    fileSystems = (
+        let
+        opts = [ "x-systemd.automount" "noauto" "x-systemd.after=network-online" ];
+        nas = "192.168.0.200";
+        in
+    {
+        "/media/uni-remote" = {
+            device = "${nas}:/uni";
+            fsType = "nfs";
+            options = opts;
+            };
+
+        "/media/3d-print" = {
+            device = "${nas}:/3d-print";
+            fsType = "nfs";
+            options = opts;
+        };
+
+        "/media/music" = {
+            device = "${nas}:/music";
+            fsType = "nfs";
+            options = opts;
+        };
+
+        "/media/private" = {
+            device = "${nas}:/private";
+            fsType = "nfs";
+            options = opts;
+        };
+
+        "/media/general" = {
+            device = "${nas}:/general";
+            fsType = "nfs";
+            options = opts;
+        };
+    });
+
+
     # Enable comma
     programs.nix-index-database.comma.enable = true;
 

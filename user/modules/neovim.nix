@@ -59,9 +59,9 @@ in
         };
 
         home.packages = with pkgs; [
-            neovim
+            stable.neovim
+            stable.tree-sitter                    # used by nvim-treesitter
             n-shortcut                            # shortcut to open nvim with fzf
-            tree-sitter                           # used by nvim-treesitter
             vscode-extensions.vadimcn.vscode-lldb # lldb vscode extension used in neovim
             rust-analyzer                         # lsp for rust
             nodejs                                # used by copilot
