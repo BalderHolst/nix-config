@@ -9,53 +9,46 @@
     imports =
         [
             ./hardware-configuration.nix
-            ../../system/nas-sync.nix
-            ../../system/general.nix
-            ../../system/hyprland.nix
-            ../../system/sddm.nix
+            ../../system/niri.nix
             ../../system/steam.nix
-            ../../system/act.nix
-            ../../system/virtual-machines.nix
+            ../../system/general.nix
         ];
-
-    # Enable comma with the pre-indexed database
-    programs.nix-index-database.comma.enable = true;
 
     networking.hostName = hostname;
 
-    services.logind.extraConfig = "RuntimeDirectorySize=4G";
+    services.logind.settings.Login.RuntimeDirectorySize="4G";
     services.gvfs.enable = true;
 
-    virtual-machines.enable = false;
+    # virtual-machines.enable = false;
 
     # Sync with NAS
-    nas.network-ssid = "TP-Link_96CC";
-    nas.rclone-device = "NAS";
-    nas.interval = 60*2;
-    nas.sync-locations = 
-    let
-        home = "/home/${user.username}";
-    in
-    [
-        { local = "${home}/3d-print";               remote = "3d-print";            }
-        { local = "${home}/Pictures";               remote = "general/pictures";    }
-        { local = "${home}/Documents/opskrifter";   remote = "general/opskrifter";  }
-        { local = "${home}/Documents/papirer";      remote = "private/papirer";     }
-        { local = "${home}/Documents/job";          remote = "private/job";         }
-        { local = "${home}/Documents/uni/lectures"; remote = "uni";                 }
-    ];
-    nas.remote-backup-dir = "backups/manual";
-    nas.backup-exclude = [
-        "software"
-        "isos"
-        "build"
-        ".cache"
-        ".arduino15"
-        ".matlab"
-        ".cargo"
-        "target"
-        "Steam"
-    ];
+    # nas.network-ssid = "TP-Link_96CC";
+    # nas.rclone-device = "NAS";
+    # nas.interval = 60*2;
+    # nas.sync-locations = 
+    # let
+    #     home = "/home/${user.username}";
+    # in
+    # [
+    #     { local = "${home}/3d-print";               remote = "3d-print";            }
+    #     { local = "${home}/Pictures";               remote = "general/pictures";    }
+    #     { local = "${home}/Documents/opskrifter";   remote = "general/opskrifter";  }
+    #     { local = "${home}/Documents/papirer";      remote = "private/papirer";     }
+    #     { local = "${home}/Documents/job";          remote = "private/job";         }
+    #     { local = "${home}/Documents/uni/lectures"; remote = "uni";                 }
+    # ];
+    # nas.remote-backup-dir = "backups/manual";
+    # nas.backup-exclude = [
+    #     "software"
+    #     "isos"
+    #     "build"
+    #     ".cache"
+    #     ".arduino15"
+    #     ".matlab"
+    #     ".cargo"
+    #     "target"
+    #     "Steam"
+    # ];
 
     # Cloud drives
     fileSystems = (

@@ -20,15 +20,16 @@ in
     config.home.file = {
         ".config/niri/config.kdl".text = /* kdl */ ''
 
-// window-rule {
-//     match app-id="firefox$"
-//     open-maximized true
-// }
+window-rule {
+    match app-id="firefox$"
+    open-maximized false
+}
 
 input {
     keyboard {
         xkb {
             layout "dk"
+            ${if config.niri.swap_escape then "options \"caps:swapescape\"" else ""}
         }
 
         repeat-delay 180

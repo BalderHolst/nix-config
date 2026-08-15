@@ -615,7 +615,7 @@
     },
     "wallpaper": {
         "automationEnabled": false,
-        "directory": "/home/balder/Pictures/wallpapers",
+        "directory": "/home/balder/Pictures/Wallpapers",
         "enableMultiMonitorDirectories": false,
         "enabled": true,
         "favorites": [

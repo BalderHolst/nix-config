@@ -12,7 +12,7 @@
         ffmpeg                        # THE cli video tool
         nautilus                      # gui file explorer
         imagemagick                   # cli image manipulation
-        wf-recorder                   # screen recorder
+        # wf-recorder                 # screen recorder
         filezilla                     # ftp gui interface
         transmission_4-qt             # bittorrent client for file shareing
         tor-browser                   # secure and anonymous browsing

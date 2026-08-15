@@ -21,7 +21,8 @@ in
         ../../user/modules/pass.nix
         ../../user/modules/cli-collection.nix
         ../../user/modules/desktop-collection.nix
-        ../../user/vm/hyprland.nix
+        ../../user/vm/niri
+        ../../user/modules/firefox
     ];
 
     git.userName = "BalderHolst";
@@ -29,7 +30,7 @@ in
 
     zsh.configDir = configDir;
 
-    hyprland = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
+    niri = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
 
     firefox.username = user.username;
     firefox.theme = "another_online";
@@ -48,34 +49,35 @@ in
         avr.enable     = false;
         tiva.enable    = false;
         yosys.enable   = false;
-        pico.enable    = true;
+        pico.enable    = false;
     };
 
     latex.enable = true;
     typst.enable = true;
 
-    pcb.enable = true;
+    pcb.enable = false;
 
     gtk.iconTheme = {
         package = pkgs.papirus-icon-theme;
         name = "Papirus";
     };
 
-    home.pointerCursor = {
-        gtk.enable = true;
-        x11.enable = true;
-        name = "Bibata-Original-Classic";
-        size = 18;
-        package = pkgs.bibata-cursors;
-    };
+    # home.pointerCursor = {
+    #     enable = true,
+    #     gtk.enable = true;
+    #     x11.enable = true;
+    #     name = "Bibata-Original-Classic";
+    #     size = 18;
+    #     package = pkgs.bibata-cursors;
+    # };
 
     gtk = {
         enable = true;
         font.name = "FiraCode Nerd Font";
-        theme = {
-            name = "Sierra-compact-dark";
-            package = pkgs.sierra-gtk-theme;
-        };
+        # theme = {
+        #     name = "Sierra-compact-dark";
+        #     package = pkgs.sierra-gtk-theme;
+        # };
     };
 
     # This value determines the Home Manager release that your configuration is
