@@ -14,6 +14,9 @@
         packages = [ ];
     };
 
+    # Enable comma
+    programs.nix-index-database.comma.enable = true;
+
     # Bootloader
     boot.loader.systemd-boot.enable = true;
     boot.loader.efi.canTouchEfiVariables = true;
@@ -27,6 +30,15 @@
     # Bluetooth
     hardware.bluetooth.enable = true;
     services.blueman.enable = true;
+
+    # Enable the X11 windowing system.
+    services.xserver.enable = true;
+
+    # Configure keymap in X11
+    services.xserver.xkb = {
+        layout = "dk";
+        variant = "";
+    };
 
     # Auto mount USB
     services.devmon.enable = true;
@@ -103,24 +115,20 @@
     environment.systemPackages = with pkgs; [
 
         # ====== Desktop ======
-        dunst # notifications
-        libnotify # send notifications
         home-manager # nix home manager
         pkgs.libsForQt5.qt5.qtgraphicaleffects # library used by a lot of sddm themes
 
         # ====== CLI ======
-        htop # process viewer
-        btop # better process viewer
-        wget # cli file downloader
-        tree # overview of file structures
-        bat # better cat
-        file # show file info
-        zip # zip your files
-        unzip # unzip your files
-        git # you know why
+        htop   # process viewer
+        btop   # better process viewer
+        wget   # cli file downloader
+        tree   # overview of file structures
+        bat    # better cat
+        file   # show file info
+        zip    # zip your files
+        unzip  # unzip your files
+        git    # you know why
         neovim # best text editor
-
-        pinentry-qt
 
     ];
 }
