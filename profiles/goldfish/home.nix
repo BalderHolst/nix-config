@@ -52,6 +52,7 @@ in
     };
 
     latex.enable = true;
+    typst.enable = true;
 
     pcb.enable = true;
 
