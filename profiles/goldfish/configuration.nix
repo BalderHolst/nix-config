@@ -19,6 +19,9 @@
     services.logind.settings.Login.RuntimeDirectorySize="4G";
     services.gvfs.enable = true;
 
+    services.upower.enable = true;
+    services.upower.criticalPowerAction = "Hibernate";
+
     # virtual-machines.enable = false;
 
     # Sync with NAS

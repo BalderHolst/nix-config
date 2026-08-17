@@ -14,6 +14,8 @@ in
         noctalia-shell
         kdePackages.breeze # Cursor
         swaylock
+        brightnessctl # Brightness control
+        wireplumber   # Audio control
     ];
 
 
@@ -146,14 +148,21 @@ binds {
     Mod+Shift+Return { toggle-window-floating; }
 
     Mod+H { focus-column-left; }
+    Mod+L { focus-column-right {}; }
     Mod+J { focus-window-or-workspace-down {}; }
     Mod+K { focus-window-or-workspace-up {}; }
-    Mod+L { focus-column-right {}; }
+
+    Mod+Shift+H { consume-or-expel-window-left; }
+    Mod+Shift+L { consume-or-expel-window-right; }
+    Mod+Shift+J { move-window-down-or-to-workspace-down; }
+    Mod+Shift+K { move-window-up-or-to-workspace-up; }
 
     Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
     Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
     Mod+WheelScrollRight { focus-column-right; }
     Mod+WheelScrollLeft { focus-column-left; }
+
+    Mod+W { toggle-column-tabbed-display; }
 
     // Workspace navigation
     Mod+0 { spawn-sh "${scripts.create-empty-first-workspace}"; }
@@ -182,6 +191,18 @@ binds {
     Mod+Escape { toggle-keyboard-shortcuts-inhibit; }
 
     Mod+Shift+E { quit; }
+
+    XF86MonBrightnessUp   { spawn "brightnessctl" "set" "+4%"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "4%-"; }
+
+    Shift+XF86MonBrightnessUp { spawn "brightnessctl" "set" "100%"; }
+    Shift+XF86MonBrightnessDown { spawn "brightnessctl" "set" "10%"; }
+
+    XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "-l" "1.4" "@DEFAULT_AUDIO_SINK@" "5%+"; }
+    XF86AudioLowerVolume { spawn "wpctl" "set-volume" "-l" "1.4" "@DEFAULT_AUDIO_SINK@" "5%-"; }
+    Shift+XF86AudioRaiseVolume { spawn "wpctl" "set-volume" "-l" "1.4" "@DEFAULT_AUDIO_SINK@" "100%"; }
+    Shift+XF86AudioLowerVolume { spawn "wpctl" "set-volume" "-l" "1.4" "@DEFAULT_AUDIO_SINK@" "10%"; }
+    XF86AudioMute { spawn "wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle"; }
 }
         '';
 
