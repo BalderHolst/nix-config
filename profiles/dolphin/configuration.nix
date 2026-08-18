@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
     imports = [
         ./hardware-configuration.nix
         ../../system/niri.nix
@@ -45,6 +45,17 @@
             options = opts;
         };
     });
+
+
+    # Enable Nvidia driver
+    services.xserver.videoDrivers = [ "nvidia" ];
+    hardware.nvidia = {
+      modesetting.enable = true; # Required for Niri / Wayland
+      powerManagement.enable = false;
+      open = false; # Set to true if using modern Turing/Ampere+ GPUs with open kernel modules
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
 
 
     # Enable the Cinnamon Desktop Environment.
