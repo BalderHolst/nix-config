@@ -31,8 +31,10 @@
                 column.ui = "auto";
             };
         };
-        # diff-so-fancy.enable = true;
         ignores = [ ];
     };
-    config.programs.diff-so-fancy.enableGitIntegration = true;
+    config.programs.diff-so-fancy = {
+        enable = true;
+        enableGitIntegration = true;
+    };
 }

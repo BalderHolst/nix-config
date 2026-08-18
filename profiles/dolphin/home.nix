@@ -46,6 +46,7 @@ in
 
     latex.enable = true;
     typst.enable = true;
+    typst.package-check = true;
 
     embedded = {
         arduino.enable = false;
@@ -72,10 +73,6 @@ in
         gtk4.theme = config.gtk.theme;
         enable = true;
         font.name = "Noto Sans";
-        theme = {
-            name = "Sierra-compact-dark";
-            package = pkgs.sierra-gtk-theme;
-        };
     };
 
     # This value determines the Home Manager release that your configuration is

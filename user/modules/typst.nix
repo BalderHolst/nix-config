@@ -6,16 +6,18 @@ in
 {
     options.typst = {
         enable = lib.mkEnableOption "Typst support";
+        package-check = lib.mkEnableOption "Package checker";
     };
 
     config = lib.mkIf cfg.enable {
         home.packages = with pkgs; [
             typst               # Language
-            typst-package-check # Check typst packages
             tinymist            # Lsp
             typstyle            # Formatter
             websocat            # For nvim preview
             qutebrowser         # Preview browser
-        ];
+        ] ++ (if cfg.package-check then [
+            typst-package-check # Check typst packages
+        ] else []);
     };
 }
