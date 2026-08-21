@@ -62,7 +62,21 @@
     };
 
     # Configure console keymap
-    console.keyMap = "dk-latin1";
+    console = {
+        enable = true;
+        # Override the console keymaps to unbind Alt+Left (Decr_Console) and Alt+Right (Incr_Console)
+        keyMap = pkgs.runCommand "dk-latin1-no-tty-switch.kmap" {} ''
+
+            # Set the keyboard to "dk-lation1"
+            gzip -dc ${pkgs.kbd}/share/keymaps/i386/qwerty/dk-latin1.map.gz > $out
+
+            # Append the keycode unbinds
+            cat <<EOF >> $out
+            alt keycode 105 = VoidSymbol
+            alt keycode 106 = VoidSymbol
+            EOF
+        '';
+    };
 
     # Enable CUPS to print documents.
     services.printing.enable = true;
@@ -131,4 +145,5 @@
         neovim # best text editor
 
     ];
+
 }
