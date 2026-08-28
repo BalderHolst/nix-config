@@ -1,0 +1,13 @@
+#!/usr/bin/env python3
+
+## Run Matlab
+
+from pathlib import Path
+import tomllib
+from subprocess import run
+
+CONFIG_PATH = Path.home() / ".config" / "matlab" / "config.toml"
+
+CONFIG = tomllib.loads(CONFIG_PATH.read_text())
+
+run(CONFIG['cmd'], shell=True, check=True)

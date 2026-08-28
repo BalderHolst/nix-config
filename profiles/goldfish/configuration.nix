@@ -12,7 +12,10 @@
             ../../system/niri.nix
             ../../system/steam.nix
             ../../system/general.nix
+            ../../system/distrobox.nix
         ];
+
+    distrobox.enable = true;
 
     networking.hostName = hostname;
 

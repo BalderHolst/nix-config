@@ -60,7 +60,6 @@
             overlay
             rust-overlay.overlays.default
             unstable-overlay
-            inputs.nix-matlab.overlay
         ];
     };
     in
@@ -140,11 +139,6 @@
         nix-index-database = {
             url = "github:nix-community/nix-index-database";
             inputs.nixpkgs.follows = "nixpkgs-stable";
-        };
-
-        nix-matlab = {
-            inputs.nixpkgs.follows = "nixpkgs-stable";
-            url = "gitlab:doronbehar/nix-matlab";
         };
 
         rust-overlay.url = "github:oxalica/rust-overlay";

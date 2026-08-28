@@ -11,10 +11,6 @@ in
     home.homeDirectory = "/home/${user.username}";
     home.username = user.username;
 
-    home.packages = with pkgs; [
-        matlab
-    ];
-
     imports = [
         ../../user/modules
         ../../user/modules/steam.nix
