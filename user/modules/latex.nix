@@ -10,9 +10,8 @@ in
 
     config = lib.mkIf cfg.enable {
         home.packages = with pkgs; [
-            texlive.combined.scheme-full  # latex with everything
-            blatex                        # my latex document framework
-            pdfpc                         # pdf presenter
+            texliveFull # latex with everything
+            pdfpc       # pdf presenter
         ];
     };
 }
