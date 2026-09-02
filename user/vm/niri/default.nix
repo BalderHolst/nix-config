@@ -4,11 +4,12 @@ let
 in
 {
 
-    options.niri.theme       = lib.mkOption { type = lib.types.attrs; };
-    options.niri.monitor     = lib.mkOption { type = lib.types.str; };
-    options.niri.size        = lib.mkOption { type = lib.types.functionTo lib.types.str; };
-    options.niri.swap_escape = lib.mkOption { type = lib.types.bool; };
-    options.niri.utilsDir    = lib.mkOption { type = lib.types.str; };
+    options.niri.theme              = lib.mkOption { type = lib.types.attrs; };
+    options.niri.monitor            = lib.mkOption { type = lib.types.str; };
+    options.niri.size               = lib.mkOption { type = lib.types.functionTo lib.types.str; };
+    options.niri.swap_escape        = lib.mkOption { type = lib.types.bool; };
+    options.niri.disable_escape_led = lib.mkOption { type = lib.types.bool; };
+    options.niri.utilsDir           = lib.mkOption { type = lib.types.str; default = false; };
 
     config.home.packages = with pkgs; [
         noctalia-shell
@@ -92,6 +93,12 @@ input {
 }
 
 spawn-at-startup "noctalia-shell"
+
+${if config.niri.disable_escape_led
+then /* kdl */ ''
+    spawn-at-startup "brightnessctl --device='*capslock*' set 0"
+'' else ""
+}
 
 prefer-no-csd
 screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"

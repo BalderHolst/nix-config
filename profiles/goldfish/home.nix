@@ -1,7 +1,6 @@
 { user, config, inputs, pkgs, configDir, ... }:
 
 let
-    swap_escape = true;
     monitor = "eDP-1";
     theme = import ../../themes/lake.nix;
     ui_scale = 1;
@@ -26,7 +25,13 @@ in
 
     zsh.configDir = configDir;
 
-    niri = { inherit theme; inherit monitor; inherit size; inherit swap_escape; };
+    niri = {
+        inherit theme;
+        inherit monitor;
+        inherit size;
+        swap_escape = true;
+        disable_escape_led = true;
+    };
 
     firefox.username = user.username;
     firefox.theme = "another_online";
@@ -36,7 +41,7 @@ in
         rust.enable   = true;
         python = {
             enable = true;
-            notebooks = false;
+            notebooks = true;
         };
     };
 
