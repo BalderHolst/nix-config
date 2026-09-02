@@ -13,6 +13,7 @@
             ../../system/steam.nix
             ../../system/general.nix
             ../../system/distrobox.nix
+            ../../system/gnome.nix
         ];
 
     distrobox.enable = true;
@@ -21,6 +22,7 @@
 
     services.logind.settings.Login.RuntimeDirectorySize="4G";
     services.gvfs.enable = true;
+    services.displayManager.gdm.enable = true;
 
     services.upower.enable = true;
     services.upower.criticalPowerAction = "Hibernate";
