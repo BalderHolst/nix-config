@@ -20,11 +20,17 @@ in
 
 
     config.home.file = {
+
+###################### NIRI CONFIG ######################
+
         ".config/niri/config.kdl".text = /* kdl */ ''
+
+workspace "browser"
 
 window-rule {
     match app-id="firefox$"
-    open-maximized false
+    open-maximized true
+    open-on-workspace "browser"
 }
 
 input {
@@ -142,7 +148,26 @@ binds {
     Mod+Return { spawn-sh "kitty"; }
     Mod+Q { close-window; }
     Mod+P { spawn-sh "noctalia-shell ipc call launcher toggle"; }
-    Mod+B { spawn-sh "firefox"; }
+
+    Mod+B { spawn-sh "${pkgs.writeShellScript "focus_firefox" /* bash */ ''
+        # 1. If Firefox is not running at all, launch it
+        if ! pgrep firefox > /dev/null 2>&1; then
+            firefox &
+            exit 0
+        fi
+
+        # 2. Get the name of the currently focused workspace from niri
+        CURRENT_WORKSPACE=$(niri msg -j workspaces | jq -r '.[] | select(.is_focused == true) | .name')
+
+        # 3. If already on the "browser" workspace, open a new Firefox window/instance
+        #    Otherwise, switch focus to the "browser" workspace
+        if [ "$CURRENT_WORKSPACE" = "browser" ]; then
+            firefox --new-window &
+        else
+            niri msg action focus-workspace browser
+        fi
+    ''}"; }
+
     Mod+F { fullscreen-window; }
     Mod+C { maximize-column; }
     Mod+Shift+Return { toggle-window-floating; }
