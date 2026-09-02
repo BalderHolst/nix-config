@@ -17,6 +17,10 @@ in
         swaylock
         brightnessctl # Brightness control
         wireplumber   # Audio control
+        grim          # Capture screen
+        slurp         # Select screenshot area
+        swappy        # Annotate Screenshot
+        imagemagick   # Trim screenshot
     ];
 
 
@@ -178,6 +182,7 @@ binds {
     Mod+F { fullscreen-window; }
     Mod+C { maximize-column; }
     Mod+Shift+Return { toggle-window-floating; }
+    Mod+Shift+S { spawn-sh "grim -g \"$(slurp)\" - | magick - -shave 3x3 PNG:- | swappy -f -"; }
 
     Mod+H { focus-column-left; }
     Mod+L { focus-column-right {}; }
