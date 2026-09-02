@@ -2,12 +2,21 @@
 
 ## Run Matlab
 
+PROGRAM = "matlab"
+
 from pathlib import Path
 import tomllib
 from subprocess import run
+import sys
 
-CONFIG_PATH = Path.home() / ".config" / "matlab" / "config.toml"
+CONFIG_PATH = Path.home() / ".config" / PROGRAM / "config.toml"
+
+if not CONFIG_PATH.exists():
+    print(f"ERROR: config file '{CONFIG_PATH}' not found.")
+    exit(1)
 
 CONFIG = tomllib.loads(CONFIG_PATH.read_text())
 
-run(CONFIG['cmd'], shell=True, check=True)
+cmd = CONFIG['cmd'] + " " + " ".join(sys.argv[1:])
+res = run(cmd, shell=True)
+exit(res.returncode)

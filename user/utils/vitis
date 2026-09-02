@@ -2,12 +2,14 @@
 
 ## Run Vitis
 
+PROGRAM = "vitis"
+
 from pathlib import Path
 import tomllib
 from subprocess import run
 import sys
 
-CONFIG_PATH = Path.home() / ".config" / "vitis" / "config.toml"
+CONFIG_PATH = Path.home() / ".config" / PROGRAM / "config.toml"
 
 if not CONFIG_PATH.exists():
     print(f"ERROR: config file '{CONFIG_PATH}' not found.")
@@ -15,6 +17,6 @@ if not CONFIG_PATH.exists():
 
 CONFIG = tomllib.loads(CONFIG_PATH.read_text())
 
-cmd = CONFIG['cmd']
-
-run(cmd, check=True, capture_output=False)
+cmd = CONFIG['cmd'] + " " + " ".join(sys.argv[1:])
+res = run(cmd, shell=True)
+exit(res.returncode)
