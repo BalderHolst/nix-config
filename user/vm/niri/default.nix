@@ -23,8 +23,11 @@ in
         imagemagick   # Trim screenshot
     ];
 
-
-    config.home.file = {
+    config.home.file =
+    let
+        theme = config.niri.theme;
+    in
+    {
 
 ###################### NIRI CONFIG ######################
 
@@ -130,13 +133,26 @@ layout {
 
     border { 
         width 2
-        inactive-color "#${config.niri.theme.background}"
-        active-color "#${config.niri.theme.focus}"
-        urgent-color "#${config.niri.theme.alert}"
+        inactive-color "#${theme.background}"
+        active-color "#${theme.focus}"
+        urgent-color "#${theme.alert}"
     }
 
 
-    background-color "#${config.niri.theme.background}"
+    background-color "#${theme.background}"
+
+    tab-indicator {
+        on
+        gap 1
+        width 6
+        length total-proportion=0.5
+        position "left"
+        gaps-between-tabs 2
+        corner-radius 4
+        active-color "#${theme.focus}A0"
+        inactive-color "#${theme.background}A0"
+        urgent-color "#${theme.alert}"
+    }
 }
 
 layer-rule {
@@ -184,10 +200,10 @@ binds {
     Mod+Shift+Return { toggle-window-floating; }
     Mod+Shift+S { spawn-sh "grim -g \"$(slurp)\" - | magick - -shave 3x3 PNG:- | swappy -f -"; }
 
-    Mod+H { focus-column-left; }
-    Mod+L { focus-column-right {}; }
-    Mod+J { focus-window-or-workspace-down {}; }
-    Mod+K { focus-window-or-workspace-up {}; }
+    Mod+H { focus-column-left-or-last; }
+    Mod+L { focus-column-right-or-first {}; }
+    Mod+J { focus-window-down-or-top {}; }
+    Mod+K { focus-window-up-or-bottom {}; }
 
     Mod+Shift+H { consume-or-expel-window-left; }
     Mod+Shift+L { consume-or-expel-window-right; }
@@ -244,7 +260,7 @@ binds {
         '';
 
         ".cache/noctalia/wallpapers.json".text = builtins.toJSON {
-            defaultWallpaper = config.niri.theme.wallpaper;
+            defaultWallpaper = theme.wallpaper;
         };
 
         ".config/noctalia/settings.json".source = config.lib.file.mkOutOfStoreSymlink "${configDir}/user/vm/niri/noctalia.settings.json";
