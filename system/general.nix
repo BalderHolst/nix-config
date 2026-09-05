@@ -3,7 +3,7 @@
     # Define a user account. Don't forget to set a password with ‘passwd’.
     users.users."${user.username}" = {
         isNormalUser = true;
-        description = "Administrator of this computer.";
+        description = user.username;
         extraGroups = [
             "networkmanager"
             "wheel"
